@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
-void cambio_interno(char tabla[8][8], int x, int y, int a, int b){
+
+void swap(char tabla[8][8], int x, int y, int a, int b){
     char temp = tabla[x][y];
     tabla[x][y] = tabla[a][b];
     tabla[a][b] = temp;
