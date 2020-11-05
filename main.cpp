@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 //gAAAAAAAAAAAA TIAA GAAAAAAAAAAAA come pelotas
+// Probando el merge
+
 
 void swap(char tabla[8][8], int x, int y, int a, int b)
 {

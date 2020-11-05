@@ -54,19 +54,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "E:\Clion\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "E:\Clion\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files\JetBrains\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP"
+CMAKE_SOURCE_DIR = "C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Proyecto Chess"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug"
+CMAKE_BINARY_DIR = "C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Proyecto Chess\cmake-build-debug"
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -93,14 +93,14 @@ clean: CMakeFiles/Chess_UCSP.dir/clean
 CMakeFiles/Chess_UCSP.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug\CMakeFiles" --progress-num=1,2 "Built target Chess_UCSP"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Proyecto Chess\cmake-build-debug\CMakeFiles" --progress-num=1,2 "Built target Chess_UCSP"
 .PHONY : CMakeFiles/Chess_UCSP.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Chess_UCSP.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug\CMakeFiles" 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Proyecto Chess\cmake-build-debug\CMakeFiles" 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Chess_UCSP.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Proyecto Chess\cmake-build-debug\CMakeFiles" 0
 .PHONY : CMakeFiles/Chess_UCSP.dir/rule
 
 # Convenience name for target.
