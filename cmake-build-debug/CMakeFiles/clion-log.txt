@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+"E:\Clion\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP"
+=======
+>>>>>>> experimentos
 "C:\Program Files\JetBrains\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" "C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Chess_UCSP"
 -- The C compiler identification is GNU 8.1.0
 -- The CXX compiler identification is GNU 8.1.0
@@ -13,6 +19,10 @@
 -- Detecting CXX compiler ABI info - done
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
+<<<<<<< HEAD
+=======
+>>>>>>> ecba02be8ef4545f8052268638208e7e4b56e42e
+>>>>>>> experimentos
 -- Configuring done
 -- Generating done
 -- Build files have been written to: C:/Users/Veronica/Desktop/Gabriel/Programming Projects/Proyectos en Clion/Chess_UCSP/cmake-build-debug
