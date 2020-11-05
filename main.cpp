@@ -6,6 +6,38 @@ void swap(char tabla[8][8], int x, int y, int a, int b){
     tabla[x][y] = tabla[a][b];
     tabla[a][b] = temp;
 }
+
+int coordenada_x(char x){
+    switch (x) {
+        case 'a':
+            return 0;
+            break;
+        case 'b':
+            return 1;
+            break;
+        case 'c':
+            return 2;
+            break;
+        case 'd':
+            return 3;
+            break;
+        case 'e':
+            return 4;
+            break;
+        case 'f':
+            return 5;
+            break;
+        case 'g':
+            return 6;
+            break;
+        case 'h':
+            return 7;
+            break;
+        default:
+            return -1;
+
+    }
+}
 void tablero(char m[8][8]){
     cout << "-1     0       1       2       3       4       5       6      7" << endl;
     cout << "___|_______|_______|_______|_______|_______|_______|_______|_______" << endl;
@@ -35,12 +67,17 @@ void tablero(char m[8][8]){
     cout << "___|_______|_______|_______|_______|_______|_______|_______|_______" << endl;
 }
 
-void cambio(char tabla[8][8], int x = 0, int y = 0, int a = 0, int b = 0){
-    cout << "Ingrese" << endl;
-    cin >> x >> y;
-    cout << "Ingrese cambio" << endl;
-    cin >> a >> b;
-    swap(tabla, x, y, a, b);
+void cambio(char tabla[8][8], char x = ' ', int y = 0, char a = ' ', int b = 0){
+    cout << "Ingrese coordenada x (a-h)" << endl;
+    cin >> x;
+    cout << "Ingrese coordenada y (1-8)" << endl;
+    cin >> y;
+    cout << "CAMBIO A:" << endl;
+    cout << "Ingrese coordenada x (a-h)" << endl;
+    cin >> a;
+    cout << "Ingrese coordenada y (1-8)" << endl;
+    cin >> b;
+    swap(tabla, coordenada_x(x), y-1, coordenada_x(a), b-1);
     tablero(tabla);
 }
 
