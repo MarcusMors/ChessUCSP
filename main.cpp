@@ -1,9 +1,6 @@
 #include <iostream>
 using namespace std;
-//gAAAAAAAAAAAA TIAA GAAAAAAAAAAAA come pelotas
-
-void swap(char tabla[8][8], int x, int y, int a, int b)
-{
+void swap(char tabla[8][8], int x, int y, int a, int b){
     int temp = tabla[x][y];
     tabla[x][y] = tabla[a][b];
     tabla[a][b] = temp;
@@ -48,13 +45,13 @@ void cambio(char tabla[8][8], int x = 0, int y = 0, int a = 0, int b = 0){
 
 int main(){
     char m[8][8] = {{'t', 'c', 'a', 'q', 'r', 'a', 'c', 't'},
-                    {'s', 's', 's', 's', 's', 's', 's', 's'},
+                    {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
                     {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
                     {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
                     {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
                     {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                    {'T', 'C', 'A', 'R', 'Q', 'A', 'C', 'T'},
-                    {'s', 's', 's', 's', 's', 's', 's', 's'}};
+                    {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+                    {'T', 'C', 'A', 'R', 'Q', 'A', 'C', 'T'}};
     tablero(m);
     cambio(m);
 }
