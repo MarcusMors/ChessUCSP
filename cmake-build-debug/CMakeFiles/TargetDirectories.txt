@@ -1,3 +1,3 @@
-C:/Users/Veronica/Desktop/Gabriel/Programming Projects/Proyectos en Clion/Proyecto Chess/cmake-build-debug/CMakeFiles/Chess_UCSP.dir
-C:/Users/Veronica/Desktop/Gabriel/Programming Projects/Proyectos en Clion/Proyecto Chess/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Veronica/Desktop/Gabriel/Programming Projects/Proyectos en Clion/Proyecto Chess/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Los Romeros/Desktop/UCSP - LALO/2do semestre/Ciencia de la computacion I/Codigos/Chess_UCSP/cmake-build-debug/CMakeFiles/Chess_UCSP.dir
+C:/Users/Los Romeros/Desktop/UCSP - LALO/2do semestre/Ciencia de la computacion I/Codigos/Chess_UCSP/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Los Romeros/Desktop/UCSP - LALO/2do semestre/Ciencia de la computacion I/Codigos/Chess_UCSP/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -6,11 +6,7 @@
 
 #IncludeRegexTransform: 
 
-<<<<<<< HEAD
-C:/Users/Los Romeros/Desktop/UCSP - LALO/2do semestre/Ciencia de la computacion I/Codigos/Chess_UCSP/main.cpp
-=======
-C:/Users/Veronica/Desktop/Gabriel/Programming Projects/Proyectos en Clion/Proyecto Chess/main.cpp
->>>>>>> d07f9e34651be84cd4465c14211554f97b0ea2dd
+C:/Users/Los Romeros/Desktop/UCSP - LALO/2do semestre/Ciencia de la computacion I/Codigos/Chess_UCSP/Librerias/Tablero/Tablero.cpp
 iostream
 -
 
