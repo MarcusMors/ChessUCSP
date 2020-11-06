@@ -1,6 +1,5 @@
 #include <iostream>
 
-
 using namespace std;
 
 void swap(char tabla[8][8], int x, int y, int a, int b){
@@ -75,15 +74,40 @@ void tablero(char m[8][8]){
 }
 
 void cambio(char tabla[8][8], char x = ' ', int y = 0, char a = ' ', int b = 0){
-    cout << "Ingrese coordenada x (a-h)" << endl;
-    cin >> x;
-    cout << "Ingrese coordenada y (1-8)" << endl;
-    cin >> y;
+    while (true){
+        cout << "Ingrese coordenada x (a-h)" << endl;
+        cin >> x;
+        if (coordenada_x(x) != -1){
+            break;
+        }
+        cout<<"Rango no admitido, VUELVA A INTENTARLO"<<endl;
+    }
+    while (true){
+        cout << "Ingrese coordenada y (1-8)" << endl;
+        cin >> y;
+        if (y>0 and y<8){
+            break;
+        }
+        cout<<"Rango no admitido, VUELVA A INTENTARLO"<<endl;
+    }
     cout << "CAMBIO A:" << endl;
-    cout << "Ingrese coordenada x (a-h)" << endl;
-    cin >> a;
-    cout << "Ingrese coordenada y (1-8)" << endl;
-    cin >> b;
+    while (true){
+        cout << "Ingrese coordenada x (a-h)" << endl;
+        cin >> a;
+        if (coordenada_x(x) != -1){
+            break;
+        }
+        cout<<"Rango no admitido, VUELVA A INTENTARLO"<<endl;
+    }
+    cout << "CAMBIO A:" << endl;
+    while (true){
+        cout << "Ingrese coordenada y (1-8)" << endl;
+        cin >> b;
+        if (y>0 and y<8){
+            break;
+        }
+        cout<<"Rango no admitido, VUELVA A INTENTARLO"<<endl;
+    }
     swap(tabla, y-1, coordenada_x(x), b-1, coordenada_x(a));
     tablero(tabla);
 }
