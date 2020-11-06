@@ -14,6 +14,5 @@ int main(){
     while (true){
         cambio(m, ' ', 0, ' ', 0);
     }
-
 }
 
