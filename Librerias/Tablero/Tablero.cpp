@@ -6,8 +6,6 @@ void swap(char tabla[8][8], int x, int y, int a, int b){
     char temp = tabla[x][y];
     tabla[x][y] = tabla[a][b];
     tabla[a][b] = temp;
-    cout<<tabla[x][y]<<endl;
-    cout<<tabla[a][b]<<endl;
 }
 
 int coordenada_x(char x){
@@ -73,18 +71,16 @@ void tablero(char m[8][8]){
     cout << "       a       b       c       d       e       f       g      h" << endl;
 }
 
-void cambio(char tabla[8][8], char x = ' ', int y = 0, char a = ' ', int b = 0){
+void cambio(char tabla[8][8], char x=' ', int y = 0, char a=' ', int b = 0){
     while (true){
-        cout << "Ingrese coordenada x (a-h)" << endl;
-        cin >> x;
+        cout << "Ingrese la coordenada 'x' (a-h):   "; cin >> x;
         if (coordenada_x(x) != -1){
             break;
         }
         cout<<"Rango no admitido, VUELVA A INTENTARLO"<<endl;
     }
     while (true){
-        cout << "Ingrese coordenada y (1-8)" << endl;
-        cin >> y;
+        cout << "Ingrese la coordenada 'y' (1-8):   "; cin >> y;
         if (y>0 and y<8){
             break;
         }
@@ -92,8 +88,7 @@ void cambio(char tabla[8][8], char x = ' ', int y = 0, char a = ' ', int b = 0){
     }
     cout << "CAMBIO A:" << endl;
     while (true){
-        cout << "Ingrese coordenada x (a-h)" << endl;
-        cin >> a;
+        cout << "Ingrese la coordenada 'x' (a-h):   "; cin >> a;
         if (coordenada_x(x) != -1){
             break;
         }
@@ -101,13 +96,13 @@ void cambio(char tabla[8][8], char x = ' ', int y = 0, char a = ' ', int b = 0){
     }
     cout << "CAMBIO A:" << endl;
     while (true){
-        cout << "Ingrese coordenada y (1-8)" << endl;
-        cin >> b;
+        cout << "Ingrese la coordenada 'y' (1-8):   "; cin >> b;
         if (y>0 and y<8){
             break;
         }
         cout<<"Rango no admitido, VUELVA A INTENTARLO"<<endl;
     }
     swap(tabla, y-1, coordenada_x(x), b-1, coordenada_x(a));
+    cout<<endl;
     tablero(tabla);
 }
