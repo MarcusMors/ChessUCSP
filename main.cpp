@@ -40,7 +40,7 @@ void cambio(char tabla[8][8], int x = 0, int y = 0, int a = 0, int b = 0){
     cin >> x >> y;
     cout << "Ingrese cambio" << endl;
     cin >> a >> b;
-    cambio_interno(tabla, x, y, a, b);
+    swap(tabla, x, y, a, b);
     tablero(tabla);
 }
 
