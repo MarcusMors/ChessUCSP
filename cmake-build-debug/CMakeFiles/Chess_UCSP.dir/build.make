@@ -53,19 +53,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "E:\Clion\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "E:\Clion\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Chess_UCSP"
+CMAKE_SOURCE_DIR = "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Chess_UCSP\cmake-build-debug"
+CMAKE_BINARY_DIR = "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Chess_UCSP.dir/depend.make
@@ -78,29 +78,29 @@ include CMakeFiles/Chess_UCSP.dir/flags.make
 
 CMakeFiles/Chess_UCSP.dir/main.cpp.obj: CMakeFiles/Chess_UCSP.dir/flags.make
 CMakeFiles/Chess_UCSP.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Chess_UCSP\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Chess_UCSP.dir/main.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Chess_UCSP.dir\main.cpp.obj -c "C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Chess_UCSP\main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Chess_UCSP.dir/main.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Chess_UCSP.dir\main.cpp.obj -c "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\main.cpp"
 
 CMakeFiles/Chess_UCSP.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Chess_UCSP.dir/main.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Chess_UCSP\main.cpp" > CMakeFiles\Chess_UCSP.dir\main.cpp.i
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\main.cpp" > CMakeFiles\Chess_UCSP.dir\main.cpp.i
 
 CMakeFiles/Chess_UCSP.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Chess_UCSP.dir/main.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Chess_UCSP\main.cpp" -o CMakeFiles\Chess_UCSP.dir\main.cpp.s
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\main.cpp" -o CMakeFiles\Chess_UCSP.dir\main.cpp.s
 
 CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.obj: CMakeFiles/Chess_UCSP.dir/flags.make
 CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.obj: ../Librerias/Tablero/Tablero.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Chess_UCSP\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Chess_UCSP.dir\Librerias\Tablero\Tablero.cpp.obj -c "C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Chess_UCSP\Librerias\Tablero\Tablero.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Chess_UCSP.dir\Librerias\Tablero\Tablero.cpp.obj -c "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\Librerias\Tablero\Tablero.cpp"
 
 CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Chess_UCSP\Librerias\Tablero\Tablero.cpp" > CMakeFiles\Chess_UCSP.dir\Librerias\Tablero\Tablero.cpp.i
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\Librerias\Tablero\Tablero.cpp" > CMakeFiles\Chess_UCSP.dir\Librerias\Tablero\Tablero.cpp.i
 
 CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Chess_UCSP\Librerias\Tablero\Tablero.cpp" -o CMakeFiles\Chess_UCSP.dir\Librerias\Tablero\Tablero.cpp.s
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\Librerias\Tablero\Tablero.cpp" -o CMakeFiles\Chess_UCSP.dir\Librerias\Tablero\Tablero.cpp.s
 
 # Object files for target Chess_UCSP
 Chess_UCSP_OBJECTS = \
@@ -116,7 +116,7 @@ Chess_UCSP.exe: CMakeFiles/Chess_UCSP.dir/build.make
 Chess_UCSP.exe: CMakeFiles/Chess_UCSP.dir/linklibs.rsp
 Chess_UCSP.exe: CMakeFiles/Chess_UCSP.dir/objects1.rsp
 Chess_UCSP.exe: CMakeFiles/Chess_UCSP.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Chess_UCSP\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Chess_UCSP.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Chess_UCSP.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Chess_UCSP.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -129,6 +129,6 @@ CMakeFiles/Chess_UCSP.dir/clean:
 .PHONY : CMakeFiles/Chess_UCSP.dir/clean
 
 CMakeFiles/Chess_UCSP.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Chess_UCSP" "C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Chess_UCSP" "C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Chess_UCSP\cmake-build-debug" "C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Chess_UCSP\cmake-build-debug" "C:\Users\Veronica\Desktop\Gabriel\Programming Projects\Proyectos en Clion\Chess_UCSP\cmake-build-debug\CMakeFiles\Chess_UCSP.dir\DependInfo.cmake" --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP" "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP" "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug" "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug" "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug\CMakeFiles\Chess_UCSP.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/Chess_UCSP.dir/depend
 

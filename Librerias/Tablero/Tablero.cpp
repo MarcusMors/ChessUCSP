@@ -75,7 +75,7 @@ void tablero(char m[8][8]){
 
 void cambio(char tabla[8][8], char x = ' ', int y = 0, char a = ' ', int b = 0){
     while (true){
-        cout << "Ingrese coordenada x (a-h)" << endl;
+        cout << "Ingrese la coordenada 'x': (a-h)" << endl;
         cin >> x;
         if (coordenada_x(x) != -1){
             break;
@@ -83,7 +83,7 @@ void cambio(char tabla[8][8], char x = ' ', int y = 0, char a = ' ', int b = 0){
         cout<<"Rango no admitido, VUELVA A INTENTARLO"<<endl;
     }
     while (true){
-        cout << "Ingrese coordenada y (1-8)" << endl;
+        cout << "Ingrese la coordenada 'y' (1-8)" << endl;
         cin >> y;
         if (y>0 and y<8){
             break;
@@ -92,7 +92,7 @@ void cambio(char tabla[8][8], char x = ' ', int y = 0, char a = ' ', int b = 0){
     }
     cout << "CAMBIO A:" << endl;
     while (true){
-        cout << "Ingrese coordenada x (a-h)" << endl;
+        cout << "Ingrese coordenada 'x' (a-h)" << endl;
         cin >> a;
         if (coordenada_x(x) != -1){
             break;
@@ -101,7 +101,7 @@ void cambio(char tabla[8][8], char x = ' ', int y = 0, char a = ' ', int b = 0){
     }
     cout << "CAMBIO A:" << endl;
     while (true){
-        cout << "Ingrese coordenada y (1-8)" << endl;
+        cout << "Ingrese coordenada 'y' (1-8)" << endl;
         cin >> b;
         if (y>0 and y<8){
             break;
