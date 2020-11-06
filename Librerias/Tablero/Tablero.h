@@ -1,8 +1,8 @@
-//
-// Created by Gabriel on 06/11/2020.
-//
-
 #ifndef CHESS_UCSP_TABLERO_H
 #define CHESS_UCSP_TABLERO_H
+#endif
 
-#endif //CHESS_UCSP_TABLERO_H
+void swap(char , int, int, int, int);
+int coordenada_x(char);
+void tablero(char [8][8]);
+void cambio(char [8][8] , char, int, char, int);
