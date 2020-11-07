@@ -1,4 +1,53 @@
+// /*
+enum PiecesInt
+{
+	free = 0,
+	king = 1,
+	queen = 2,
+	rook = 3,
+	knight = 4,
+	bishop = 5,
+	pawn = 6,
 
+	P1_king = 1,
+	P1_queen = 2,
+	P1_rook = 3,
+	P1_knight = 4,
+	P1_bishop = 5,
+	P1_pawn = 6,
+
+	P2_king = -1,
+	P2_queen = -2,
+	P2_rook = -3,
+	P2_knight = -4,
+	P2_bishop = -5,
+	P2_pawn = -6
+};
+// */
+enum PiecesChar
+{
+	king = 'r',
+	queen = 'q',
+	rook = 't',
+	knight = 'c',
+	bishop = 'a',
+	pawn = 'p',
+
+	P1_king = 'r',
+	P1_queen = 'q',
+	P1_rook = 't',
+	P1_knight = 'c',
+	P1_bishop = 'a',
+	P1_pawn = 'p',
+
+	P2_king = 'R',
+	P2_queen = 'Q',
+	P2_rook = 'T',
+	P2_knight = 'C',
+	P2_bishop = 'A',
+	P2_pawn = 'P'
+}
+/*
 class Pieces
 {
 public:
@@ -50,44 +99,104 @@ public:
 		P2_bishop = -5;
 		P2_pawn = -6;
 	}
+
+	static char getKing(Pieces pieces)
+	{
+		return pieces.king;
+	}
 };
+*/
 
 class King // Rey
 {
+	int position[2];
+	bool player;
+	Rook(int iPosition[2], bool iPlayer)
+	{
+		int position[0] = iPosition[0];
+		int position[1] = iPosition[1];
+		bool player = iPlayer;
+	}
 };
 
 class Queen // Reina
 {
 	int points = 9;
+	int position[2];
+	bool player;
+	Rook(int iPosition[2], bool iPlayer)
+	{
+		int position[0] = iPosition[0];
+		int position[1] = iPosition[1];
+		bool player = iPlayer;
+	}
 };
 
 class Rook // Torre
 {
 	int points = 5;
+	int position[2];
+	bool player;
+	Rook(int iPosition[2], bool iPlayer)
+	{
+		int position[0] = iPosition[0];
+		int position[1] = iPosition[1];
+		bool player = iPlayer;
+	}
 };
 
 class Knight // Caballo
 {
 	int points = 3;
+	int position[2];
+	bool player;
+	Rook(int iPosition[2], bool iPlayer)
+	{
+		int position[0] = iPosition[0];
+		int position[1] = iPosition[1];
+		bool player = iPlayer;
+	}
 };
 
 class Bishop // Alfíl
 {
 	int points = 3;
+	int position[2];
+	bool player;
+	Rook(int iPosition[2], bool iPlayer)
+	{
+		int position[0] = iPosition[0];
+		int position[1] = iPosition[1];
+		bool player = iPlayer;
+	}
 };
 
 class Pawn //Peón
 {
 	int points = 1;
+	int position[2;
+	bool player;
+	Rook(int iPosition[2], bool iPlayer)
+	{
+		int position[0] = iPosition[0];
+		int position[1] = iPosition[1];
+		bool player = iPlayer;
+	}
 };
 
-class Gameboard // Tablero
+class Gameboard
 {
 public:
 	bool turn;
 	int slots[8][8];
-	Pieces pieces;
-	Gameboard(int iWidth = 8, int iHeight = 8)
+	King king[2];
+	Queen queen[2];
+	Rook rook[4];
+	Knight knight[4];
+	Bishop bishop[4];
+	Pawn pawns[16];
+	Gameboard() {}
+	Gameboard(int iWidth = 8, int iHeight = 8, int iKing = 2, int iQueen = 2, )
 	{
 		int width = iWidth;
 		int height = iHeight;
@@ -99,11 +208,48 @@ public:
 private:
 	int getEntity(int place[2])
 	{
-		if (slots[place[0]][place[1]] == pieces.king)
+		switch (slots[place[0]][place[1]])
 		{
-		}
-		else if (slots[place[0]][place[1]] == pieces.king)
-		{
+		case PiecesChar::P1_king:
+			return PiecesInt::P1_king;
+			break;
+		case PiecesChar::P1_queen:
+			return PiecesInt::P1_queen;
+			break;
+		case PiecesChar::P1_rook:
+			return PiecesInt::P1_rook;
+			break;
+		case PiecesChar::P1_bishop:
+			return PiecesInt::P1_bishop;
+			break;
+		case PiecesChar::P1_knight:
+			return PiecesInt::P1_knight;
+			break;
+		case PiecesChar::P1_pawn:
+			return PiecesInt::P1_pawn;
+			break;
+		case PiecesChar::P2_king:
+			return PiecesInt::P2_king;
+			break;
+		case PiecesChar::P2_queen:
+			return PiecesInt::P2_queen;
+			break;
+		case PiecesChar::P2_rook:
+			return PiecesInt::P2_rook;
+			break;
+		case PiecesChar::P2_bishop:
+			return PiecesInt::P2_bishop;
+			break;
+		case PiecesChar::P2_knight:
+			return PiecesInt::P2_knight;
+			break;
+		case PiecesChar::P2_pawn:
+			return PiecesInt::P2_pawn;
+			break;
+
+		default:
+			return PiecesInt::free;
+			break;
 		}
 	}
 };
