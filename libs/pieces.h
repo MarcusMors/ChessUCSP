@@ -26,6 +26,7 @@ enum PiecesInt
 // */
 enum PiecesChar
 {
+	free = ' ',
 	king = 'r',
 	queen = 'q',
 	rook = 't',
@@ -46,7 +47,9 @@ enum PiecesChar
 	P2_knight = 'C',
 	P2_bishop = 'A',
 	P2_pawn = 'P'
-}
+
+};
+
 /*
 class Pieces
 {
@@ -109,77 +112,87 @@ public:
 
 class King // Rey
 {
+public:
 	int position[2];
 	bool player;
-	Rook(int iPosition[2], bool iPlayer)
+	King() {}
+	King(int iPosition[], bool iPlayer)
 	{
-		int position[0] = iPosition[0];
-		int position[1] = iPosition[1];
+		position[0] = iPosition[0];
+		position[1] = iPosition[1];
 		bool player = iPlayer;
 	}
 };
 
-class Queen // Reina
+class Queen
 {
+public:
 	int points = 9;
 	int position[2];
 	bool player;
-	Rook(int iPosition[2], bool iPlayer)
+	Queen() {}
+	Queen(int iPosition[], bool iPlayer)
 	{
-		int position[0] = iPosition[0];
-		int position[1] = iPosition[1];
+		position[0] = iPosition[0];
+		position[1] = iPosition[1];
 		bool player = iPlayer;
 	}
 };
 
-class Rook // Torre
+class Rook
 {
+public:
 	int points = 5;
 	int position[2];
 	bool player;
-	Rook(int iPosition[2], bool iPlayer)
+	Rook() {}
+	Rook(int iPosition[], bool iPlayer)
 	{
-		int position[0] = iPosition[0];
-		int position[1] = iPosition[1];
 		bool player = iPlayer;
 	}
 };
 
-class Knight // Caballo
+class Knight
 {
+public:
 	int points = 3;
 	int position[2];
 	bool player;
-	Rook(int iPosition[2], bool iPlayer)
+	Knight() {}
+	Knight(int iPosition[2], bool iPlayer)
 	{
-		int position[0] = iPosition[0];
-		int position[1] = iPosition[1];
+		position[0] = iPosition[0];
+		position[1] = iPosition[1];
 		bool player = iPlayer;
 	}
 };
 
-class Bishop // Alfíl
+class Bishop
 {
+public:
 	int points = 3;
 	int position[2];
 	bool player;
-	Rook(int iPosition[2], bool iPlayer)
+	Bishop() {}
+	Bishop(int iPosition[2], bool iPlayer)
 	{
-		int position[0] = iPosition[0];
-		int position[1] = iPosition[1];
+		position[0] = iPosition[0];
+		position[1] = iPosition[1];
 		bool player = iPlayer;
 	}
 };
 
 class Pawn //Peón
 {
+public:
 	int points = 1;
-	int position[2;
+	int position[2];
 	bool player;
-	Rook(int iPosition[2], bool iPlayer)
+	Pawn() {}
+	Pawn(int iPosition[2], bool iPlayer)
 	{
-		int position[0] = iPosition[0];
-		int position[1] = iPosition[1];
+		position[0] = iPosition[0];
+		position[1] = iPosition[1];
 		bool player = iPlayer;
 	}
 };
@@ -195,13 +208,15 @@ public:
 	Knight knight[4];
 	Bishop bishop[4];
 	Pawn pawns[16];
+	int width;
+	int height;
 	Gameboard() {}
-	Gameboard(int iWidth = 8, int iHeight = 8, int iKing = 2, int iQueen = 2, )
+	Gameboard(int iWidth = 8, int iHeight = 8)
 	{
-		int width = iWidth;
-		int height = iHeight;
+		width = iWidth;
+		height = iHeight;
 	}
-	void move()
+	void move(int start[], int end[])
 	{
 	}
 
