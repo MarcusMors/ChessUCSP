@@ -1,52 +1,52 @@
-// /*
+
 enum PiecesInt
 {
-	free = 0,
-	king = 1,
-	queen = 2,
-	rook = 3,
-	knight = 4,
-	bishop = 5,
-	pawn = 6,
+	int_free = 0,
+	int_king = 1,
+	int_queen = 2,
+	int_rook = 3,
+	int_knight = 4,
+	int_bishop = 5,
+	int_pawn = 6,
 
-	P1_king = 1,
-	P1_queen = 2,
-	P1_rook = 3,
-	P1_knight = 4,
-	P1_bishop = 5,
-	P1_pawn = 6,
+	intP1_king = 1,
+	intP1_queen = 2,
+	intP1_rook = 3,
+	intP1_knight = 4,
+	intP1_bishop = 5,
+	intP1_pawn = 6,
 
-	P2_king = -1,
-	P2_queen = -2,
-	P2_rook = -3,
-	P2_knight = -4,
-	P2_bishop = -5,
-	P2_pawn = -6
+	intP2_king = -1,
+	intP2_queen = -2,
+	intP2_rook = -3,
+	intP2_knight = -4,
+	intP2_bishop = -5,
+	intP2_pawn = -6
 };
 // */
 enum PiecesChar
 {
-	free = ' ',
-	king = 'r',
-	queen = 'q',
-	rook = 't',
-	knight = 'c',
-	bishop = 'a',
-	pawn = 'p',
+	char_free = ' ',
+	char_king = 'r',
+	char_queen = 'q',
+	char_rook = 't',
+	char_knight = 'c',
+	char_bishop = 'a',
+	char_pawn = 'p',
 
-	P1_king = 'r',
-	P1_queen = 'q',
-	P1_rook = 't',
-	P1_knight = 'c',
-	P1_bishop = 'a',
-	P1_pawn = 'p',
+	charP1_king = 'r',
+	charP1_queen = 'q',
+	charP1_rook = 't',
+	charP1_knight = 'c',
+	charP1_bishop = 'a',
+	charP1_pawn = 'p',
 
-	P2_king = 'R',
-	P2_queen = 'Q',
-	P2_rook = 'T',
-	P2_knight = 'C',
-	P2_bishop = 'A',
-	P2_pawn = 'P'
+	charP2_king = 'R',
+	charP2_queen = 'Q',
+	charP2_rook = 'T',
+	charP2_knight = 'C',
+	charP2_bishop = 'A',
+	charP2_pawn = 'P'
 
 };
 
@@ -225,45 +225,45 @@ private:
 	{
 		switch (slots[place[0]][place[1]])
 		{
-		case PiecesChar::P1_king:
-			return PiecesInt::P1_king;
+		case PiecesChar::charP1_king:
+			return PiecesInt::intP1_king;
 			break;
-		case PiecesChar::P1_queen:
-			return PiecesInt::P1_queen;
+		case PiecesChar::charP1_queen:
+			return PiecesInt::intP1_queen;
 			break;
-		case PiecesChar::P1_rook:
-			return PiecesInt::P1_rook;
+		case PiecesChar::charP1_rook:
+			return PiecesInt::intP1_rook;
 			break;
-		case PiecesChar::P1_bishop:
-			return PiecesInt::P1_bishop;
+		case PiecesChar::charP1_bishop:
+			return PiecesInt::intP1_bishop;
 			break;
-		case PiecesChar::P1_knight:
-			return PiecesInt::P1_knight;
+		case PiecesChar::charP1_knight:
+			return PiecesInt::intP1_knight;
 			break;
-		case PiecesChar::P1_pawn:
-			return PiecesInt::P1_pawn;
+		case PiecesChar::charP1_pawn:
+			return PiecesInt::intP1_pawn;
 			break;
-		case PiecesChar::P2_king:
-			return PiecesInt::P2_king;
+		case PiecesChar::charP2_king:
+			return PiecesInt::intP2_king;
 			break;
-		case PiecesChar::P2_queen:
-			return PiecesInt::P2_queen;
+		case PiecesChar::charP2_queen:
+			return PiecesInt::intP2_queen;
 			break;
-		case PiecesChar::P2_rook:
-			return PiecesInt::P2_rook;
+		case PiecesChar::charP2_rook:
+			return PiecesInt::intP2_rook;
 			break;
-		case PiecesChar::P2_bishop:
-			return PiecesInt::P2_bishop;
+		case PiecesChar::charP2_bishop:
+			return PiecesInt::intP2_bishop;
 			break;
-		case PiecesChar::P2_knight:
-			return PiecesInt::P2_knight;
+		case PiecesChar::charP2_knight:
+			return PiecesInt::intP2_knight;
 			break;
-		case PiecesChar::P2_pawn:
-			return PiecesInt::P2_pawn;
+		case PiecesChar::charP2_pawn:
+			return PiecesInt::intP2_pawn;
 			break;
 
 		default:
-			return PiecesInt::free;
+			return PiecesInt::int_free;
 			break;
 		}
 	}
