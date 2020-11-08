@@ -211,7 +211,7 @@ public:
 	int width;
 	int height;
 	Gameboard() {}
-	Gameboard(int iWidth = 8, int iHeight = 8)
+	Gameboard(int iWidth, int iHeight)
 	{
 		width = iWidth;
 		height = iHeight;
