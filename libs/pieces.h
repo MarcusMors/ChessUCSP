@@ -114,13 +114,32 @@ class King // Rey
 {
 public:
 	int position[2];
+	int movements = 0;
 	bool player;
+	bool checkMate = false;
+
 	King() {}
 	King(int iPosition[], bool iPlayer)
 	{
 		position[0] = iPosition[0];
 		position[1] = iPosition[1];
 		bool player = iPlayer;
+	}
+	bool canDoKingsideCastling(int bearingsKing[2], int bearingsRook[2])
+	{
+		// king movements = 0?
+		// tower movements = 0?
+		// is in check?
+		// are there pieces between?
+		// are positions between endangered?
+	}
+	bool canDoQueensideCastling()
+	{
+		// king movements = 0?
+		// tower movements = 0?
+		// is in check?
+		// are there pieces between?
+		// are positions between endangered?
 	}
 };
 
@@ -129,6 +148,7 @@ class Queen
 public:
 	int points = 9;
 	int position[2];
+	int movements = 0;
 	bool player;
 	Queen() {}
 	Queen(int iPosition[], bool iPlayer)
@@ -144,6 +164,7 @@ class Rook
 public:
 	int points = 5;
 	int position[2];
+	int movements = 0;
 	bool player;
 	Rook() {}
 	Rook(int iPosition[], bool iPlayer)
@@ -157,6 +178,7 @@ class Knight
 public:
 	int points = 3;
 	int position[2];
+	int movements = 0;
 	bool player;
 	Knight() {}
 	Knight(int iPosition[2], bool iPlayer)
@@ -172,6 +194,7 @@ class Bishop
 public:
 	int points = 3;
 	int position[2];
+	int movements = 0;
 	bool player;
 	Bishop() {}
 	Bishop(int iPosition[2], bool iPlayer)
@@ -187,6 +210,7 @@ class Pawn //Peón
 public:
 	int points = 1;
 	int position[2];
+	int movements = 0;
 	bool player;
 	Pawn() {}
 	Pawn(int iPosition[2], bool iPlayer)

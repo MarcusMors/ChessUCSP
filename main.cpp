@@ -8,6 +8,10 @@ using namespace std;
 int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int bearingsP2_pieces[][2], int width = 8, int height = 8)
 {
 	int result = 0;
+	int movements = 0;
+	int difficulty = 2; //movement projection, movements predicted /calculated in the future
+	bool turn = false;
+
 	int totalP1_pieces = sumUp(nP1_pieces, 6);
 	int totalP2_pieces = sumUp(nP2_pieces, 6);
 	int accumulatedP1_pieces[6];
@@ -17,6 +21,7 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 
 	int accumulatorP1 = 0;
 	int accumulatorP2 = 0;
+
 	for (int i = 0; i < 6; i++)
 	{
 		accumulatorP1 += nP1_pieces[i];
@@ -136,6 +141,25 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 	//* GAME
 	while (true)
 	{
+		if (turn) //* P1 turn
+		{
+			turn = !turn;
+			// show gameboard
+			// enter the movement
+			// valid movement?
+			// make the movement in the gameboard
+			movements++;
+		}
+		else //* P2 turn
+		{
+			// pass the state of the game
+			// set an objective: aperture?, start?. middle?, ends?.
+			// judge the options: defense, attack, develop (inrook), exchange chain,
+			// make a plan
+			// make the first movement plan
+			// make the movement in the gameboard
+			movements++;
+		}
 		break;
 		//code
 	}
@@ -163,6 +187,7 @@ int main()
 
 	int width = 8;
 	int height = 8;
+	int result;
 
 	// The number of pieces
 	// kings, queens, rooks, knights, bishops and pawns.
@@ -188,22 +213,22 @@ int main()
 		{1, 7} //pawns
 	};
 	int bearingsP2_pieces[16][2] = {
-		{0, 4}, // kings
-		{0, 3}, // queens
-		{0, 0},
-		{0, 7}, // rooks
-		{0, 1},
-		{0, 6}, // knights
-		{0, 2},
-		{0, 5}, // bishops
-		{1, 0},
-		{1, 1},
-		{1, 2},
-		{1, 3},
-		{1, 4},
-		{1, 5},
-		{1, 6},
-		{1, 7} //pawns
+		{7, 4}, // kings
+		{7, 3}, // queens
+		{7, 0},
+		{7, 7}, // rooks
+		{7, 1},
+		{7, 6}, // knights
+		{7, 2},
+		{7, 5}, // bishops
+		{6, 0},
+		{6, 1},
+		{6, 2},
+		{6, 3},
+		{6, 4},
+		{6, 5},
+		{6, 6},
+		{6, 7} //pawns
 	};
 
 	char command;
@@ -227,7 +252,19 @@ int main()
 		{
 		case 'P':
 			printf("\nLet's play!\n");
-			game(nP1_pieces, nP2_pieces, bearingsP1_pieces, bearingsP2_pieces);
+			result = game(nP1_pieces, nP2_pieces, bearingsP1_pieces, bearingsP2_pieces);
+			if (result == 1)
+			{
+				cout << " 🥳 P1 won the game!"
+			}
+			else if (resukt == 0)
+			{
+				cout << " P2 won the game! 🥳"
+			}
+			else
+			{
+				cout << " Tie 🤯 No one won the game"
+			}
 			break;
 		case 'Q':
 			printf("\nGood bye 😥\n");
