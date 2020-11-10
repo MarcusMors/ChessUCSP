@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "C:/Users/Veronica/Desktop/Gabriel/Programming Projects/Proyectos en Clion/Chess_UCSP/Librerias/Piezas/Piezas.cpp" "C:/Users/Veronica/Desktop/Gabriel/Programming Projects/Proyectos en Clion/Chess_UCSP/cmake-build-debug/CMakeFiles/Chess_UCSP.dir/Librerias/Piezas/Piezas.cpp.obj"
   "C:/Users/Veronica/Desktop/Gabriel/Programming Projects/Proyectos en Clion/Chess_UCSP/Librerias/Tablero/Tablero.cpp" "C:/Users/Veronica/Desktop/Gabriel/Programming Projects/Proyectos en Clion/Chess_UCSP/cmake-build-debug/CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.obj"
   "C:/Users/Veronica/Desktop/Gabriel/Programming Projects/Proyectos en Clion/Chess_UCSP/main.cpp" "C:/Users/Veronica/Desktop/Gabriel/Programming Projects/Proyectos en Clion/Chess_UCSP/cmake-build-debug/CMakeFiles/Chess_UCSP.dir/main.cpp.obj"
   )

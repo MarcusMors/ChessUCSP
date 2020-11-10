@@ -4,5 +4,6 @@
 CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.obj: ../Librerias/Tablero/Tablero.cpp
 
 CMakeFiles/Chess_UCSP.dir/main.cpp.obj: ../Librerias/Tablero/Tablero.h
+CMakeFiles/Chess_UCSP.dir/main.cpp.obj: ../libs/pieces.h
 CMakeFiles/Chess_UCSP.dir/main.cpp.obj: ../main.cpp
 

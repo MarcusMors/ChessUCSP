@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Chess_UCSP.dir/Librerias/Piezas/Piezas.cpp.obj"
   "CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.obj"
   "CMakeFiles/Chess_UCSP.dir/main.cpp.obj"
   "Chess_UCSP.exe"

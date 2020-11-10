@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Veronica/Desktop/Gabriel/Programming Projects/Proyectos en Clion/Chess_UCSP/Librerias/Piezas/Piezas.cpp">
+			<Option target="Chess_UCSP"/>
+		</Unit>
+		<Unit filename="C:/Users/Veronica/Desktop/Gabriel/Programming Projects/Proyectos en Clion/Chess_UCSP/Librerias/Piezas/Piezas.h">
+			<Option target="Chess_UCSP"/>
+		</Unit>
 		<Unit filename="C:/Users/Veronica/Desktop/Gabriel/Programming Projects/Proyectos en Clion/Chess_UCSP/Librerias/Tablero/Tablero.cpp">
 			<Option target="Chess_UCSP"/>
 		</Unit>
