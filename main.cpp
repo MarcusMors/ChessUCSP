@@ -152,6 +152,8 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 		}
 		else //* P2 turn
 		{
+			//* strategic points (ruin the castle movement, position, get more options, get good options, exchange strain?, etc? suggest please), piece points,
+
 			// pass the state of the game
 			// set an objective: aperture?, start?. middle?, ends?.
 			// judge the options: defense, attack, develop (inrook), exchange chain,
