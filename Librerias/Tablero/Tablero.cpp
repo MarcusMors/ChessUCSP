@@ -1,4 +1,5 @@
 #include <iostream>
+#include "../Piezas/Piezas.h"
 
 using namespace std;
 

@@ -53,4 +53,20 @@ public:
             tablero[coor_y-1][coor_x] = '*';
         }
     }
+    void movimiento_torre(char tablero[8][8], int n_torre){
+        int coor_x = coor_x_torre[n_torre];
+        int coor_y = coor_y_torre[n_torre];
+        for (int i = coor_x+1; i < 8; ++i) {
+            tablero[coor_y][i] = '*';
+        }
+        for (int i = coor_y+1; i < 8; ++i) {
+            tablero[i][coor_x] = '*';
+        }
+        for (int i = coor_x-1; i > -1; --i) {
+            tablero[coor_y][i] = '*';
+        }
+        for (int i = coor_y-1; i > -1; --i) {
+            tablero[i][coor_x] = '*';
+        }
+    }
 };
