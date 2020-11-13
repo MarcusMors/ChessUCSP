@@ -1,3 +1,0 @@
-C:/Users/Veronica/Desktop/Gabriel/Programming Projects/Proyectos en Clion/Chess_UCSP/cmake-build-debug/CMakeFiles/Chess_UCSP.dir
-C:/Users/Veronica/Desktop/Gabriel/Programming Projects/Proyectos en Clion/Chess_UCSP/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Veronica/Desktop/Gabriel/Programming Projects/Proyectos en Clion/Chess_UCSP/cmake-build-debug/CMakeFiles/rebuild_cache.dir
