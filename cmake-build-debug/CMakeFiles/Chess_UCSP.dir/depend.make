@@ -3,6 +3,7 @@
 
 CMakeFiles/Chess_UCSP.dir/Librerias/Piezas/Piezas.cpp.obj: ../Librerias/Piezas/Piezas.cpp
 
+CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.obj: ../Librerias/Piezas/Piezas.h
 CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.obj: ../Librerias/Tablero/Tablero.cpp
 
 CMakeFiles/Chess_UCSP.dir/main.cpp.obj: ../Librerias/Tablero/Tablero.h
