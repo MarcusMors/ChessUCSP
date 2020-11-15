@@ -1,9 +1,13 @@
 #include <iostream>
 #include "Librerias/Tablero/Tablero.h"
-#include "libs/pieces.h"
+#include "libs/pieces/pieces.h"
+#include "libs/gameboard/gameboard.h"
 #include "libs/helpers.h"
+// #include "libs/enums.h"
 
 using namespace std;
+
+OnceAnnouncement a;
 
 int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int bearingsP2_pieces[][2], int width = 8, int height = 8)
 {
@@ -32,7 +36,7 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 
 	//construct/ declaring the pieces
 	//kings, queens, rooks, knights, bishops and pawns.
-	Gameboard gameboard;
+	// Gameboard gameboard;
 
 	King P1_kings[nP1_pieces[0]];
 	Queen P1_queens[nP1_pieces[1]];
@@ -131,8 +135,8 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 		}
 		else
 		{
-			i--;
-			piece++;
+			i -= 1;
+			piece += 1;
 			pieceIndex = 0;
 		}
 	}
@@ -162,8 +166,20 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 			// make the movement in the gameboard
 			movements++;
 		}
-		break;
-		//code
+		if (true)
+		{
+			break;
+		}
+		if (P1_kings[0].checkmate)
+		{
+			result = 0;
+			break;
+		}
+		else if (P2_kings[0].checkmate)
+		{
+			result = 1;
+			break;
+		}
 	}
 
 	return result;
@@ -255,17 +271,17 @@ int main()
 		case 'P':
 			printf("\nLet's play!\n");
 			result = game(nP1_pieces, nP2_pieces, bearingsP1_pieces, bearingsP2_pieces);
-			if (result == 1)
+			if (result == 0)
 			{
-				cout << " 🥳 P1 won the game!"
+				cout << " 🥳 P1 won the game!" << endl;
 			}
-			else if (resukt == 0)
+			else if (result == 1)
 			{
-				cout << " P2 won the game! 🥳"
+				cout << " P2 won the game! 🥳" << endl;
 			}
 			else
 			{
-				cout << " Tie 🤯 No one won the game"
+				cout << " Tie 🤯 No one won the game" << endl;
 			}
 			break;
 		case 'Q':
