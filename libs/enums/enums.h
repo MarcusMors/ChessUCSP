@@ -27,12 +27,13 @@ enum PiecesInt
 enum PiecesChar
 {
 	char_free = ' ',
-	char_king = 'r',
-	char_queen = 'q',
-	char_rook = 't',
-	char_knight = 'c',
-	char_bishop = 'a',
-	char_pawn = 'p',
+
+	// char_king = 'r',
+	// char_queen = 'q',
+	// char_rook = 't',
+	// char_knight = 'c',
+	// char_bishop = 'a',
+	// char_pawn = 'p',
 
 	charP1_king = 'r',
 	charP1_queen = 'q',

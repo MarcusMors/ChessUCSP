@@ -1,101 +1,263 @@
-#include "libs/pieces/pieces.h"
+#include <iostream>
+#include "../pieces/pieces.h"
+#include "../enums/enums.h"
+#include "../helpers.h"
 
 class Gameboard
 {
 public:
-	int slots[8][8];
+	// 2D ptrptr?
+	int slots[26][26];
+
 	int width;
 	int height;
-	Gameboard() {}
-	Gameboard(int iWidth, int iHeight)
+	// Pieces
+	King *P1_kings_ptr;
+	Queen *P1_queens_ptr;
+	Rook *P1_rooks_ptr;
+	Knight *P1_knights_ptr;
+	Bishop *P1_bishops_ptr;
+	Pawn *P1_pawns_ptr;
+
+	King *P2_kings_ptr;
+	Queen *P2_queens_ptr;
+	Rook *P2_rooks_ptr;
+	Knight *P2_knights_ptr;
+	Bishop *P2_bishops_ptr;
+	Pawn *P2_pawns_ptr;
+
+	// Gameboard() {}
+	Gameboard(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int bearingsP2_pieces[][2], int iWidth = 8, int iHeight = 8)
 	{
 		width = iWidth;
 		height = iHeight;
-		fill();
+
+		P1_kings_ptr = new King[nP1_pieces[0]];
+		P1_queens_ptr = new Queen[nP1_pieces[1]];
+		P1_rooks_ptr = new Rook[nP1_pieces[2]];
+		P1_knights_ptr = new Knight[nP1_pieces[3]];
+		P1_bishops_ptr = new Bishop[nP1_pieces[4]];
+		P1_pawns_ptr = new Pawn[nP1_pieces[5]];
+
+		P2_kings_ptr = new King[nP2_pieces[0]];
+		P2_queens_ptr = new Queen[nP2_pieces[1]];
+		P2_rooks_ptr = new Rook[nP2_pieces[2]];
+		P2_knights_ptr = new Knight[nP2_pieces[3]];
+		P2_bishops_ptr = new Bishop[nP2_pieces[4]];
+		P2_pawns_ptr = new Pawn[nP2_pieces[5]];
+
+		int accumulatedP1_pieces[6];
+		int accumulatedP2_pieces[6];
+		int totalP1_pieces = sumUp(nP1_pieces, 6);
+		int totalP2_pieces = sumUp(nP2_pieces, 6);
+		int accumulatorP1 = 0;
+		int accumulatorP2 = 0;
+
+		for (int i = 0; i < 6; i++)
+		{
+			accumulatorP1 += nP1_pieces[i];
+			accumulatorP2 += nP2_pieces[i];
+			accumulatedP1_pieces[i] = accumulatorP1;
+			accumulatedP2_pieces[i] = accumulatorP2;
+		}
+
+		initGameboard();
+		fillGameboard(accumulatedP1_pieces, totalP1_pieces, bearingsP1_pieces, true);
+		fillGameboard(accumulatedP2_pieces, totalP2_pieces, bearingsP2_pieces, false);
 	}
-	void move(int start[], int end[])
+	bool validMovement()
 	{
+
+		// Your king has been moved earlier in the game.
+		// The rook that you would castle with has been moved earlier in the game.
+		// There are pieces standing between your king and rook.
+		// The king is in check.
+		// The king moves through a square that is attacked by a piece of the opponent.
+		// The king would be in check after castling.
+		bool valid;
+		return valid;
+	}
+	void move(int start[2], int end[2])
+	{
+		char piece = slots[start[0]][start[1]];
+		// how can we get the object?
+		slots[start[0]][start[1]] = PiecesChar::char_free;
+		slots[end[0]][end[1]] = piece;
+	}
+	void Show()
+	{
+		int slotWidth = 7;
+		int equatorFrameWidth = 3;
+		int meridianFrameWidth = 1;
+		char blankChar = ' ';
+		char equatorChar = '_';
+		char meridianChar = '|';
+		char letter = 'A';
+		int number = 1;
+
+		char equatorFrame[equatorFrameWidth];
+		char equatorSlot[slotWidth];
+		char equatorBlank[equatorFrameWidth];
+		char meridianFrame[meridianFrameWidth];
+		char meridianBlank[meridianFrameWidth];
+		char slotPiece[slotWidth];
+		char slotBlank[slotWidth];
+		// Init Arrays
+		for (int i = 0; i < equatorFrameWidth; i++)
+		{
+			equatorSlot[i] = equatorChar;
+			equatorFrame[i] = equatorChar;
+			equatorBlank[i] = blankChar;
+		}
+		for (int i = 0; i < meridianFrameWidth; i++)
+		{
+			meridianFrame[i] = meridianChar;
+			meridianBlank[i] = blankChar;
+		}
+		for (int i = 0; i < slotWidth; i++)
+		{
+			slotBlank[i] = blankChar;
+			slotPiece[i] = blankChar;
+		}
+
+		// Show the gameboard
+		// Letters, upper gameframe
+		std::cout << equatorBlank << meridianChar;
+		for (int i = 0; i < width; i++)
+		{
+			slotPiece[slotWidth / 2] = ((char)letter + 1);
+			std::cout << slotPiece << meridianChar;
+		}
+		std::cout << std::endl;
+		for (int i = 0; i < height; i++)
+		{
+			std::cout << equatorFrame << meridianChar;
+			for (int j = 0; j < width; j++)
+			{
+				std::cout << equatorSlot << meridianChar;
+			}
+			std::cout << equatorFrame << std::endl;
+			for (int j = 0; j < slotWidth; j++)
+			{
+				std::cout << equatorBlank << meridianChar;
+				for (int o = 0; i < slotWidth; o++)
+				{
+					if (j == (slotWidth / 2))
+						slotPiece[slotWidth / 2] = slots[i][o];
+					else
+						std::cout << slotBlank << meridianChar;
+					std::cout << slotPiece << meridianChar;
+				}
+				std::cout << equatorBlank << std::endl;
+			}
+		}
+		// Letters, bottom gameframe
+		std::cout << equatorBlank << meridianChar;
+		for (int i = 0; i < width; i++)
+		{
+			slotPiece[slotWidth / 2] = ((char)letter + 1);
+			std::cout << slotPiece << meridianChar;
+		}
+		std::cout << std::endl;
 	}
 
 private:
-	void fill()
+	void initGameboard()
 	{
-		for (int i = 0; i < totalP1_pieces; i++)
-		{
-			if (i < accumulatedP1_pieces[piece])
-			{
-				switch (piece)
-				{
-				case 0:
-					P1_kings[pieceIndex] = King(bearingsP1_pieces[i], 0);
-					break;
-				case 1:
-					P1_queens[pieceIndex] = Queen(bearingsP1_pieces[i], 0);
-					break;
-				case 2:
-					P1_rooks[pieceIndex] = Rook(bearingsP1_pieces[i], 0);
-					break;
-				case 3:
-					P1_knights[pieceIndex] = Knight(bearingsP1_pieces[i], 0);
-					break;
-				case 4:
-					P1_bishops[pieceIndex] = Bishop(bearingsP1_pieces[i], 0);
-					break;
-				case 5:
-					P1_pawns[pieceIndex] = Pawn(bearingsP1_pieces[i], 0);
-					break;
+		for (int i = 0; i < width; i++)
+			for (int j = 0; i < height; j++)
+				slots[i][j] = PiecesChar::char_free;
+	}
+	void fillGameboard(int accumulated[6], int total, int bearings[][2], bool player)
+	{
+		int piece = 0;
+		int pieceIndex = 0;
 
-				default:
-					printf("\nAn error happened while initializing P1\n");
-					printf("iterator\t: %i\n", i);
-					printf("accumulated\t: %i\n", accumulatedP1_pieces[piece]);
-					printf("piece\t: %i\n", piece);
-					printf("pieceIndex\t: %i\n", pieceIndex);
-					break;
-				}
-			}
-			else
-			{
-				i--;
-				piece++;
-				pieceIndex = 0;
-			}
+		char char_king;
+		char char_queen;
+		char char_rook;
+		char char_knight;
+		char char_bishop;
+		char char_pawn;
+
+		King *kings_ptrptr;
+		Queen *queens_ptrptr;
+		Rook *rooks_ptrptr;
+		Knight *knights_ptrptr;
+		Bishop *bishops_ptrptr;
+		Pawn *pawns_ptrptr;
+
+		if (player)
+		{
+			char_king = PiecesChar::charP1_king;
+			char_queen = PiecesChar::charP1_queen;
+			char_rook = PiecesChar::charP1_rook;
+			char_knight = PiecesChar::charP1_knight;
+			char_bishop = PiecesChar::charP1_bishop;
+			char_pawn = PiecesChar::charP1_pawn;
+
+			kings_ptrptr = P1_kings_ptr;
+			queens_ptrptr = P1_queens_ptr;
+			rooks_ptrptr = P1_rooks_ptr;
+			knights_ptrptr = P1_knights_ptr;
+			bishops_ptrptr = P1_bishops_ptr;
+			pawns_ptrptr = P1_pawns_ptr;
 		}
-		piece = 0;
-		pieceIndex = 0;
-
-		// P2 bearings of each piece
-		for (int i = 0; i < totalP2_pieces; i++)
+		else
 		{
-			if (i < accumulatedP2_pieces[piece])
+			char_king = PiecesChar::charP2_king;
+			char_queen = PiecesChar::charP2_queen;
+			char_rook = PiecesChar::charP2_rook;
+			char_knight = PiecesChar::charP2_knight;
+			char_bishop = PiecesChar::charP2_bishop;
+			char_pawn = PiecesChar::charP2_pawn;
+
+			kings_ptrptr = P2_kings_ptr;
+			queens_ptrptr = P2_queens_ptr;
+			rooks_ptrptr = P2_rooks_ptr;
+			knights_ptrptr = P2_knights_ptr;
+			bishops_ptrptr = P2_bishops_ptr;
+			pawns_ptrptr = P2_pawns_ptr;
+		}
+
+		//kings, queens, rooks, knights, bishops and pawns.
+		for (int i = 0; i < total; i++)
+		{
+			if (i < accumulated[piece])
 			{
 				switch (piece)
 				{
 				case 0:
-					P2_kings[pieceIndex] = King(bearingsP2_pieces[i], 1);
+					kings_ptrptr[pieceIndex] = King(bearings[i], player);
+					slots[bearings[i][0]][bearings[i][1]] = char_king;
 					break;
 				case 1:
-					P2_queens[pieceIndex] = Queen(bearingsP2_pieces[i], 1);
+					queens_ptrptr[pieceIndex] = Queen(bearings[i], player);
+					slots[bearings[i][0]][bearings[i][1]] = char_queen;
 					break;
 				case 2:
-					P2_rooks[pieceIndex] = Rook(bearingsP2_pieces[i], 1);
+					rooks_ptrptr[pieceIndex] = Rook(bearings[i], player);
+					slots[bearings[i][0]][bearings[i][1]] = char_rook;
 					break;
 				case 3:
-					P2_knights[pieceIndex] = Knight(bearingsP2_pieces[i], 1);
+					knights_ptrptr[pieceIndex] = Knight(bearings[i], player);
+					slots[bearings[i][0]][bearings[i][1]] = char_knight;
 					break;
 				case 4:
-					P2_bishops[pieceIndex] = Bishop(bearingsP2_pieces[i], 1);
+					bishops_ptrptr[pieceIndex] = Bishop(bearings[i], player);
+					slots[bearings[i][0]][bearings[i][1]] = char_bishop;
 					break;
 				case 5:
-					P2_pawns[pieceIndex] = Pawn(bearingsP2_pieces[i], 1);
+					pawns_ptrptr[pieceIndex] = Pawn(bearings[i], player);
+					slots[bearings[i][0]][bearings[i][1]] = char_pawn;
 					break;
 
 				default:
-					printf("\nAn error happened while initializing P1\n");
-					printf("iterator\t: %i\n", i);
-					printf("accumulated\t: %i\n", accumulatedP1_pieces[piece]);
-					printf("piece\t: %i\n", piece);
-					printf("pieceIndex\t: %i\n", pieceIndex);
+					std::cout << "\nAn error happened while initializing" << std::endl;
+					std::cout << "iterator\t: " << i << std::endl;
+					std::cout << "accumulated\t: " << accumulated[piece] << std::endl;
+					std::cout << "piece\t: " << piece << std::endl;
+					std::cout << "pieceIndex\t: " << pieceIndex << std::endl;
 					break;
 				}
 			}
@@ -105,18 +267,17 @@ private:
 				piece += 1;
 				pieceIndex = 0;
 			}
-			for (int i = 0; i < width; i++)
-			{
-				for (int j = 0; i < height; j++)
-				{
-				}
-			}
 		}
 	}
+
+	/*
 	int getEntity(int place[2])
 	{
 		switch (slots[place[0]][place[1]])
 		{
+		case PiecesChar::char_free:
+			return PiecesInt::int_free;
+			break;
 		case PiecesChar::charP1_king:
 			return PiecesInt::intP1_king;
 			break;
@@ -153,10 +314,7 @@ private:
 		case PiecesChar::charP2_pawn:
 			return PiecesInt::intP2_pawn;
 			break;
-
-		default:
-			return PiecesInt::int_free;
-			break;
 		}
 	}
+		*/
 };

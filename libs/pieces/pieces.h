@@ -1,5 +1,3 @@
-#include "enums.h"
-
 class Piece
 {
 public:
@@ -57,19 +55,35 @@ public:
 	}
 	bool validKingsideCastling(int bearingsKing[2], int bearingsRook[2])
 	{
+		bool valid;
 		// king movements = 0?
 		// tower movements = 0?
 		// is in check?
 		// are there pieces between?
 		// are positions between endangered?
+		return valid;
 	}
 	bool validQueensideCastling()
 	{
+		bool valid;
 		// king movements = 0?
 		// tower movements = 0?
 		// is in check?
 		// are there pieces between?
 		// are positions between endangered?
+		return valid;
+	}
+};
+
+class Queen : public Piece
+{
+public:
+	Queen() : Piece() {}
+	Queen(int iPosition[2], bool iPlayer) : Piece(iPosition, iPlayer)
+	{
+		position[0] = iPosition[0];
+		position[1] = iPosition[1];
+		bool player = iPlayer;
 	}
 };
 
@@ -83,6 +97,8 @@ public:
 	}
 	bool validMovement()
 	{
+		bool valid;
+		return valid;
 	}
 };
 
@@ -120,33 +136,21 @@ public:
 		position[1] = iPosition[1];
 		bool player = iPlayer;
 	}
-	bool validate(int end[2])
-	{
-		int direction = position[1] - end[1];
-		if (player) // white
-		{
-		}
-		else // black
-		{
-		}
+	// bool validate(int end[2])
+	// {
+	// 	int direction = position[1] - end[1];
+	// 	if (player) // white
+	// 	{
+	// 	}
+	// 	else // black
+	// 	{
+	// 	}
 
-		if (movements = 0)
-		{
-		}
-		else
-		{
-		}
-	}
-};
-
-class Queen : public Piece
-{
-public:
-	Queen() : Piece() {}
-	Queen(int iPosition[2], bool iPlayer) : Piece(iPosition, iPlayer)
-	{
-		position[0] = iPosition[0];
-		position[1] = iPosition[1];
-		bool player = iPlayer;
-	}
+	// 	if (movements = 0)
+	// 	{
+	// 	}
+	// 	else
+	// 	{
+	// 	}
+	// }
 };

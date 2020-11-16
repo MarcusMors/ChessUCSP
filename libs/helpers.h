@@ -12,6 +12,13 @@ struct OnceAnnouncement
 	}
 };
 
+int letterToInt(char letter)
+{
+	int num;
+
+	return num;
+}
+
 void cleanScreen(int I = 30)
 {
 	for (int i = 0; i < I; i++)
