@@ -1,6 +1,6 @@
 #include <iostream>
 // #include "Librerias/Tablero/Tablero.h"
-#include "libs/gameboard/gameboard.h"
+#include "librerias/gameboard/gameboard.h"
 // #include "libs/enums/enums.h"
 
 using namespace std;
@@ -9,7 +9,7 @@ OnceAnnouncement a;
 
 int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int bearingsP2_pieces[][2], int width = 8, int height = 8)
 {
-	cout << "Creating the game.";
+	std::cout << "Creating the game." << std::endl;
 	int result = 0;
 	int movements = 0;
 	int difficulty = 2; //movement projection, predicted or calculation in the future
