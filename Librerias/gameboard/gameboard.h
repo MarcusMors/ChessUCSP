@@ -83,12 +83,11 @@ public:
 	void move(int start[2], int end[2])
 	{
 		char piece = slots[start[0]][start[1]];
-		std::cout<<piece<<std::endl;
 		// how can we get the object?
 		slots[start[0]][start[1]] = PiecesChar::char_free;
 		slots[end[0]][end[1]] = piece;
 	}
-	void Show()
+	void show()
 	{
 		int slotWidth = 7;
 		int equatorFrameWidth = 3;

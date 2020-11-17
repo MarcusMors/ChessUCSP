@@ -31,18 +31,18 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 	while (true)
 	{
 		// show gameboard
-		gameboard.Show();
+		gameboard.show();
 		if (turn) //* P1 turn
 		{
 			// select a piece
 			while (true)
 			{
 				std::cout << "Input the piece's letter and number:" << std::endl;
-				std::cin >> startLetter >> start[1];
-				start[1]--;
+				std::cin >> startLetter >> start[0];
+				start[0]--;
 				startLetter = toupper(startLetter);
-				start[0] = (int)startLetter - ((int)'A'); // 0 - width
-				if ((-1 < start[0]) && (start[0] < width) && (-1 < start[1]) && (start[1] < height))
+				start[1] = (int)startLetter - ((int)'A'); // 0 - width
+				if ((-1 < start[1]) && (start[1] < width) && (-1 < start[0]) && (start[0] < height))
 				{
 					slot = gameboard.slots[start[0]][start[1]];
 					if (slot != PiecesChar::char_free)
@@ -58,22 +58,27 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 					}
 				}
 				else
-				{
 					std::cout << "Imposible position." << std::endl;
-				}
 			}
-			// show gameboard with possibilities.
-			std::cout << "Input the end position letter and number:" << std::endl;
-			std::cin >> endLetter >> endNumber;
-			end[1]--;
-			endLetter = toupper(endLetter);
-			end[0] = (int)endLetter - ((int)'A'); // 0 - width
-			gameboard.move(start, end);
-			gameboard.Show();
-			turn = !turn;
-			// enter the movement
-			// valid movement?
+			while (true)
+			{
+				// show gameboard with possibilities.
+				std::cout << "Input the end position letter and number:" << std::endl;
+				std::cin >> endLetter >> end[0];
+				end[0]--;
+				endLetter = toupper(endLetter);
+				end[1] = (int)endLetter - ((int)'A'); // 0 - width
+				if ((-1 < end[1]) && (end[1] < width) && (-1 < end[0]) && (end[0] < height))
+				{
+					break;
+				}
+				else
+					std::cout << "Imposible position." << std::endl;
+			}
 			// make the movement in the gameboard
+			gameboard.move(start, end);
+			gameboard.show();
+			turn = !turn;
 			movements++;
 		}
 		else //* P2 turn
