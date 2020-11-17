@@ -58,19 +58,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "E:\Clion\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "E:\Clion\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files\JetBrains\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP"
+CMAKE_SOURCE_DIR = C:\Users\Javier\CLionProjects\Chess_UCSP
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug"
+CMAKE_BINARY_DIR = C:\Users\Javier\CLionProjects\Chess_UCSP\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -78,7 +78,7 @@ CMAKE_BINARY_DIR = "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Cienci
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"E:\Clion\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"C:\Program Files\JetBrains\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -89,7 +89,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"E:\Clion\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files\JetBrains\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -99,9 +99,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug\CMakeFiles" "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Javier\CLionProjects\Chess_UCSP\cmake-build-debug\CMakeFiles C:\Users\Javier\CLionProjects\Chess_UCSP\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Javier\CLionProjects\Chess_UCSP\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -142,6 +142,33 @@ Chess_UCSP/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/build
 .PHONY : Chess_UCSP/fast
 
+Librerias/Tablero/Tablero.obj: Librerias/Tablero/Tablero.cpp.obj
+
+.PHONY : Librerias/Tablero/Tablero.obj
+
+# target to build an object file
+Librerias/Tablero/Tablero.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.obj
+.PHONY : Librerias/Tablero/Tablero.cpp.obj
+
+Librerias/Tablero/Tablero.i: Librerias/Tablero/Tablero.cpp.i
+
+.PHONY : Librerias/Tablero/Tablero.i
+
+# target to preprocess a source file
+Librerias/Tablero/Tablero.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.i
+.PHONY : Librerias/Tablero/Tablero.cpp.i
+
+Librerias/Tablero/Tablero.s: Librerias/Tablero/Tablero.cpp.s
+
+.PHONY : Librerias/Tablero/Tablero.s
+
+# target to generate assembly for a file
+Librerias/Tablero/Tablero.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.s
+.PHONY : Librerias/Tablero/Tablero.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -178,6 +205,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Chess_UCSP
+	@echo ... Librerias/Tablero/Tablero.obj
+	@echo ... Librerias/Tablero/Tablero.i
+	@echo ... Librerias/Tablero/Tablero.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
