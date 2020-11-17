@@ -108,7 +108,6 @@ public:
 		// Init Arrays
 		for (int i = 0; i < equatorFrameWidth; i++)
 		{
-			equatorSlot[i] = equatorChar;
 			equatorFrame[i] = equatorChar;
 			equatorBlank[i] = blankChar;
 		}
@@ -119,6 +118,7 @@ public:
 		}
 		for (int i = 0; i < slotWidth; i++)
 		{
+            equatorSlot[i] = equatorChar;
 			slotBlank[i] = blankChar;
 			slotPiece[i] = blankChar;
 		}
@@ -140,25 +140,32 @@ public:
 				std::cout << equatorSlot << meridianChar;
 			}
 			std::cout << equatorFrame << std::endl;
-			for (int j = 0; j < slotWidth; j++)
+			for (int j = 0; j < 2; j++)
 			{
 				std::cout << equatorBlank << meridianChar;
-				for (int o = 0; i < slotWidth; o++)
+				for (int o = 0; o < slotWidth+1; o++)
 				{
-					if (j == (slotWidth / 2))
-						slotPiece[slotWidth / 2] = slots[i][o];
-					else
+					if (j== 1) {
+                        slotPiece[slotWidth / 2] = (char)slots[i][o];
+                        std::cout << slotPiece << meridianChar;
+                    }else{
 						std::cout << slotBlank << meridianChar;
-					std::cout << slotPiece << meridianChar;
+					}
 				}
 				std::cout << equatorBlank << std::endl;
 			}
 		}
 		// Letters, bottom gameframe
+        std::cout << equatorFrame << meridianChar;
+        for (int j = 0; j < width; j++)
+        {
+            std::cout << equatorSlot << meridianChar;
+        }
+        std::cout << equatorFrame << std::endl;
 		std::cout << equatorBlank << meridianChar;
 		for (int i = 0; i < width; i++)
 		{
-			slotPiece[slotWidth / 2] = ((char)letter + 1);
+			slotPiece[slotWidth / 2] = ((char)letter + i);
 			std::cout << slotPiece << meridianChar;
 		}
 		std::cout << std::endl;
