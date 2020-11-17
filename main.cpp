@@ -5,7 +5,7 @@
 
 using namespace std;
 
-OnceAnnouncement a;
+OnceAnnouncement announcement(4);
 
 int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int bearingsP2_pieces[][2], int width = 8, int height = 8)
 {
@@ -181,7 +181,7 @@ int main()
 		std::cout << std::endl;
 		std::cin >> command;
 		cleanScreen();
-		command = toupper(command); // convertir a mayuscula
+		command = toupper(command);
 
 		switch (command)
 		{

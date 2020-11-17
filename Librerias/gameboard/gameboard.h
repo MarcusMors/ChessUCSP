@@ -7,7 +7,8 @@ class Gameboard
 {
 public:
 	// 2D ptrptr?
-	int slots[26][26];
+	char slots[26][26];
+	char slotsPossibilities[26][26];
 
 	int width;
 	int height;
@@ -67,6 +68,7 @@ public:
 		std::cout << "filling the Gameboard" << std::endl;
 		fillGameboard(accumulatedP1_pieces, totalP1_pieces, bearingsP1_pieces, true);  //P1
 		fillGameboard(accumulatedP2_pieces, totalP2_pieces, bearingsP2_pieces, false); //P2
+		initShowVars();
 	}
 	bool validMovement()
 	{
@@ -87,44 +89,11 @@ public:
 		slots[start[0]][start[1]] = PiecesChar::char_free;
 		slots[end[0]][end[1]] = piece;
 	}
+	void piecePossibilities()
+	{
+	}
 	void show()
 	{
-		int slotWidth = 7;
-		int equatorFrameWidth = 3;
-		int meridianFrameWidth = 1;
-		char blankChar = ' ';
-		char equatorChar = '_';
-		char meridianChar = '|';
-		char letter = 'A';
-		int number = 1;
-
-		char equatorFrame[equatorFrameWidth];
-		char equatorSlot[slotWidth];
-		char equatorBlank[equatorFrameWidth];
-		char meridianFrame[meridianFrameWidth];
-		char meridianBlank[meridianFrameWidth];
-		char slotPiece[slotWidth];
-		char slotBlank[slotWidth];
-
-		// Init Arrays
-		for (int i = 0; i < equatorFrameWidth; i++)
-		{
-			equatorFrame[i] = equatorChar;
-			equatorBlank[i] = blankChar;
-		}
-		for (int i = 0; i < meridianFrameWidth; i++)
-		{
-			meridianFrame[i] = meridianChar;
-			meridianBlank[i] = blankChar;
-		}
-		for (int i = 0; i < slotWidth; i++)
-		{
-			equatorSlot[i] = equatorChar;
-			slotBlank[i] = blankChar;
-			slotPiece[i] = blankChar;
-		}
-
-		// Show the gameboard
 		// Letters, upper gameframe
 		std::cout << equatorBlank << meridianChar;
 		for (int i = 0; i < width; i++)
@@ -133,17 +102,22 @@ public:
 			std::cout << slotPiece << meridianChar;
 		}
 		std::cout << std::endl;
+		// Gameboard
 		for (int i = 0; i < height; i++)
 		{
+			//first frame
 			std::cout << equatorFrame << meridianChar;
 			for (int j = 0; j < width; j++)
 			{
 				std::cout << equatorSlot << meridianChar;
 			}
 			std::cout << equatorFrame << std::endl;
+
 			for (int j = 0; j < 2; j++)
 			{
+				// Left frame (equator)
 				std::cout << equatorBlank << meridianChar;
+				// Slot
 				for (int o = 0; o < slotWidth + 1; o++)
 				{
 					if (j == 1)
@@ -156,6 +130,7 @@ public:
 						std::cout << slotBlank << meridianChar;
 					}
 				}
+				//Right Frame (equator)
 				std::cout << equatorBlank << std::endl;
 			}
 		}
@@ -176,6 +151,50 @@ public:
 	}
 
 private:
+	int slotWidth = 7;
+	int equatorFrameWidth = 3;
+	int meridianFrameWidth = 1;
+	char blankChar = ' ';
+	char equatorChar = '_';
+	char meridianChar = '|';
+	char letter = 'A';
+	int number = 1;
+	char *equatorFrame;
+	char *equatorSlot;
+	char *equatorBlank;
+	char *meridianFrame;
+	char *meridianBlank;
+	char *slotPiece;
+	char *slotBlank;
+
+	void initShowVars()
+	{
+		equatorFrame = new char[equatorFrameWidth];
+		equatorSlot = new char[slotWidth];
+		equatorBlank = new char[equatorFrameWidth];
+		meridianFrame = new char[meridianFrameWidth];
+		meridianBlank = new char[meridianFrameWidth];
+		slotPiece = new char[slotWidth];
+		slotBlank = new char[slotWidth];
+
+		for (int i = 0; i < equatorFrameWidth; i++)
+		{
+			equatorFrame[i] = equatorChar;
+			equatorBlank[i] = blankChar;
+		}
+		for (int i = 0; i < meridianFrameWidth; i++)
+		{
+			meridianFrame[i] = meridianChar;
+			meridianBlank[i] = blankChar;
+		}
+		for (int i = 0; i < slotWidth; i++)
+		{
+			equatorSlot[i] = equatorChar;
+			slotBlank[i] = blankChar;
+			slotPiece[i] = blankChar;
+		}
+	}
+
 	void initGameboard()
 	{
 		for (int i = 0; i < width; i++)
