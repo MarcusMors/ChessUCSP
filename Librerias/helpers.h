@@ -23,7 +23,7 @@ int sumUp(int arr[], int length)
 }
 
 char anything;
-struct OnceAnnouncement
+class OnceAnnouncement
 {
 	OnceAnnouncement(int I = 0)
 	{
