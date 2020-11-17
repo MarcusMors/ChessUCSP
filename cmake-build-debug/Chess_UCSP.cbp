@@ -80,12 +80,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/Los Romeros/Desktop/UCSP - LALO/2do semestre/Ciencia de la computacion I/Codigos/Chess_UCSP/Librerias/Tablero/Tablero.cpp">
-			<Option target="Chess_UCSP"/>
-		</Unit>
-		<Unit filename="C:/Users/Los Romeros/Desktop/UCSP - LALO/2do semestre/Ciencia de la computacion I/Codigos/Chess_UCSP/Librerias/Tablero/Tablero.h">
-			<Option target="Chess_UCSP"/>
-		</Unit>
 		<Unit filename="C:/Users/Los Romeros/Desktop/UCSP - LALO/2do semestre/Ciencia de la computacion I/Codigos/Chess_UCSP/main.cpp">
 			<Option target="Chess_UCSP"/>
 		</Unit>

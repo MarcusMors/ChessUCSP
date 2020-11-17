@@ -1,1 +1,4 @@
-CMakeLists.txt not found in C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP Select CMakeLists.txt file...
+"E:\Clion\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/Los Romeros/Desktop/UCSP - LALO/2do semestre/Ciencia de la computacion I/Codigos/Chess_UCSP/cmake-build-debug

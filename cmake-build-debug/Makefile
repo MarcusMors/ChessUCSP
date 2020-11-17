@@ -142,33 +142,6 @@ Chess_UCSP/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/build
 .PHONY : Chess_UCSP/fast
 
-Librerias/Tablero/Tablero.obj: Librerias/Tablero/Tablero.cpp.obj
-
-.PHONY : Librerias/Tablero/Tablero.obj
-
-# target to build an object file
-Librerias/Tablero/Tablero.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.obj
-.PHONY : Librerias/Tablero/Tablero.cpp.obj
-
-Librerias/Tablero/Tablero.i: Librerias/Tablero/Tablero.cpp.i
-
-.PHONY : Librerias/Tablero/Tablero.i
-
-# target to preprocess a source file
-Librerias/Tablero/Tablero.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.i
-.PHONY : Librerias/Tablero/Tablero.cpp.i
-
-Librerias/Tablero/Tablero.s: Librerias/Tablero/Tablero.cpp.s
-
-.PHONY : Librerias/Tablero/Tablero.s
-
-# target to generate assembly for a file
-Librerias/Tablero/Tablero.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.s
-.PHONY : Librerias/Tablero/Tablero.cpp.s
-
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -205,9 +178,6 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Chess_UCSP
-	@echo ... Librerias/Tablero/Tablero.obj
-	@echo ... Librerias/Tablero/Tablero.i
-	@echo ... Librerias/Tablero/Tablero.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
