@@ -6,6 +6,7 @@
 
 #IncludeRegexTransform: 
 
+<<<<<<< HEAD
 C:/Users/Javier/CLionProjects/Chess_UCSP/Librerias/Tablero/Tablero.cpp
 iostream
 -
@@ -33,4 +34,13 @@ iostream
 -
 librerias/gameboard/gameboard.h
 C:/Users/Javier/CLionProjects/Chess_UCSP/Librerias/gameboard/gameboard.h
+=======
+C:/Users/Los Romeros/Desktop/UCSP - LALO/2do semestre/Ciencia de la computacion I/Codigos/Chess_UCSP/Librerias/Tablero/Tablero.h
+
+C:/Users/Los Romeros/Desktop/UCSP - LALO/2do semestre/Ciencia de la computacion I/Codigos/Chess_UCSP/main.cpp
+iostream
+-
+Librerias/Tablero/Tablero.h
+C:/Users/Los Romeros/Desktop/UCSP - LALO/2do semestre/Ciencia de la computacion I/Codigos/Chess_UCSP/Librerias/Tablero/Tablero.h
+>>>>>>> db4593382e57d2a41acbf840bcf46f3f94c7018c
 

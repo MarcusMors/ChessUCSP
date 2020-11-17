@@ -1,2 +1,9 @@
+<<<<<<< HEAD
 
+=======
+.idea
+cmake-build-debug
+CMakeLists.txt
+.gitignore
+>>>>>>> db4593382e57d2a41acbf840bcf46f3f94c7018c
 

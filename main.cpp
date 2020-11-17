@@ -48,21 +48,21 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 					{
 						// if (slot == PiecesChar::charP1_pawn)
 						// {
-						// }
-						break;
-					}
+                        // }
+                        break;
+                    }
 					else
 					{
-						std::cout << "There is no piece in that position." << std::endl;
-					}
-				}
+                        std::cout << "There is no piece in that position." << std::endl;
+                    }
+                }
 				else
 				{
-					std::cout << "Imposible position." << std::endl;
-				}
-			}
-			// show gameboard with possibilities.
-			std::cout << "Input the end position letter and number:" << std::endl;
+                    std::cout << "Imposible position." << std::endl;
+                }
+            }
+            // show gameboard with possibilities.
+            std::cout << "Input the end position letter and number:" << std::endl;
 			std::cin >> endLetter >> endNumber;
 			turn = !turn;
 			// enter the movement

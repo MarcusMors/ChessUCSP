@@ -107,6 +107,35 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.17.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.17.3/CMakeRCCompiler.cmake"
   "CMakeFiles/3.17.3/CMakeSystem.cmake"
+<<<<<<< HEAD
+=======
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/CMakeCInformation.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/CMakeCXXInformation.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/CMakeCommonLanguageInclude.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/CMakeExtraGeneratorDetermineCompilerMacrosAndIncludeDirs.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/CMakeFindCodeBlocks.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/CMakeGenericSystem.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/CMakeInitializeConfigs.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/CMakeLanguageInformation.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/CMakeRCInformation.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/CMakeSystemSpecificInformation.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/CMakeSystemSpecificInitialize.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/Compiler/GNU-C.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/Compiler/GNU-CXX.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/Compiler/GNU.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/Internal/CMakeCheckCompilerFlag.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/Platform/Windows-GNU-C-ABI.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/Platform/Windows-GNU-C.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/Platform/Windows-GNU-CXX-ABI.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/Platform/Windows-GNU-CXX.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/Platform/Windows-GNU.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/Platform/Windows-windres.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/Platform/Windows.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/Platform/WindowsPaths.cmake"
+  "E:/Clion/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/ProcessorCount.cmake"
+>>>>>>> db4593382e57d2a41acbf840bcf46f3f94c7018c
   )
 
 # The corresponding makefile is:
@@ -117,12 +146,6 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "CMakeFiles/3.17.3/CMakeSystem.cmake"
-  "CMakeFiles/3.17.3/CMakeCCompiler.cmake"
-  "CMakeFiles/3.17.3/CMakeCXXCompiler.cmake"
-  "CMakeFiles/3.17.3/CMakeRCCompiler.cmake"
-  "CMakeFiles/3.17.3/CMakeCCompiler.cmake"
-  "CMakeFiles/3.17.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
