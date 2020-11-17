@@ -61,7 +61,7 @@ public:
 			accumulatedP1_pieces[i] = accumulatorP1;
 			accumulatedP2_pieces[i] = accumulatorP2;
 		}
-
+        std::cout << "Init Gameboard" << std::endl;
 		initGameboard();
 		std::cout << "filling the Gameboard" << std::endl;
 		fillGameboard(accumulatedP1_pieces, totalP1_pieces, bearingsP1_pieces, true);
@@ -167,8 +167,8 @@ private:
 	void initGameboard()
 	{
 		for (int i = 0; i < width; i++)
-			for (int j = 0; i < height; j++)
-				slots[i][j] = PiecesChar::char_free;
+			for (int j = 0; j < height; j++)
+                slots[i][j] = PiecesChar::char_free;
 	}
 	void fillGameboard(int accumulated[6], int total, int bearings[][2], bool player)
 	{
@@ -253,7 +253,6 @@ private:
 					pawns_ptrptr[pieceIndex] = Pawn(bearings[i], player);
 					slots[bearings[i][0]][bearings[i][1]] = char_pawn;
 					break;
-
 				default:
 					std::cout << "\nAn error happened while initializing" << std::endl;
 					std::cout << "iterator\t: " << i << std::endl;
@@ -262,6 +261,7 @@ private:
 					std::cout << "pieceIndex\t: " << pieceIndex << std::endl;
 					break;
 				}
+				pieceIndex++;
 			}
 			else
 			{
