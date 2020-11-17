@@ -39,9 +39,10 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 			{
 				std::cout << "Input the piece's letter and number:" << std::endl;
 				std::cin >> startLetter >> start[1];
+				start[1]--;
 				startLetter = toupper(startLetter);
-				start[0] = (int)startLetter - ((int)'A');
-				if (((int)'@' < start[0]) && (start[0] < ((int)'A') + width) && (-1 < start[1]) && (start[1] < height))
+				start[0] = (int)startLetter - ((int)'A'); // 0 - width
+				if ((-1 < start[0]) && (start[0] < width) && (-1 < start[1]) && (start[1] < height))
 				{
 					slot = gameboard.slots[start[0]][start[1]];
 					if (slot != PiecesChar::char_free)
@@ -64,6 +65,11 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 			// show gameboard with possibilities.
 			std::cout << "Input the end position letter and number:" << std::endl;
 			std::cin >> endLetter >> endNumber;
+			end[1]--;
+			endLetter = toupper(endLetter);
+			end[0] = (int)endLetter - ((int)'A'); // 0 - width
+			gameboard.move(start, end);
+			gameboard.Show();
 			turn = !turn;
 			// enter the movement
 			// valid movement?
@@ -104,16 +110,19 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 int main()
 {
 
-	int width = 8;
-	int height = 8;
+	int width = 8;	//ancho
+	int height = 8; //altura
 	int result;
 
 	// The number of pieces
 	// kings, queens, rooks, knights, bishops and pawns.
+	// rey, reina, torre, caballos, alfiles y peones
 	int nP1_pieces[6] = {1, 1, 2, 2, 2, 8};
 	int nP2_pieces[6] = {1, 1, 2, 2, 2, 8};
 
 	int bearingsP1_pieces[16][2] = {
+		// bearings = coordenadas
+		// coordenadas por default de las piezas P1
 		{0, 4}, // kings
 		{0, 3}, // queens
 		{0, 0},
@@ -132,6 +141,7 @@ int main()
 		{1, 7} //pawns
 	};
 	int bearingsP2_pieces[16][2] = {
+		// coordenadas por default de las piezas P2
 		{7, 4}, // kings
 		{7, 3}, // queens
 		{7, 0},
@@ -156,6 +166,7 @@ int main()
 	bool settings_break = false;
 	bool subSettings_break = false;
 
+	//* INTERFAZ
 	while (true)
 	{
 		std::cout << "\nWhat do you want to do now?" << std::endl;
@@ -165,7 +176,7 @@ int main()
 		std::cout << std::endl;
 		std::cin >> command;
 		cleanScreen();
-		command = toupper(command);
+		command = toupper(command); // convertir a mayuscula
 
 		switch (command)
 		{

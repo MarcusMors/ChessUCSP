@@ -49,6 +49,7 @@ public:
 
 		int accumulatedP1_pieces[6];
 		int accumulatedP2_pieces[6];
+
 		int totalP1_pieces = sumUp(nP1_pieces, 6);
 		int totalP2_pieces = sumUp(nP2_pieces, 6);
 		int accumulatorP1 = 0;
@@ -61,11 +62,11 @@ public:
 			accumulatedP1_pieces[i] = accumulatorP1;
 			accumulatedP2_pieces[i] = accumulatorP2;
 		}
-        std::cout << "Init Gameboard" << std::endl;
+		std::cout << "Init Gameboard" << std::endl;
 		initGameboard();
 		std::cout << "filling the Gameboard" << std::endl;
-		fillGameboard(accumulatedP1_pieces, totalP1_pieces, bearingsP1_pieces, true);
-		fillGameboard(accumulatedP2_pieces, totalP2_pieces, bearingsP2_pieces, false);
+		fillGameboard(accumulatedP1_pieces, totalP1_pieces, bearingsP1_pieces, true);  //P1
+		fillGameboard(accumulatedP2_pieces, totalP2_pieces, bearingsP2_pieces, false); //P2
 	}
 	bool validMovement()
 	{
@@ -118,7 +119,7 @@ public:
 		}
 		for (int i = 0; i < slotWidth; i++)
 		{
-            equatorSlot[i] = equatorChar;
+			equatorSlot[i] = equatorChar;
 			slotBlank[i] = blankChar;
 			slotPiece[i] = blankChar;
 		}
@@ -143,12 +144,15 @@ public:
 			for (int j = 0; j < 2; j++)
 			{
 				std::cout << equatorBlank << meridianChar;
-				for (int o = 0; o < slotWidth+1; o++)
+				for (int o = 0; o < slotWidth + 1; o++)
 				{
-					if (j== 1) {
-                        slotPiece[slotWidth / 2] = (char)slots[i][o];
-                        std::cout << slotPiece << meridianChar;
-                    }else{
+					if (j == 1)
+					{
+						slotPiece[slotWidth / 2] = (char)slots[i][o];
+						std::cout << slotPiece << meridianChar;
+					}
+					else
+					{
 						std::cout << slotBlank << meridianChar;
 					}
 				}
@@ -156,12 +160,12 @@ public:
 			}
 		}
 		// Letters, bottom gameframe
-        std::cout << equatorFrame << meridianChar;
-        for (int j = 0; j < width; j++)
-        {
-            std::cout << equatorSlot << meridianChar;
-        }
-        std::cout << equatorFrame << std::endl;
+		std::cout << equatorFrame << meridianChar;
+		for (int j = 0; j < width; j++)
+		{
+			std::cout << equatorSlot << meridianChar;
+		}
+		std::cout << equatorFrame << std::endl;
 		std::cout << equatorBlank << meridianChar;
 		for (int i = 0; i < width; i++)
 		{
@@ -176,16 +180,17 @@ private:
 	{
 		for (int i = 0; i < width; i++)
 			for (int j = 0; j < height; j++)
-                slots[i][j] = PiecesChar::char_free;
+				slots[i][j] = PiecesChar::char_free;
 	}
 	void fillGameboard(int accumulated[6], int total, int bearings[][2], bool player)
 	{
+
 		int piece = 0;
 		int pieceIndex = 0;
 
-		char char_king;
-		char char_queen;
-		char char_rook;
+		char char_king;	 // char de rey
+		char char_queen; // char de reina
+		char char_rook;	 // char de ...
 		char char_knight;
 		char char_bishop;
 		char char_pawn;
@@ -197,7 +202,7 @@ private:
 		Bishop *bishops_ptrptr;
 		Pawn *pawns_ptrptr;
 
-		if (player)
+		if (player) // P1
 		{
 			char_king = PiecesChar::charP1_king;
 			char_queen = PiecesChar::charP1_queen;
@@ -213,7 +218,7 @@ private:
 			bishops_ptrptr = P1_bishops_ptr;
 			pawns_ptrptr = P1_pawns_ptr;
 		}
-		else
+		else // P2
 		{
 			char_king = PiecesChar::charP2_king;
 			char_queen = PiecesChar::charP2_queen;
@@ -231,33 +236,34 @@ private:
 		}
 
 		//kings, queens, rooks, knights, bishops and pawns.
+
 		for (int i = 0; i < total; i++)
 		{
 			if (i < accumulated[piece])
 			{
 				switch (piece)
 				{
-				case 0:
+				case 0: //King
 					kings_ptrptr[pieceIndex] = King(bearings[i], player);
 					slots[bearings[i][0]][bearings[i][1]] = char_king;
 					break;
-				case 1:
+				case 1: //Queen
 					queens_ptrptr[pieceIndex] = Queen(bearings[i], player);
 					slots[bearings[i][0]][bearings[i][1]] = char_queen;
 					break;
-				case 2:
+				case 2: //Rook
 					rooks_ptrptr[pieceIndex] = Rook(bearings[i], player);
 					slots[bearings[i][0]][bearings[i][1]] = char_rook;
 					break;
-				case 3:
+				case 3: //Knight
 					knights_ptrptr[pieceIndex] = Knight(bearings[i], player);
 					slots[bearings[i][0]][bearings[i][1]] = char_knight;
 					break;
-				case 4:
+				case 4: //Bishop
 					bishops_ptrptr[pieceIndex] = Bishop(bearings[i], player);
 					slots[bearings[i][0]][bearings[i][1]] = char_bishop;
 					break;
-				case 5:
+				case 5: //Pawn
 					pawns_ptrptr[pieceIndex] = Pawn(bearings[i], player);
 					slots[bearings[i][0]][bearings[i][1]] = char_pawn;
 					break;
