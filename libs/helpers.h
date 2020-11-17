@@ -1,5 +1,24 @@
 #include <iostream>
 
+struct OnceAnnouncement
+{
+	OnceAnnouncement()
+	{
+		std::cout << "Welcome, this is a Chess game created as final project by CS students at UCSP\n";
+	}
+	~OnceAnnouncement()
+	{
+		std::cout << "The program has ended\n";
+	}
+};
+
+int letterToInt(char letter)
+{
+	int num;
+
+	return num;
+}
+
 void cleanScreen(int I = 30)
 {
 	for (int i = 0; i < I; i++)

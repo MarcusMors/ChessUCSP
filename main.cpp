@@ -1,150 +1,70 @@
 #include <iostream>
-#include "Librerias/Tablero/Tablero.h"
-#include "libs/pieces.h"
-#include "libs/helpers.h"
+// #include "Librerias/Tablero/Tablero.h"
+#include "libs/gameboard/gameboard.h"
+// #include "libs/enums/enums.h"
 
 using namespace std;
 
+OnceAnnouncement a;
+
 int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int bearingsP2_pieces[][2], int width = 8, int height = 8)
 {
+	cout << "Creating the game.";
 	int result = 0;
 	int movements = 0;
-	int difficulty = 2; //movement projection, movements predicted /calculated in the future
-	bool turn = false;
-
-	int totalP1_pieces = sumUp(nP1_pieces, 6);
-	int totalP2_pieces = sumUp(nP2_pieces, 6);
-	int accumulatedP1_pieces[6];
-	int accumulatedP2_pieces[6];
-	int piece = 0;
-	int pieceIndex = 0;
-
-	int accumulatorP1 = 0;
-	int accumulatorP2 = 0;
-
-	for (int i = 0; i < 6; i++)
-	{
-		accumulatorP1 += nP1_pieces[i];
-		accumulatorP2 += nP2_pieces[i];
-		accumulatedP1_pieces[i] = accumulatorP1;
-		accumulatedP2_pieces[i] = accumulatorP2;
-	}
+	int difficulty = 2; //movement projection, predicted or calculation in the future
+	bool turn = true;
 
 	//construct/ declaring the pieces
-	//kings, queens, rooks, knights, bishops and pawns.
-	Gameboard gameboard;
-
-	King P1_kings[nP1_pieces[0]];
-	Queen P1_queens[nP1_pieces[1]];
-	Rook P1_rooks[nP1_pieces[2]];
-	Knight P1_knights[nP1_pieces[3]];
-	Bishop P1_bishops[nP1_pieces[4]];
-	Pawn P1_pawns[nP1_pieces[5]];
-
-	King P2_kings[nP2_pieces[0]];
-	Queen P2_queens[nP2_pieces[1]];
-	Rook P2_rooks[nP2_pieces[2]];
-	Knight P2_knights[nP2_pieces[3]];
-	Bishop P2_bishops[nP2_pieces[4]];
-	Pawn P2_pawns[nP2_pieces[5]];
-
-	// initializing the pieces objects
-	// P1 bearings of each piece
-	for (int i = 0; i < totalP1_pieces; i++)
-	{
-		if (i < accumulatedP1_pieces[piece])
-		{
-			switch (piece)
-			{
-			case 0:
-				P1_kings[pieceIndex] = King(bearingsP1_pieces[i], 0);
-				break;
-			case 1:
-				P1_queens[pieceIndex] = Queen(bearingsP1_pieces[i], 0);
-				break;
-			case 2:
-				P1_rooks[pieceIndex] = Rook(bearingsP1_pieces[i], 0);
-				break;
-			case 3:
-				P1_knights[pieceIndex] = Knight(bearingsP1_pieces[i], 0);
-				break;
-			case 4:
-				P1_bishops[pieceIndex] = Bishop(bearingsP1_pieces[i], 0);
-				break;
-			case 5:
-				P1_pawns[pieceIndex] = Pawn(bearingsP1_pieces[i], 0);
-				break;
-
-			default:
-				printf("\nAn error happened while initializing P1\n");
-				printf("iterator\t: %i\n", i);
-				printf("accumulated\t: %i\n", accumulatedP1_pieces[piece]);
-				printf("piece\t: %i\n", piece);
-				printf("pieceIndex\t: %i\n", pieceIndex);
-				break;
-			}
-		}
-		else
-		{
-			i--;
-			piece++;
-			pieceIndex = 0;
-		}
-	}
-	piece = 0;
-	pieceIndex = 0;
-
-	// P2 bearings of each piece
-	for (int i = 0; i < totalP2_pieces; i++)
-	{
-		if (i < accumulatedP2_pieces[piece])
-		{
-			switch (piece)
-			{
-			case 0:
-				P2_kings[pieceIndex] = King(bearingsP2_pieces[i], 1);
-				break;
-			case 1:
-				P2_queens[pieceIndex] = Queen(bearingsP2_pieces[i], 1);
-				break;
-			case 2:
-				P2_rooks[pieceIndex] = Rook(bearingsP2_pieces[i], 1);
-				break;
-			case 3:
-				P2_knights[pieceIndex] = Knight(bearingsP2_pieces[i], 1);
-				break;
-			case 4:
-				P2_bishops[pieceIndex] = Bishop(bearingsP2_pieces[i], 1);
-				break;
-			case 5:
-				P2_pawns[pieceIndex] = Pawn(bearingsP2_pieces[i], 1);
-				break;
-
-			default:
-				printf("\nAn error happened while initializing P1\n");
-				printf("iterator\t: %i\n", i);
-				printf("accumulated\t: %i\n", accumulatedP1_pieces[piece]);
-				printf("piece\t: %i\n", piece);
-				printf("pieceIndex\t: %i\n", pieceIndex);
-				break;
-			}
-		}
-		else
-		{
-			i--;
-			piece++;
-			pieceIndex = 0;
-		}
-	}
-
-	cout << "game created" << endl;
+	Gameboard gameboard(nP1_pieces, nP2_pieces, bearingsP1_pieces, bearingsP2_pieces, width, height);
+	std::cout << "Game created!" << std::endl;
 	//* GAME
+
+	int start[2];
+	int end[2];
+	char startLetter;
+	char endLetter;
+	int startNumber;
+	int endNumber;
+	char slot;
+
 	while (true)
 	{
+		// show gameboard
+		gameboard.Show();
 		if (turn) //* P1 turn
 		{
+			// select a piece
+			while (true)
+			{
+				std::cout << "Input the piece's letter and number:" << std::endl;
+				std::cin >> startLetter >> start[1];
+				startLetter = toupper(startLetter);
+				start[0] = (int)startLetter - ((int)'A');
+				if (((int)'@' < start[0]) && (start[0] < ((int)'A') + width) && (-1 < start[1]) && (start[1] < height))
+				{
+					slot = gameboard.slots[start[0]][start[1]];
+					if (slot != PiecesChar::char_free)
+					{
+						// if (slot == PiecesChar::charP1_pawn)
+						// {
+						// }
+						break;
+					}
+					else
+					{
+						std::cout << "There is no piece in that position." << std::endl;
+					}
+				}
+				else
+				{
+					std::cout << "Imposible position." << std::endl;
+				}
+			}
+			// show gameboard with possibilities.
+			std::cout << "Input the end position letter and number:" << std::endl;
+			std::cin >> endLetter >> endNumber;
 			turn = !turn;
-			// show gameboard
 			// enter the movement
 			// valid movement?
 			// make the movement in the gameboard
@@ -162,8 +82,20 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 			// make the movement in the gameboard
 			movements++;
 		}
-		break;
-		//code
+		if (true)
+		{
+			break;
+		}
+		if (gameboard.P1_kings_ptr[0].checkmate)
+		{
+			result = 0;
+			break;
+		}
+		else if (gameboard.P2_kings_ptr[0].checkmate)
+		{
+			result = 1;
+			break;
+		}
 	}
 
 	return result;
@@ -171,21 +103,6 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 
 int main()
 {
-	//! still not working
-	// char m[8][8] = {{'t', 'c', 'a', 'q', 'r', 'a', 'c', 't'},
-	// 				{'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
-	// 				{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-	// 				{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-	// 				{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-	// 				{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-	// 				{'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
-	// 				{'T', 'C', 'A', 'R', 'Q', 'A', 'C', 'T'}};
-	// tablero(m);
-	// while (true)
-	// {
-	// 	cambio(m, ' ', 0, ' ', 0);
-	// }
-	//! still not working
 
 	int width = 8;
 	int height = 8;
@@ -241,57 +158,57 @@ int main()
 
 	while (true)
 	{
-		printf("\nWhat do you want to do now?\n");
-		printf("\t[P]lay\n");
-		printf("\t[Q]uit\n");
-		printf("\t[S]ettings (in progress)\n");
-		printf("\n");
-		cin >> command;
+		std::cout << "\nWhat do you want to do now?" << std::endl;
+		std::cout << "\t[P]lay" << std::endl;
+		std::cout << "\t[Q]uit" << std::endl;
+		std::cout << "\t[S]ettings (in progress)" << std::endl;
+		std::cout << std::endl;
+		std::cin >> command;
 		cleanScreen();
 		command = toupper(command);
 
 		switch (command)
 		{
 		case 'P':
-			printf("\nLet's play!\n");
-			result = game(nP1_pieces, nP2_pieces, bearingsP1_pieces, bearingsP2_pieces);
-			if (result == 1)
+			std::cout << "\nLet's play!" << std::endl;
+			result = game(nP1_pieces, nP2_pieces, bearingsP1_pieces, bearingsP2_pieces, 8, 8);
+			if (result == 0)
 			{
-				cout << " 🥳 P1 won the game!"
+				std::cout << " 🥳 P1 won the game!" << std::endl;
 			}
-			else if (resukt == 0)
+			else if (result == 1)
 			{
-				cout << " P2 won the game! 🥳"
+				std::cout << " P2 won the game! 🥳" << std::endl;
 			}
 			else
 			{
-				cout << " Tie 🤯 No one won the game"
+				std::cout << " Tie 🤯 No one won the game" << std::endl;
 			}
 			break;
 		case 'Q':
-			printf("\nGood bye 😥\n");
+			std::cout << "\nGood bye 😥" << std::endl;
 			return 0;
 			break;
 		case 'S':
-			printf("\n<<--<---SETTINGS--->-->>\n");
+			std::cout << "\n<<--<---SETTINGS--->-->>" << std::endl;
 			// show settings:
-			printf("Dimensions\t: %i, %i\n", width, height);
+			std::cout << "Dimensions\t: " << width << height << std::endl;
 
-			printf("\n<---ACTUAL GAMEBOARD--->\n");
+			std::cout << "\n<---ACTUAL GAMEBOARD--->" << std::endl;
 			//print actual gameboard
 
 			while (true)
 			{
-				printf("\nWhat do you want to modify?\n");
-				printf("\t[B]ack\n");
-				printf("\tP[1] settings\n");
-				printf("\tP[2] settings\n");
-				printf("\t[C]lear the gameboard\n");
-				printf("\t[G]ameboard settings\n");
+				std::cout << "\nWhat do you want to modify?" << std::endl;
+				std::cout << "\t[B]ack" << std::endl;
+				std::cout << "\tP[1] settings" << std::endl;
+				std::cout << "\tP[2] settings" << std::endl;
+				std::cout << "\t[C]lear the gameboard" << std::endl;
+				std::cout << "\t[G]ameboard settings" << std::endl;
 				// printf("\t[S]how settings\n");
 				printf("\t[S]how Gameboard\n");
 				// printf("\t[R]estart settings\n");
-				cin >> settings_command;
+				std::cin >> settings_command;
 				cleanScreen();
 
 				settings_command = toupper(settings_command);
@@ -302,20 +219,20 @@ int main()
 					settings_break = true;
 					break;
 				case '1':
-					printf("\nNumber P1's pieces\t: %i\n", sumUp(nP1_pieces, 6));
-					printf("\tKing(s)\t: %i\n", nP1_pieces[0]);
-					printf("\tQueen(s)\t: %i\n", nP1_pieces[1]);
-					printf("\tRook(s)\t: %i\n", nP1_pieces[2]);
-					printf("\tKnight(s)\t: %i\n", nP1_pieces[3]);
-					printf("\tBishop(s)\t: %i\n", nP1_pieces[4]);
-					printf("\tPawn(s)\t: %i\n", nP1_pieces[5]);
+					std::cout << "\nNumber P1's pieces\t: " << sumUp(nP1_pieces, 6) << std::endl;
+					std::cout << "\tKing(s)\t: " << nP1_pieces[0] << std::endl;
+					std::cout << "\tQueen(s)\t: " << nP1_pieces[1] << std::endl;
+					std::cout << "\tRook(s)\t: " << nP1_pieces[2] << std::endl;
+					std::cout << "\tKnight(s)\t: " << nP1_pieces[3] << std::endl;
+					std::cout << "\tBishop(s)\t: " << nP1_pieces[4] << std::endl;
+					std::cout << "\tPawn(s)\t: " << nP1_pieces[5] << std::endl;
 
-					printf("\n[B]ack\n");
-					printf("[~] Add or remove a piece\n");
-					printf("[C]hange a piece position\n");
-					printf("[S]how Gameboard\n");
-					printf("\n");
-					cin >> sub_command;
+					std::cout << "\n[B]ack" << std::endl;
+					std::cout << "[~] Add or remove a piece" << std::endl;
+					std::cout << "[C]hange a piece position" << std::endl;
+					std::cout << "[S]how Gameboard" << std::endl;
+					std::cout << std::endl;
+					std::cin >> sub_command;
 					cleanScreen();
 
 					sub_command = toupper(sub_command);
@@ -352,13 +269,13 @@ int main()
 					break;
 
 				case '2':
-					printf("\nNumber P2's pieces\t: %i\n", sumUp(nP2_pieces, 6));
-					printf("\tKing(s)\t: %i\n", nP2_pieces[0]);
-					printf("\tQueen(s)\t: %i\n", nP2_pieces[1]);
-					printf("\tRook(s)\t: %i\n", nP2_pieces[2]);
-					printf("\tKnight(s)\t: %i\n", nP2_pieces[3]);
-					printf("\tBishop(s)\t: %i\n", nP2_pieces[4]);
-					printf("\tPawn(s)\t: %i\n", nP2_pieces[5]);
+					std::cout << "\nNumber P2's pieces\t: " << sumUp(nP2_pieces, 6) << std::endl;
+					std::cout << "\tKing(s)\t: " << nP2_pieces[0] << std::endl;
+					std::cout << "\tQueen(s)\t: " << nP2_pieces[1] << std::endl;
+					std::cout << "\tRook(s)\t: " << nP2_pieces[2] << std::endl;
+					std::cout << "\tKnight(s)\t: " << nP2_pieces[3] << std::endl;
+					std::cout << "\tBishop(s)\t: " << nP2_pieces[4] << std::endl;
+					std::cout << "\tPawn(s)\t: " << nP2_pieces[5] << std::endl;
 					int nP2_king[1][2];
 					int nP2_queen[1][2];
 					int nP2_rook[2][2];
@@ -385,7 +302,7 @@ int main()
 			settings_command = ' ';
 			break;
 		default:
-			printf("\nNot recognizable command\n");
+			std::cout << "\nNot recognizable command" << std::endl;
 			break;
 		}
 		command = ' ';
