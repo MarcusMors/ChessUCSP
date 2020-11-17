@@ -1,4 +1,7 @@
 cmake-build-debug
+.vscode
+CMakeLists.txt
+.idea
 
 
 
