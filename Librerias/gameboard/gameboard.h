@@ -104,6 +104,7 @@ public:
 		char meridianBlank[meridianFrameWidth];
 		char slotPiece[slotWidth];
 		char slotBlank[slotWidth];
+
 		// Init Arrays
 		for (int i = 0; i < equatorFrameWidth; i++)
 		{
@@ -127,7 +128,7 @@ public:
 		std::cout << equatorBlank << meridianChar;
 		for (int i = 0; i < width; i++)
 		{
-			slotPiece[slotWidth / 2] = ((char)letter + 1);
+			slotPiece[slotWidth / 2] = ((char)letter + i);
 			std::cout << slotPiece << meridianChar;
 		}
 		std::cout << std::endl;
