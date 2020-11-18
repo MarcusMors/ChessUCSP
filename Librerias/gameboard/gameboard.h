@@ -93,7 +93,7 @@ public:
 	bool piecePossibilities(int place[2], char piece) // ONLY P1 need visual reference
 	{
 		int piecePossibilities;
-		bool availableMovement;
+		bool availableMovement = false;
 		switch (piece)
 		{
 		case PiecesChar::charP1_king:
@@ -113,7 +113,7 @@ public:
 			break;
 		case PiecesChar::charP1_knight:
 			piecePossibilities = 3;
-			availableMovement;
+			availableMovement = drawJumps(place);
 			break;
 		case PiecesChar::charP1_bishop:
 			piecePossibilities = 4;
@@ -142,6 +142,7 @@ public:
 				undrawLines(place);
 				break;
 			case 3:
+                undrawJumps(place);
 				break;
 			case 4:
 				undrawDiagonals(place);
@@ -301,7 +302,71 @@ private:
 				break;
 		}
 	}
-	bool drawLines(int place[2])
+    bool drawJumps(int place[2])//Knight Jumps
+    {
+        bool availableMovement = false;
+        if ((place[0] > 1) && (place[1] > 0) && (slots[place[0] - 2][place[1] - 1] == PiecesChar::char_free)) {
+            slots[place[0] - 2][place[1] - 1] = '*';
+            availableMovement = true;
+        }
+        if ((place[0] > 1) && (place[1] < 7) && (slots[place[0] - 2][place[1] + 1] == PiecesChar::char_free)) {
+            slots[place[0] - 2][place[1] + 1] = '*';
+            availableMovement = true;
+        }
+        if ((place[0] > 0) && (place[1] > 1) && (slots[place[0] - 1][place[1] - 2] == PiecesChar::char_free)) {
+            slots[place[0] - 1][place[1] - 2] = '*';
+            availableMovement = true;
+        }
+        if ((place[0] < 7) && (place[1] > 1) && (slots[place[0] + 1][place[1] - 2] == PiecesChar::char_free)) {
+            slots[place[0] + 1][place[1] - 2] = '*';
+            availableMovement = true;
+        }
+        if ((place[0] < 6) && (place[1] > 0) && (slots[place[0] + 2][place[1] - 1] == PiecesChar::char_free)) {
+            slots[place[0] + 2][place[1] - 1] = '*';
+            availableMovement = true;
+        }
+        if ((place[0] < 6) && (place[1] < 7) && (slots[place[0] + 2][place[1] + 1] == PiecesChar::char_free)) {
+            slots[place[0] + 2][place[1] + 1] = '*';
+            availableMovement = true;
+        }
+        if ((place[0] > 0) && (place[1] < 6) && (slots[place[0] - 1][place[1] + 2] == PiecesChar::char_free)) {
+            slots[place[0] - 1][place[1] + 2] = '*';
+            availableMovement = true;
+        }
+        if ((place[0] < 7) && (place[1] < 6) && (slots[place[0] + 1][place[1] + 2] == PiecesChar::char_free)) {
+            slots[place[0] + 1][place[1] + 2] = '*';
+            availableMovement = true;
+        }
+        return availableMovement;
+    }
+    void undrawJumps(int place[2])
+    {
+        if ((place[0] > 1) && (place[1] > 0) && (slots[place[0] - 2][place[1] - 1] == '*')) {
+            slots[place[0] - 2][place[1] - 1] = PiecesChar::char_free;
+        }
+        if ((place[0] > 1) && (place[1] < 7) && (slots[place[0] - 2][place[1] + 1] == '*')) {
+            slots[place[0] - 2][place[1] + 1] = PiecesChar::char_free;
+        }
+        if ((place[0] > 0) && (place[1] > 1) && (slots[place[0] - 1][place[1] - 2] == '*')) {
+            slots[place[0] - 1][place[1] - 2] = PiecesChar::char_free;
+        }
+        if ((place[0] < 7) && (place[1] > 1) && (slots[place[0] + 1][place[1] - 2] == '*')) {
+            slots[place[0] + 1][place[1] - 2] = PiecesChar::char_free;
+        }
+        if ((place[0] < 6) && (place[1] > 0) && (slots[place[0] + 2][place[1] - 1] == '*')) {
+            slots[place[0] + 2][place[1] - 1] = PiecesChar::char_free;
+        }
+        if ((place[0] < 6) && (place[1] < 7) && (slots[place[0] + 2][place[1] + 1] == '*')) {
+            slots[place[0] + 2][place[1] + 1] = PiecesChar::char_free;
+        }
+        if ((place[0] > 0) && (place[1] < 6) && (slots[place[0] - 1][place[1] + 2] == '*')) {
+            slots[place[0] - 1][place[1] + 2] = PiecesChar::char_free;
+        }
+        if ((place[0] < 7) && (place[1] < 6) && (slots[place[0] + 1][place[1] + 2] == '*')) {
+            slots[place[0] + 1][place[1] + 2] = PiecesChar::char_free;
+        }
+    }
+    bool drawLines(int place[2])
 	{
 		bool availableMovement = false;
 		//(+x) line
