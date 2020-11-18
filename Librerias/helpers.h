@@ -23,8 +23,9 @@ int sumUp(int arr[], int length)
 }
 
 char anything;
-struct OnceAnnouncement
+class OnceAnnouncement
 {
+public:
 	OnceAnnouncement(int I = 0)
 	{
 		cleanScreen();

@@ -182,7 +182,14 @@ public:
 			for (int j = 0; j < 2; j++)
 			{
 				// Left frame (equator)
-				std::cout << equatorBlank << meridianChar;
+                if (j == 1)
+                {
+                    std::cout << blankChar << number+i << blankChar << meridianChar;
+                }
+                else
+                {
+                    std::cout << equatorBlank << meridianChar;
+                }
 				// Slot
 				for (int o = 0; o < slotWidth + 1; o++)
 				{
