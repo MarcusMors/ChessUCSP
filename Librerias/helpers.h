@@ -25,6 +25,7 @@ int sumUp(int arr[], int length)
 char anything;
 class OnceAnnouncement
 {
+public:
 	OnceAnnouncement(int I = 0)
 	{
 		cleanScreen();
