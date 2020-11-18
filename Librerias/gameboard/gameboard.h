@@ -92,35 +92,36 @@ public:
 	// }
 	bool piecePossibilities(int place[2], char piece) // ONLY P1 need visual reference
 	{
+	    cout<<"pieceposib"<<endl;
 		int piecePossibilities;
 		bool availableMovement = false;
 		switch (piece)
 		{
-		case PiecesChar::charP1_king:
+		case PiecesChar::charP2_king:
 			piecePossibilities = 0;
 			availableMovement;
 			break;
-		case PiecesChar::charP1_queen:
+		case PiecesChar::charP2_queen:
 			piecePossibilities = 1;
 			if (drawDiagonals(place))
 				availableMovement = true;
 			if (drawLines(place))
 				availableMovement = true;
 			break;
-		case PiecesChar::charP1_rook:
+		case PiecesChar::charP2_rook:
 			piecePossibilities = 2;
 			availableMovement = drawLines(place);
 			break;
-		case PiecesChar::charP1_knight:
+		case PiecesChar::charP2_knight:
 			piecePossibilities = 3;
 			availableMovement = drawJumps(place);
 			break;
-		case PiecesChar::charP1_bishop:
+		case PiecesChar::charP2_bishop:
 			piecePossibilities = 4;
 			availableMovement = drawDiagonals(place);
 			break;
-		case PiecesChar::charP1_pawn:
-			availableMovement = true;
+		case PiecesChar::charP2_pawn:
+			availableMovement = drawLines_P(place);
 			piecePossibilities = 5;
 			break;
 
@@ -148,6 +149,7 @@ public:
 				undrawDiagonals(place);
 				break;
 			case 5:
+                undrawLines_P(place);
 				break;
 
 			default:
@@ -267,6 +269,43 @@ private:
 			slotPiece[i] = blankChar;
 		}
 	}
+    bool drawLines_P(int place[2]){
+        bool availableMovement = false;
+        int p_y=place[0]-1;
+        int cas=0;
+        if(place[0]==6){
+            cas=2;
+        }else{
+            cas=1;
+        }
+        for (int i=0; i< cas; i++) {
+            if (slots[p_y][place[1]] == PiecesChar::char_free){
+                slots[p_y][place[1]] = '*';
+                availableMovement = true;
+                p_y--;
+            }else{
+                break;
+            }
+        }
+        return availableMovement;
+    }
+    void undrawLines_P(int place[2]){
+        int p_y=place[0]-1;
+        int cas=0;
+        if(place[0]==6){
+            cas=2;
+        }else{
+            cas=1;
+        }
+        for (int j=0; j < cas; j++) {
+            if (slots[p_y][place[1]]  == '*' ){
+                slots[p_y][place[1]]  = PiecesChar::char_free;
+                p_y--;
+            }else{
+                break;
+            }
+        }
+    }
 	void undrawLines(int place[2])
 	{
 		//(+x) line

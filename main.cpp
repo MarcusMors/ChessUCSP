@@ -48,7 +48,7 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 				{
 					piece = gameboard.slots[start[0]][start[1]];
 					// piece is a piece and belongs to P1
-					if ((piece != PiecesChar::char_free) && ((int)piece < ((int)'z' + 1)) && ((int)piece > ((int)'a' - 1)))
+					if ((piece != PiecesChar::char_free) && ((int)piece < ((int)'Z' + 1)) && ((int)piece > ((int)'A' - 1)))
 					{
 						availableMovement = gameboard.piecePossibilities(start, piece);
 						if (availableMovement)
@@ -80,7 +80,7 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 					endSlot = gameboard.slots[end[0]][end[1]];
 					if (endSlot == PiecesChar::char_free) // endSlot is empty
 						break;
-					if (((int)'A' - 1 < endSlot) && (endSlot < (int)'Z' + 1)) // eat P2
+					if (((int)'a' - 1 < endSlot) && (endSlot < (int)'z' + 1)) // eat P2
 						//King Exception
 						//system Point
 						//eat
