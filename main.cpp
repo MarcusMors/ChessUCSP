@@ -28,6 +28,7 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 	int startNumber;
 	int endNumber;
 	char piece;
+	char endSlot;
 
 	while (true)
 	{
@@ -73,10 +74,19 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 				cin >> endLetter >> end[0];
 				end[0]--;
 				endLetter = toupper(endLetter);
-				end[1] = (int)endLetter - ((int)'A'); // 0 - width
+				end[1] = (int)endLetter - ((int)'A'); // = 0 to width
 				if ((-1 < end[1]) && (end[1] < width) && (-1 < end[0]) && (end[0] < height))
 				{
-					break;
+					endSlot = gameboard.slots[end[0]][end[1]];
+					if (endSlot == PiecesChar::char_free) // endSlot is empty
+						break;
+					if (((int)'A' - 1 < endSlot) && (endSlot < (int)'Z' + 1)) // eat P2
+						//King Exception
+						//system Point
+						//eat
+						break;
+					else
+						std::cout << "You can't capture your own pieces." << std::endl;
 				}
 				else
 					cout << "Imposible position." << endl;

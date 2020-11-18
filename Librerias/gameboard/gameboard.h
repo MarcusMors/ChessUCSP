@@ -96,37 +96,36 @@ public:
 		bool availableMovement;
 		switch (piece)
 		{
-            case PiecesChar::charP1_king:
-                piecePossibilities = 0;
-                availableMovement;
-                break;
-            case PiecesChar::charP1_queen:
-                piecePossibilities = 1;
-                if (drawDiagonals(place))
-                {
-                    availableMovement = true;
-                }
-                else
-                    availableMovement;
-                break;
-            case PiecesChar::charP1_rook:
-                piecePossibilities = 2;
-                availableMovement;
-                break;
-            case PiecesChar::charP1_knight:
-                piecePossibilities = 3;
-                availableMovement;
-                break;
-            case PiecesChar::charP1_bishop:
-                piecePossibilities = 4;
-                availableMovement = drawDiagonals(place);
-                break;
-            case PiecesChar::charP1_pawn:
-                availableMovement = true;
-                piecePossibilities = 5;
-                break;
-            default:
-                break;
+		case PiecesChar::charP1_king:
+			piecePossibilities = 0;
+			availableMovement;
+			break;
+		case PiecesChar::charP1_queen:
+			piecePossibilities = 1;
+			if (drawDiagonals(place))
+				availableMovement = true;
+			if (drawLines(place))
+				availableMovement = true;
+			break;
+		case PiecesChar::charP1_rook:
+			piecePossibilities = 2;
+			availableMovement = drawLines(place);
+			break;
+		case PiecesChar::charP1_knight:
+			piecePossibilities = 3;
+			availableMovement;
+			break;
+		case PiecesChar::charP1_bishop:
+			piecePossibilities = 4;
+			availableMovement = drawDiagonals(place);
+			break;
+		case PiecesChar::charP1_pawn:
+			availableMovement = true;
+			piecePossibilities = 5;
+			break;
+
+		default:
+			break;
 		}
 		if (availableMovement)
 		{
@@ -136,8 +135,11 @@ public:
 			case 0:
 				break;
 			case 1:
+				undrawDiagonals(place);
+				undrawLines(place);
 				break;
 			case 2:
+				undrawLines(place);
 				break;
 			case 3:
 				break;
@@ -153,9 +155,7 @@ public:
 			return true;
 		}
 		else
-		{
 			return false;
-		}
 	}
 	void show()
 	{
@@ -266,6 +266,90 @@ private:
 			slotPiece[i] = blankChar;
 		}
 	}
+	void undrawLines(int place[2])
+	{
+		//(+x) line
+		for (int j = place[1] + 1; j < width; j++)
+		{
+			if (slots[place[0]][j] == '*')
+				slots[place[0]][j] = PiecesChar::char_free;
+			else
+				break;
+		}
+		//(+y) line
+		for (int i = place[0] - 1; - 1 < i; i--)
+		{
+			if (slots[i][place[1]] == '*')
+				slots[i][place[1]] = PiecesChar::char_free;
+			else
+				break;
+		}
+		//(-x) line
+		for (int j = place[1] - 1; - 1 < j; j--)
+		{
+			if (slots[place[0]][j] == '*')
+				slots[place[0]][j] = PiecesChar::char_free;
+			else
+				break;
+		}
+		//(-y) line
+		for (int i = place[0] + 1; i < height; i++)
+		{
+			if (slots[i][place[1]] == '*')
+				slots[i][place[1]] = PiecesChar::char_free;
+			else
+				break;
+		}
+	}
+	bool drawLines(int place[2])
+	{
+		bool availableMovement = false;
+		//(+x) line
+		for (int j = place[1] + 1; j < width; j++)
+		{
+			if (slots[place[0]][j] == PiecesChar::char_free)
+			{
+				slots[place[0]][j] = '*';
+				availableMovement = true;
+			}
+			else
+				break;
+		}
+		//(+y) line
+		for (int i = place[0] - 1; - 1 < i; i--)
+		{
+			if (slots[i][place[1]] == PiecesChar::char_free)
+			{
+				slots[i][place[1]] = '*';
+				availableMovement = true;
+			}
+			else
+				break;
+		}
+		//(-x) line
+		for (int j = place[1] - 1; - 1 < j; j--)
+		{
+			if (slots[place[0]][j] == PiecesChar::char_free)
+			{
+				slots[place[0]][j] = '*';
+				availableMovement = true;
+			}
+			else
+				break;
+		}
+		//(-y) line
+		for (int i = place[0] + 1; i < height; i++)
+		{
+			if (slots[i][place[1]] == PiecesChar::char_free)
+			{
+				slots[i][place[1]] = '*';
+				availableMovement = true;
+			}
+			else
+				break;
+		}
+		return availableMovement;
+	}
 	void undrawDiagonals(int place[2])
 	{
 		int i, j;
@@ -308,7 +392,7 @@ private:
 		//(+x;-y) diagonal
 		i = place[0] + 1;
 		j = place[1] + 1;
-		for (; (i < height) && (-1 < j); (i++) && (j--))
+		for (; (i < height) && (j < width); (i++) && (j++))
 		{
 			if (slots[i][j] == '*')
 			{
@@ -379,7 +463,7 @@ private:
 		//(+x;-y) diagonal
 		i = place[0] + 1;
 		j = place[1] + 1;
-		for (; (i < height) && (-1 < j); (i++) && (j--))
+		for (; (i < height) && (j < width); (i++) && (j++))
 		{
 			if (slots[i][j] == PiecesChar::char_free)
 			{
