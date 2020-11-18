@@ -5,7 +5,7 @@
 
 using namespace std;
 
-OnceAnnouncement a;
+OnceAnnouncement announcement(4);
 
 int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int bearingsP2_pieces[][2], int width = 8, int height = 8)
 {
@@ -31,17 +31,18 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 	while (true)
 	{
 		// show gameboard
-		gameboard.Show();
+		gameboard.show();
 		if (turn) //* P1 turn
 		{
 			// select a piece
 			while (true)
 			{
 				std::cout << "Input the piece's letter and number:" << std::endl;
-				std::cin >> startLetter >> start[1];
+				std::cin >> startLetter >> start[0];
+				start[0]--;
 				startLetter = toupper(startLetter);
-				start[0] = (int)startLetter - ((int)'A');
-				if (((int)'@' < start[0]) && (start[0] < ((int)'A') + width) && (-1 < start[1]) && (start[1] < height))
+				start[1] = (int)startLetter - ((int)'A'); // 0 - width
+				if ((-1 < start[1]) && (start[1] < width) && (-1 < start[0]) && (start[0] < height))
 				{
 					slot = gameboard.slots[start[0]][start[1]];
 					if (slot != PiecesChar::char_free)
@@ -57,17 +58,27 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 					}
 				}
 				else
-				{
 					std::cout << "Imposible position." << std::endl;
-				}
 			}
-			// show gameboard with possibilities.
-			std::cout << "Input the end position letter and number:" << std::endl;
-			std::cin >> endLetter >> endNumber;
-			turn = !turn;
-			// enter the movement
-			// valid movement?
+			while (true)
+			{
+				// show gameboard with possibilities.
+				std::cout << "Input the end position letter and number:" << std::endl;
+				std::cin >> endLetter >> end[0];
+				end[0]--;
+				endLetter = toupper(endLetter);
+				end[1] = (int)endLetter - ((int)'A'); // 0 - width
+				if ((-1 < end[1]) && (end[1] < width) && (-1 < end[0]) && (end[0] < height))
+				{
+					break;
+				}
+				else
+					std::cout << "Imposible position." << std::endl;
+			}
 			// make the movement in the gameboard
+			gameboard.move(start, end);
+			gameboard.show();
+			turn = !turn;
 			movements++;
 		}
 		else //* P2 turn
@@ -104,16 +115,19 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 int main()
 {
 
-	int width = 8;
-	int height = 8;
+	int width = 8;	//ancho
+	int height = 8; //altura
 	int result;
 
 	// The number of pieces
 	// kings, queens, rooks, knights, bishops and pawns.
+	// rey, reina, torre, caballos, alfiles y peones
 	int nP1_pieces[6] = {1, 1, 2, 2, 2, 8};
 	int nP2_pieces[6] = {1, 1, 2, 2, 2, 8};
 
 	int bearingsP1_pieces[16][2] = {
+		// bearings = coordenadas
+		// coordenadas por default de las piezas P1
 		{0, 4}, // kings
 		{0, 3}, // queens
 		{0, 0},
@@ -132,6 +146,7 @@ int main()
 		{1, 7} //pawns
 	};
 	int bearingsP2_pieces[16][2] = {
+		// coordenadas por default de las piezas P2
 		{7, 4}, // kings
 		{7, 3}, // queens
 		{7, 0},
@@ -156,6 +171,7 @@ int main()
 	bool settings_break = false;
 	bool subSettings_break = false;
 
+	//* INTERFAZ
 	while (true)
 	{
 		std::cout << "\nWhat do you want to do now?" << std::endl;
