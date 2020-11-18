@@ -1,6 +1,6 @@
 #include <iostream>
 // #include "Librerias/Tablero/Tablero.h"
-#include "librerias/gameboard/gameboard.h"
+#include "Librerias/gameboard/gameboard.h"
 // #include "libs/enums/enums.h"
 
 using namespace std;
@@ -9,7 +9,7 @@ OnceAnnouncement announcement(5);
 
 int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int bearingsP2_pieces[][2], int width = 8, int height = 8)
 {
-	std::cout << "Creating the game." << std::endl;
+	cout << "Creating the game." << endl;
 	int result = 0;
 	int movements = 0;
 	int difficulty = 2; //movement projection, predicted or calculation in the future
@@ -18,7 +18,7 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 
 	//construct/ declaring the pieces
 	Gameboard gameboard(nP1_pieces, nP2_pieces, bearingsP1_pieces, bearingsP2_pieces, width, height);
-	std::cout << "Game created!" << std::endl;
+	cout << "Game created!" << endl;
 	//* GAME
 
 	int start[2];
@@ -38,8 +38,8 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 			// select a piece
 			while (true)
 			{
-				std::cout << "Input the piece's letter and number:" << std::endl;
-				std::cin >> startLetter >> start[0];
+				cout << "Input the piece's letter and number:" << endl;
+				cin >> startLetter >> start[0];
 				start[0]--;
 				startLetter = toupper(startLetter);
 				start[1] = (int)startLetter - ((int)'A'); // 0 - width
@@ -56,21 +56,21 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 						}
 						else
 						{
-							std::cout << "There aren't available positions to move your piece. Please, choose another" << std::endl;
+							cout << "There aren't available positions to move your piece. Please, choose another" << endl;
 						}
 					}
 					else
 					{
-						std::cout << "There is no piece in that position." << std::endl;
+						cout << "There is no piece in that position." << endl;
 					}
 				}
 				else
-					std::cout << "Imposible position." << std::endl;
+					cout << "Imposible position." << endl;
 			}
 			while (true)
 			{
-				std::cout << "Input the end position letter and number:" << std::endl;
-				std::cin >> endLetter >> end[0];
+				cout << "Input the end position letter and number:" << endl;
+				cin >> endLetter >> end[0];
 				end[0]--;
 				endLetter = toupper(endLetter);
 				end[1] = (int)endLetter - ((int)'A'); // 0 - width
@@ -79,7 +79,7 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 					break;
 				}
 				else
-					std::cout << "Imposible position." << std::endl;
+					cout << "Imposible position." << endl;
 			}
 			// make the movement in the gameboard
 			gameboard.move(start, end);
@@ -100,6 +100,7 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 			turn = !turn;
 			movements++;
 		}
+		
 	}
 	if (true)
 	{
@@ -182,57 +183,57 @@ int main()
 	//* INTERFAZ
 	while (true)
 	{
-		std::cout << "\nWhat do you want to do now?" << std::endl;
-		std::cout << "\t[P]lay" << std::endl;
-		std::cout << "\t[Q]uit" << std::endl;
-		std::cout << "\t[S]ettings (in progress)" << std::endl;
-		std::cout << std::endl;
-		std::cin >> command;
+		cout << "\nWhat do you want to do now?" << endl;
+		cout << "\t[P]lay" << endl;
+		cout << "\t[Q]uit" << endl;
+		cout << "\t[S]ettings (in progress)" << endl;
+		cout << endl;
+		cin >> command;
 		cleanScreen();
 		command = toupper(command);
 
 		switch (command)
 		{
 		case 'P':
-			std::cout << "\nLet's play!" << std::endl;
+			cout << "\nLet's play!" << endl;
 			result = game(nP1_pieces, nP2_pieces, bearingsP1_pieces, bearingsP2_pieces, 8, 8);
 			if (result == 0)
 			{
-				std::cout << " 🥳 P1 won the game!" << std::endl;
+				cout << " 🥳 P1 won the game!" << endl;
 			}
 			else if (result == 1)
 			{
-				std::cout << " P2 won the game! 🥳" << std::endl;
+				cout << " P2 won the game! 🥳" << endl;
 			}
 			else
 			{
-				std::cout << " Tie 🤯 No one won the game" << std::endl;
+				cout << " Tie 🤯 No one won the game" << endl;
 			}
 			break;
 		case 'Q':
-			std::cout << "\nGood bye 😥" << std::endl;
+			cout << "\nGood bye 😥" << endl;
 			return 0;
 			break;
 		case 'S':
-			std::cout << "\n<<--<---SETTINGS--->-->>" << std::endl;
+			cout << "\n<<--<---SETTINGS--->-->>" << endl;
 			// show settings:
-			std::cout << "Dimensions\t: " << width << height << std::endl;
+			cout << "Dimensions\t: " << width << height << endl;
 
-			std::cout << "\n<---ACTUAL GAMEBOARD--->" << std::endl;
+			cout << "\n<---ACTUAL GAMEBOARD--->" << endl;
 			//print actual gameboard
 
 			while (true)
 			{
-				std::cout << "\nWhat do you want to modify?" << std::endl;
-				std::cout << "\t[B]ack" << std::endl;
-				std::cout << "\tP[1] settings" << std::endl;
-				std::cout << "\tP[2] settings" << std::endl;
-				std::cout << "\t[C]lear the gameboard" << std::endl;
-				std::cout << "\t[G]ameboard settings" << std::endl;
+				cout << "\nWhat do you want to modify?" << endl;
+				cout << "\t[B]ack" << endl;
+				cout << "\tP[1] settings" << endl;
+				cout << "\tP[2] settings" << endl;
+				cout << "\t[C]lear the gameboard" << endl;
+				cout << "\t[G]ameboard settings" << endl;
 				// printf("\t[S]how settings\n");
 				printf("\t[S]how Gameboard\n");
 				// printf("\t[R]estart settings\n");
-				std::cin >> settings_command;
+				cin >> settings_command;
 				cleanScreen();
 
 				settings_command = toupper(settings_command);
@@ -243,20 +244,20 @@ int main()
 					settings_break = true;
 					break;
 				case '1':
-					std::cout << "\nNumber P1's pieces\t: " << sumUp(nP1_pieces, 6) << std::endl;
-					std::cout << "\tKing(s)\t: " << nP1_pieces[0] << std::endl;
-					std::cout << "\tQueen(s)\t: " << nP1_pieces[1] << std::endl;
-					std::cout << "\tRook(s)\t: " << nP1_pieces[2] << std::endl;
-					std::cout << "\tKnight(s)\t: " << nP1_pieces[3] << std::endl;
-					std::cout << "\tBishop(s)\t: " << nP1_pieces[4] << std::endl;
-					std::cout << "\tPawn(s)\t: " << nP1_pieces[5] << std::endl;
+					cout << "\nNumber P1's pieces\t: " << sumUp(nP1_pieces, 6) << endl;
+					cout << "\tKing(s)\t: " << nP1_pieces[0] << endl;
+					cout << "\tQueen(s)\t: " << nP1_pieces[1] << endl;
+					cout << "\tRook(s)\t: " << nP1_pieces[2] << endl;
+					cout << "\tKnight(s)\t: " << nP1_pieces[3] << endl;
+					cout << "\tBishop(s)\t: " << nP1_pieces[4] << endl;
+					cout << "\tPawn(s)\t: " << nP1_pieces[5] << endl;
 
-					std::cout << "\n[B]ack" << std::endl;
-					std::cout << "[~] Add or remove a piece" << std::endl;
-					std::cout << "[C]hange a piece position" << std::endl;
-					std::cout << "[S]how Gameboard" << std::endl;
-					std::cout << std::endl;
-					std::cin >> sub_command;
+					cout << "\n[B]ack" << endl;
+					cout << "[~] Add or remove a piece" << endl;
+					cout << "[C]hange a piece position" << endl;
+					cout << "[S]how Gameboard" << endl;
+					cout << endl;
+					cin >> sub_command;
 					cleanScreen();
 
 					sub_command = toupper(sub_command);
@@ -293,13 +294,13 @@ int main()
 					break;
 
 				case '2':
-					std::cout << "\nNumber P2's pieces\t: " << sumUp(nP2_pieces, 6) << std::endl;
-					std::cout << "\tKing(s)\t: " << nP2_pieces[0] << std::endl;
-					std::cout << "\tQueen(s)\t: " << nP2_pieces[1] << std::endl;
-					std::cout << "\tRook(s)\t: " << nP2_pieces[2] << std::endl;
-					std::cout << "\tKnight(s)\t: " << nP2_pieces[3] << std::endl;
-					std::cout << "\tBishop(s)\t: " << nP2_pieces[4] << std::endl;
-					std::cout << "\tPawn(s)\t: " << nP2_pieces[5] << std::endl;
+					cout << "\nNumber P2's pieces\t: " << sumUp(nP2_pieces, 6) << endl;
+					cout << "\tKing(s)\t: " << nP2_pieces[0] << endl;
+					cout << "\tQueen(s)\t: " << nP2_pieces[1] << endl;
+					cout << "\tRook(s)\t: " << nP2_pieces[2] << endl;
+					cout << "\tKnight(s)\t: " << nP2_pieces[3] << endl;
+					cout << "\tBishop(s)\t: " << nP2_pieces[4] << endl;
+					cout << "\tPawn(s)\t: " << nP2_pieces[5] << endl;
 					int nP2_king[1][2];
 					int nP2_queen[1][2];
 					int nP2_rook[2][2];
@@ -326,7 +327,7 @@ int main()
 			settings_command = ' ';
 			break;
 		default:
-			std::cout << "\nNot recognizable command" << std::endl;
+			cout << "\nNot recognizable command" << endl;
 			break;
 		}
 		command = ' ';

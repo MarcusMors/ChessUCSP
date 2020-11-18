@@ -2,7 +2,7 @@
 #include "../pieces/pieces.h"
 #include "../enums/enums.h"
 #include "../helpers.h"
-
+using namespace std;
 class Gameboard
 {
 public:
@@ -29,7 +29,7 @@ public:
 	// Gameboard() {}
 	Gameboard(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int bearingsP2_pieces[][2], int iWidth = 8, int iHeight = 8)
 	{
-		std::cout << "Inside Gameboard" << std::endl;
+		cout << "Inside Gameboard" << endl;
 		width = iWidth;
 		height = iHeight;
 
@@ -62,16 +62,15 @@ public:
 			accumulatedP1_pieces[i] = accumulatorP1;
 			accumulatedP2_pieces[i] = accumulatorP2;
 		}
-		std::cout << "Init Gameboard" << std::endl;
+		cout << "Init Gameboard" << endl;
 		initGameboard();
-		std::cout << "filling the Gameboard" << std::endl;
+		cout << "filling the Gameboard" << endl;
 		fillGameboard(accumulatedP1_pieces, totalP1_pieces, bearingsP1_pieces, true);  //P1
 		fillGameboard(accumulatedP2_pieces, totalP2_pieces, bearingsP2_pieces, false); //P2
 		initShowVars();
 	}
 	bool validMovement()
 	{
-
 		// Your king has been moved earlier in the game.
 		// The rook that you would castle with has been moved earlier in the game.
 		// There are pieces standing between your king and rook.
@@ -97,38 +96,37 @@ public:
 		bool availableMovement;
 		switch (piece)
 		{
-		case PiecesChar::charP1_king:
-			piecePossibilities = 0;
-			availableMovement;
-			break;
-		case PiecesChar::charP1_queen:
-			piecePossibilities = 1;
-			if (drawDiagonals(place))
-			{
-				availableMovement = true;
-			}
-			else
-				availableMovement;
-			break;
-		case PiecesChar::charP1_rook:
-			piecePossibilities = 2;
-			availableMovement;
-			break;
-		case PiecesChar::charP1_knight:
-			piecePossibilities = 3;
-			availableMovement;
-			break;
-		case PiecesChar::charP1_bishop:
-			piecePossibilities = 4;
-			availableMovement = drawDiagonals(place);
-			break;
-		case PiecesChar::charP1_pawn:
-			availableMovement = true;
-			piecePossibilities = 5;
-			break;
-
-		default:
-			break;
+            case PiecesChar::charP1_king:
+                piecePossibilities = 0;
+                availableMovement;
+                break;
+            case PiecesChar::charP1_queen:
+                piecePossibilities = 1;
+                if (drawDiagonals(place))
+                {
+                    availableMovement = true;
+                }
+                else
+                    availableMovement;
+                break;
+            case PiecesChar::charP1_rook:
+                piecePossibilities = 2;
+                availableMovement;
+                break;
+            case PiecesChar::charP1_knight:
+                piecePossibilities = 3;
+                availableMovement;
+                break;
+            case PiecesChar::charP1_bishop:
+                piecePossibilities = 4;
+                availableMovement = drawDiagonals(place);
+                break;
+            case PiecesChar::charP1_pawn:
+                availableMovement = true;
+                piecePossibilities = 5;
+                break;
+            default:
+                break;
 		}
 		if (availableMovement)
 		{
@@ -162,34 +160,34 @@ public:
 	void show()
 	{
 		// Letters, upper gameframe
-		std::cout << equatorBlank << meridianChar;
+		cout << equatorBlank << meridianChar;
 		for (int i = 0; i < width; i++)
 		{
 			slotPiece[slotWidth / 2] = ((char)letter + i);
-			std::cout << slotPiece << meridianChar;
+			cout << slotPiece << meridianChar;
 		}
-		std::cout << std::endl;
+		cout << endl;
 		// Gameboard
 		for (int i = 0; i < height; i++)
 		{
 			//first frame
-			std::cout << equatorFrame << meridianChar;
+			cout << equatorFrame << meridianChar;
 			for (int j = 0; j < width; j++)
 			{
-				std::cout << equatorSlot << meridianChar;
+				cout << equatorSlot << meridianChar;
 			}
-			std::cout << equatorFrame << std::endl;
+			cout << equatorFrame << endl;
 
 			for (int j = 0; j < 2; j++)
 			{
 				// Left frame (equator)
                 if (j == 1)
                 {
-                    std::cout << blankChar << number+i << blankChar << meridianChar;
+                    cout << blankChar << number+i << blankChar << meridianChar;
                 }
                 else
                 {
-                    std::cout << equatorBlank << meridianChar;
+                    cout << equatorBlank << meridianChar;
                 }
 				// Slot
 				for (int o = 0; o < slotWidth + 1; o++)
@@ -197,31 +195,31 @@ public:
 					if (j == 1)
 					{
 						slotPiece[slotWidth / 2] = (char)slots[i][o];
-						std::cout << slotPiece << meridianChar;
+						cout << slotPiece << meridianChar;
 					}
 					else
 					{
-						std::cout << slotBlank << meridianChar;
+						cout << slotBlank << meridianChar;
 					}
 				}
 				//Right Frame (equator)
-				std::cout << equatorBlank << std::endl;
+				cout << equatorBlank << endl;
 			}
 		}
 		// Letters, bottom gameframe
-		std::cout << equatorFrame << meridianChar;
+		cout << equatorFrame << meridianChar;
 		for (int j = 0; j < width; j++)
 		{
-			std::cout << equatorSlot << meridianChar;
+			cout << equatorSlot << meridianChar;
 		}
-		std::cout << equatorFrame << std::endl;
-		std::cout << equatorBlank << meridianChar;
+		cout << equatorFrame << endl;
+		cout << equatorBlank << meridianChar;
 		for (int i = 0; i < width; i++)
 		{
 			slotPiece[slotWidth / 2] = ((char)letter + i);
-			std::cout << slotPiece << meridianChar;
+			cout << slotPiece << meridianChar;
 		}
-		std::cout << std::endl;
+		cout << endl;
 	}
 
 private:
@@ -487,11 +485,11 @@ private:
 					slots[bearings[i][0]][bearings[i][1]] = char_pawn;
 					break;
 				default:
-					std::cout << "\nAn error happened while initializing" << std::endl;
-					std::cout << "iterator\t: " << i << std::endl;
-					std::cout << "accumulated\t: " << accumulated[piece] << std::endl;
-					std::cout << "piece\t: " << piece << std::endl;
-					std::cout << "pieceIndex\t: " << pieceIndex << std::endl;
+					cout << "\nAn error happened while initializing" << endl;
+					cout << "iterator\t: " << i << endl;
+					cout << "accumulated\t: " << accumulated[piece] << endl;
+					cout << "piece\t: " << piece << endl;
+					cout << "pieceIndex\t: " << pieceIndex << endl;
 					break;
 				}
 				pieceIndex++;
