@@ -1,4 +1,6 @@
 cmake-build-debug
 CMakeLists.txt
 .idea
-
+.vscode
+main
+test
