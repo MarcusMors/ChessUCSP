@@ -35,6 +35,7 @@ enum PiecesChar
 	// char_bishop = 'a',
 	// char_pawn = 'p',
 
+	// P1 is always in minuscules
 	charP1_king = 'r',
 	charP1_queen = 'q',
 	charP1_rook = 't',
@@ -42,6 +43,7 @@ enum PiecesChar
 	charP1_bishop = 'a',
 	charP1_pawn = 'p',
 
+	// P2 IS ALWAYS IN MAJUSCULES
 	charP2_king = 'R',
 	charP2_queen = 'Q',
 	charP2_rook = 'T',

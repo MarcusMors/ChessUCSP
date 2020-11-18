@@ -8,7 +8,6 @@ class Gameboard
 public:
 	// 2D ptrptr?
 	char slots[26][26];
-	char slotsPossibilities[26][26];
 
 	int width;
 	int height;
@@ -89,8 +88,76 @@ public:
 		slots[start[0]][start[1]] = PiecesChar::char_free;
 		slots[end[0]][end[1]] = piece;
 	}
-	void piecePossibilities()
+	// bool bishopValid(int start[2], int end[2])
+	// {
+	// }
+	bool piecePossibilities(int place[2], char piece) // ONLY P1 need visual reference
 	{
+		int piecePossibilities;
+		bool availableMovement;
+		switch (piece)
+		{
+		case PiecesChar::charP1_king:
+			piecePossibilities = 0;
+			availableMovement;
+			break;
+		case PiecesChar::charP1_queen:
+			piecePossibilities = 1;
+			if (drawDiagonals(place))
+			{
+				availableMovement = true;
+			}
+			else
+				availableMovement;
+			break;
+		case PiecesChar::charP1_rook:
+			piecePossibilities = 2;
+			availableMovement;
+			break;
+		case PiecesChar::charP1_knight:
+			piecePossibilities = 3;
+			availableMovement;
+			break;
+		case PiecesChar::charP1_bishop:
+			piecePossibilities = 4;
+			availableMovement = drawDiagonals(place);
+			break;
+		case PiecesChar::charP1_pawn:
+			availableMovement = true;
+			piecePossibilities = 5;
+			break;
+
+		default:
+			break;
+		}
+		if (availableMovement)
+		{
+			show();
+			switch (piecePossibilities)
+			{
+			case 0:
+				break;
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				undrawDiagonals(place);
+				break;
+			case 5:
+				break;
+
+			default:
+				break;
+			}
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	void show()
 	{
@@ -194,6 +261,131 @@ private:
 			slotPiece[i] = blankChar;
 		}
 	}
+	void undrawDiagonals(int place[2])
+	{
+		int i, j;
+		//(+x;+y) diagonal
+		i = place[0] - 1;
+		j = place[1] + 1;
+		for (; (-1 < i) && (j < width); (i--) && (j++))
+		{
+			if (slots[i][j] == '*')
+			{
+				slots[i][j] = PiecesChar::char_free;
+			}
+			else
+				break;
+		}
+		//(-x;+y) diagonal
+		i = place[0] - 1;
+		j = place[1] - 1;
+		for (; (-1 < i) && (-1 < j); (i--) && (j--))
+		{
+			if (slots[i][j] == '*')
+			{
+				slots[i][j] = PiecesChar::char_free;
+			}
+			else
+				break;
+		}
+		//(-x;-y) diagonal
+		i = place[0] + 1;
+		j = place[1] - 1;
+		for (; (i < height) && (-1 < j); (i++) && (j--))
+		{
+			if (slots[i][j] == '*')
+			{
+				slots[i][j] = PiecesChar::char_free;
+			}
+			else
+				break;
+		}
+		//(+x;-y) diagonal
+		i = place[0] + 1;
+		j = place[1] + 1;
+		for (; (i < height) && (-1 < j); (i++) && (j--))
+		{
+			if (slots[i][j] == '*')
+			{
+				slots[i][j] = PiecesChar::char_free;
+			}
+			else
+				break;
+		}
+	}
+
+	bool drawDiagonals(int place[2])
+	{
+		bool availableMovement = false;
+		int i, j;
+		// while ((-1 < i) && (-1 < j))
+		// {
+		// }
+		//(+x;+y) diagonal
+		i = place[0] - 1;
+		j = place[1] + 1;
+		for (; (-1 < i) && (j < width); (i--) && (j++))
+		{
+			if (slots[i][j] == PiecesChar::char_free)
+			{
+				slots[i][j] = '*';
+				availableMovement = true;
+			}
+			else
+				break;
+		}
+		// for (int i = place[0] - 1; (-1 < i) && (j < width); i--)
+		// {
+		// 	j++;
+		// 	if (slots[i][j] == PiecesChar::char_free)
+		// 		slots[i][j] = '*';
+		// 	else
+		// 		break;
+		// }
+		// j = place[1];
+		// for(int xy[2] = {place[0] + 1 ,place[1]-1}; ()&&();xy[0]++)
+
+		//(-x;+y) diagonal
+		i = place[0] - 1;
+		j = place[1] - 1;
+		for (; (-1 < i) && (-1 < j); (i--) && (j--))
+		{
+			if (slots[i][j] == PiecesChar::char_free)
+			{
+				slots[i][j] = '*';
+				availableMovement = true;
+			}
+			else
+				break;
+		}
+		//(-x;-y) diagonal
+		i = place[0] + 1;
+		j = place[1] - 1;
+		for (; (i < height) && (-1 < j); (i++) && (j--))
+		{
+			if (slots[i][j] == PiecesChar::char_free)
+			{
+				slots[i][j] = '*';
+				availableMovement = true;
+			}
+			else
+				break;
+		}
+		//(+x;-y) diagonal
+		i = place[0] + 1;
+		j = place[1] + 1;
+		for (; (i < height) && (-1 < j); (i++) && (j--))
+		{
+			if (slots[i][j] == PiecesChar::char_free)
+			{
+				slots[i][j] = '*';
+				availableMovement = true;
+			}
+			else
+				break;
+		}
+		return availableMovement;
+	}
 
 	void initGameboard()
 	{
@@ -201,6 +393,7 @@ private:
 			for (int j = 0; j < height; j++)
 				slots[i][j] = PiecesChar::char_free;
 	}
+
 	void fillGameboard(int accumulated[6], int total, int bearings[][2], bool player)
 	{
 

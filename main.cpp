@@ -5,7 +5,7 @@
 
 using namespace std;
 
-OnceAnnouncement announcement(4);
+OnceAnnouncement announcement(5);
 
 int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int bearingsP2_pieces[][2], int width = 8, int height = 8)
 {
@@ -14,6 +14,7 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 	int movements = 0;
 	int difficulty = 2; //movement projection, predicted or calculation in the future
 	bool turn = true;
+	bool availableMovement = false;
 
 	//construct/ declaring the pieces
 	Gameboard gameboard(nP1_pieces, nP2_pieces, bearingsP1_pieces, bearingsP2_pieces, width, height);
@@ -26,7 +27,7 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 	char endLetter;
 	int startNumber;
 	int endNumber;
-	char slot;
+	char piece;
 
 	while (true)
 	{
@@ -44,13 +45,19 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 				start[1] = (int)startLetter - ((int)'A'); // 0 - width
 				if ((-1 < start[1]) && (start[1] < width) && (-1 < start[0]) && (start[0] < height))
 				{
-					slot = gameboard.slots[start[0]][start[1]];
-					if (slot != PiecesChar::char_free)
+					piece = gameboard.slots[start[0]][start[1]];
+					// piece is a piece and belongs to P1
+					if ((piece != PiecesChar::char_free) && ((int)piece < ((int)'z' + 1)) && ((int)piece > ((int)'a' - 1)))
 					{
-						// if (slot == PiecesChar::charP1_pawn)
-						// {
-						// }
-						break;
+						availableMovement = gameboard.piecePossibilities(start, piece);
+						if (availableMovement)
+						{
+							break;
+						}
+						else
+						{
+							std::cout << "There aren't available positions to move your piece. Please, choose another" << std::endl;
+						}
 					}
 					else
 					{
@@ -62,7 +69,6 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 			}
 			while (true)
 			{
-				// show gameboard with possibilities.
 				std::cout << "Input the end position letter and number:" << std::endl;
 				std::cin >> endLetter >> end[0];
 				end[0]--;
@@ -91,22 +97,24 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 			// make a plan
 			// make the first movement plan
 			// make the movement in the gameboard
+			turn = !turn;
 			movements++;
 		}
-		if (true)
-		{
-			break;
-		}
-		if (gameboard.P1_kings_ptr[0].checkmate)
-		{
-			result = 0;
-			break;
-		}
-		else if (gameboard.P2_kings_ptr[0].checkmate)
-		{
-			result = 1;
-			break;
-		}
+	}
+	if (true)
+	{
+		;
+		// break;
+	}
+	if (gameboard.P1_kings_ptr[0].checkmate)
+	{
+		result = 0;
+		// break;
+	}
+	else if (gameboard.P2_kings_ptr[0].checkmate)
+	{
+		result = 1;
+		// break;
 	}
 
 	return result;
