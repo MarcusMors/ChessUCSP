@@ -2,6 +2,10 @@
 #include "../pieces/pieces.h"
 #include "../enums/enums.h"
 #include "../helpers.h"
+
+int P1_score = 0;
+int P2_score = 0;
+
 using namespace std;
 class Gameboard
 {
@@ -25,13 +29,24 @@ public:
 	Knight *P2_knights_ptr;
 	Bishop *P2_bishops_ptr;
 	Pawn *P2_pawns_ptr;
+	int nP1_pieces[6];
+	int nP2_pieces[6];
 
 	// Gameboard() {}
-	Gameboard(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int bearingsP2_pieces[][2], int iWidth = 8, int iHeight = 8)
+	Gameboard(int inP1_pieces[6], int inP2_pieces[6], int bearingsP1_pieces[][2], int bearingsP2_pieces[][2], int iWidth = 8, int iHeight = 8)
 	{
 		cout << "Inside Gameboard" << endl;
 		width = iWidth;
 		height = iHeight;
+
+		for (int i = 0; i < 6; i++)
+		{
+			nP1_pieces[i] = inP1_pieces[i];
+		}
+		for (int i = 0; i < 6; i++)
+		{
+			nP2_pieces[i] = inP2_pieces[i];
+		}
 
 		P1_kings_ptr = new King[nP1_pieces[0]];
 		P1_queens_ptr = new Queen[nP1_pieces[1]];
@@ -80,9 +95,131 @@ public:
 		bool valid;
 		return valid;
 	}
-	void move(int start[2], int end[2])
+	void move(int start[2], int end[2], bool player, bool eat)
 	{
 		char piece = slots[start[0]][start[1]];
+		if (player)
+		{
+			switch (piece)
+			{
+			case PiecesChar::charP1_king:
+				for (int i = 0; i < nP1_pieces[0]; i++)
+					if ((start[0] == P1_kings_ptr[i].position[0]) && (start[1] == P1_kings_ptr[i].position[1]))
+					{
+						P1_kings_ptr[i].position[0] = end[0];
+						P1_kings_ptr[i].position[1] = end[1];
+						P1_kings_ptr[i].movements++;
+					};
+				break;
+			case PiecesChar::charP1_queen:
+				for (int i = 0; i < nP1_pieces[1]; i++)
+					if ((start[0] == P1_queens_ptr[i].position[0]) && (start[1] == P1_queens_ptr[i].position[1]))
+					{
+						P1_queens_ptr[i].position[0] = end[0];
+						P1_queens_ptr[i].position[1] = end[1];
+					};
+				break;
+			case PiecesChar::charP1_rook:
+				for (int i = 0; i < nP1_pieces[2]; i++)
+					if ((start[0] == P1_rooks_ptr[i].position[0]) && (start[1] == P1_rooks_ptr[i].position[1]))
+					{
+						P1_rooks_ptr[i].position[0] = end[0];
+						P1_rooks_ptr[i].position[1] = end[1];
+						P1_rooks_ptr[i].movements++;
+					};
+				break;
+			case PiecesChar::charP1_knight:
+				for (int i = 0; i < nP1_pieces[3]; i++)
+					if ((start[0] == P1_knights_ptr[i].position[0]) && (start[1] == P1_knights_ptr[i].position[1]))
+					{
+						P1_knights_ptr[i].position[0] = end[0];
+						P1_knights_ptr[i].position[1] = end[1];
+					};
+				break;
+			case PiecesChar::charP1_bishop:
+				for (int i = 0; i < nP1_pieces[4]; i++)
+					if ((start[0] == P1_bishops_ptr[i].position[0]) && (start[1] == P1_bishops_ptr[i].position[1]))
+					{
+						P1_bishops_ptr[i].position[0] = end[0];
+						P1_bishops_ptr[i].position[1] = end[1];
+					};
+				break;
+			case PiecesChar::charP1_pawn:
+				for (int i = 0; i < nP1_pieces[5]; i++)
+					if ((start[0] == P1_pawns_ptr[i].position[0]) && (start[1] == P1_pawns_ptr[i].position[1]))
+					{
+						P1_pawns_ptr[i].position[0] = end[0];
+						P1_pawns_ptr[i].position[1] = end[1];
+						P1_pawns_ptr[i].movements++;
+					};
+				break;
+
+			default:
+				std::cout << "An error happened while moving" << std::endl;
+				break;
+			}
+		}
+		else
+		{
+			switch (piece)
+			{
+			case PiecesChar::charP2_king:
+				for (int i = 0; i < nP1_pieces[5]; i++)
+					if ((start[0] == P2_kings_ptr[i].position[0]) && (start[1] == P2_kings_ptr[i].position[1]))
+					{
+						P2_kings_ptr[i].position[0] = end[0];
+						P2_kings_ptr[i].position[1] = end[1];
+						P2_kings_ptr[i].movements++;
+					};
+				break;
+			case PiecesChar::charP2_queen:
+				for (int i = 0; i < nP2_pieces[5]; i++)
+					if ((start[0] == P2_queens_ptr[i].position[0]) && (start[1] == P2_queens_ptr[i].position[1]))
+					{
+						P2_queens_ptr[i].position[0] = end[0];
+						P2_queens_ptr[i].position[1] = end[1];
+					};
+				break;
+			case PiecesChar::charP2_rook:
+				for (int i = 0; i < nP2_pieces[5]; i++)
+					if ((start[0] == P2_rooks_ptr[i].position[0]) && (start[1] == P2_rooks_ptr[i].position[1]))
+					{
+						P2_rooks_ptr[i].position[0] = end[0];
+						P2_rooks_ptr[i].position[1] = end[1];
+						P2_rooks_ptr[i].movements++;
+					};
+				break;
+			case PiecesChar::charP2_knight:
+				for (int i = 0; i < nP2_pieces[5]; i++)
+					if ((start[0] == P2_knights_ptr[i].position[0]) && (start[1] == P2_knights_ptr[i].position[1]))
+					{
+						P2_knights_ptr[i].position[0] = end[0];
+						P2_knights_ptr[i].position[1] = end[1];
+					};
+				break;
+			case PiecesChar::charP2_bishop:
+				for (int i = 0; i < nP2_pieces[5]; i++)
+					if ((start[0] == P2_bishops_ptr[i].position[0]) && (start[1] == P2_bishops_ptr[i].position[1]))
+					{
+						P2_bishops_ptr[i].position[0] = end[0];
+						P2_bishops_ptr[i].position[1] = end[1];
+					};
+				break;
+			case PiecesChar::charP2_pawn:
+				for (int i = 0; i < nP2_pieces[5]; i++)
+					if ((start[0] == P2_pawns_ptr[i].position[0]) && (start[1] == P2_pawns_ptr[i].position[1]))
+					{
+						P2_pawns_ptr[i].position[0] = end[0];
+						P2_pawns_ptr[i].position[1] = end[1];
+						P2_pawns_ptr[i].movements++;
+					};
+				break;
+
+			default:
+				std::cout << "An error happened while moving" << std::endl;
+				break;
+			}
+		}
 		// how can we get the object?
 		slots[start[0]][start[1]] = PiecesChar::char_free;
 		slots[end[0]][end[1]] = piece;
@@ -181,14 +318,14 @@ public:
 			for (int j = 0; j < 2; j++)
 			{
 				// Left frame (equator)
-                if (j == 1)
-                {
-                    cout << blankChar << number+i << blankChar << meridianChar;
-                }
-                else
-                {
-                    cout << equatorBlank << meridianChar;
-                }
+				if (j == 1)
+				{
+					cout << blankChar << number + i << blankChar << meridianChar;
+				}
+				else
+				{
+					cout << equatorBlank << meridianChar;
+				}
 				// Slot
 				for (int o = 0; o < slotWidth + 1; o++)
 				{
