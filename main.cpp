@@ -1,6 +1,18 @@
 #include <iostream>
-
-int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+#include "Librerias/Tablero/Tablero.h"
+using namespace std;
+int main(){
+    char m[8][8] = {{'T', 'C', 'A', 'R', 'Q', 'A', 'C', 'T'},
+                    {'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
+                    {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                    {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                    {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                    {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                    {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+                    {'t', 'c', 'a', 'q', 'r', 'a', 'c', 't'}};
+    tablero(m);
+    while (true){
+        cambio(m, ' ', 0, ' ', 0);
+    }
 }
+
