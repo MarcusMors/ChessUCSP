@@ -1,3 +1,7 @@
+#ifndef CHESS_UCSP_PIECES_H
+#define CHESS_UCSP_PIECES_H
+#endif
+
 class Piece
 {
 public:

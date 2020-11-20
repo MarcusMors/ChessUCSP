@@ -1,3 +1,6 @@
+#ifndef CHESS_UCSP_ENUMS_H
+#define CHESS_UCSP_ENUMS_H
+#endif
 
 enum PiecesInt
 {
