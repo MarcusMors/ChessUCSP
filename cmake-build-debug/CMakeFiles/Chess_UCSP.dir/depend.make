@@ -3,7 +3,7 @@
 
 CMakeFiles/Chess_UCSP.dir/main.cpp.obj: ../Librerias/enums/enums.h
 CMakeFiles/Chess_UCSP.dir/main.cpp.obj: ../Librerias/gameboard/gameboard.h
-CMakeFiles/Chess_UCSP.dir/main.cpp.obj: ../Librerias/helpers.h
+CMakeFiles/Chess_UCSP.dir/main.cpp.obj: ../Librerias/helpers/helpers.h
 CMakeFiles/Chess_UCSP.dir/main.cpp.obj: ../Librerias/pieces/pieces.h
 CMakeFiles/Chess_UCSP.dir/main.cpp.obj: ../main.cpp
 
