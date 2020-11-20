@@ -41,3 +41,7 @@ long long min(long long arr[], long long length)
 	return min;
 }
 
+//! ASK LOAIZA-SENSEI
+// OnceAnnouncement::OnceAnnouncement(int I = 0)
+// {
+// }
