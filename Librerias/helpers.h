@@ -2,27 +2,12 @@
 
 using namespace std;
 
-void cleanScreen(int I = 30)
-{
-	for (int i = 0; i < I; i++)
-		printf("\n");
-}
+void cleanScreen(int I = 30);
+long long max(long long arr[], long long length);
+long long min(long long arr[], long long length);
+int letterToInt(char letter);
 
-int letterToInt(char letter)
-{
-	int num;
-
-	return num;
-}
-
-int sumUp(int arr[], int length)
-{
-	int accumulator = 0;
-	for (int i = 0; i < length; i++)
-		accumulator += arr[i];
-
-	return accumulator;
-}
+int sumUp(int arr[], int length);
 
 char anything;
 class OnceAnnouncement
