@@ -85,7 +85,7 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 						//eat
 						break;
 					else
-						std::cout << "You can't capture your own pieces." << std::endl;
+						cout << "You can't capture your own pieces." << endl;
 				}
 				else
 					cout << "Imposible position." << endl;
@@ -197,7 +197,7 @@ int main()
 		cout << "\t[S]ettings (in progress)" << endl;
 		cout << endl;
 		cin >> command;
-		cleanScreen();
+		cleanScreen(30);
 		command = toupper(command);
 
 		switch (command)
@@ -242,7 +242,7 @@ int main()
 				printf("\t[S]how Gameboard\n");
 				// printf("\t[R]estart settings\n");
 				cin >> settings_command;
-				cleanScreen();
+				cleanScreen(30);
 
 				settings_command = toupper(settings_command);
 
@@ -266,7 +266,7 @@ int main()
 					cout << "[S]how Gameboard" << endl;
 					cout << endl;
 					cin >> sub_command;
-					cleanScreen();
+					cleanScreen(30);
 
 					sub_command = toupper(sub_command);
 

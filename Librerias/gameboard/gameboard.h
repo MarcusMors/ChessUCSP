@@ -5,7 +5,7 @@
 #include <iostream>
 #include "../pieces/pieces.h"
 #include "../enums/enums.h"
-#include "../helpers.h"
+#include "../helpers/helpers.h"
 
 int P1_score = 0;
 int P2_score = 0;
