@@ -3,9 +3,8 @@
 
 using namespace std;
 
-void cleanScreen(int I)
+void cleanScreen(int I=30)
 {
-    I=30;
 	for (int i = 0; i < I; i++)
 		std::cout << std::endl;
 }
@@ -47,7 +46,6 @@ long long min(long long arr[], long long length)
 
 OnceAnnouncement::OnceAnnouncement(int I)
 {
-    I=0;
 	{
 		cleanScreen();
 		switch (I)
