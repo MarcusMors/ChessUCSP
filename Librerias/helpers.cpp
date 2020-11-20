@@ -49,7 +49,7 @@ OnceAnnouncement::OnceAnnouncement(int I)
 {
     I=0;
 	{
-		cleanScreen();
+		cleanScreen(30);
 		switch (I)
 		{
 		case 0:

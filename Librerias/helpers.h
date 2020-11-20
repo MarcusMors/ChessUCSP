@@ -1,6 +1,6 @@
-// #ifndef CHESS_UCSP_HELPERS_H
-// #define CHESS_UCSP_HELPERS_H
-// #endif
+#ifndef CHESS_UCSP_HELPERS_H
+#define CHESS_UCSP_HELPERS_H
+#endif
 
 void cleanScreen(int );
 long long max(long long [], long long );
