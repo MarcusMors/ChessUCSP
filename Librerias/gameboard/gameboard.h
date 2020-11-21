@@ -47,15 +47,15 @@ public:
 	{
 		capture(start, end);
 	}
-	bool validDiagonal()
+	bool validDiagonal() // Diagonal
 	{
 		return true;
 	}
-	bool validStraight()
+	bool validStraight() // Línea recta
 	{
 		return true;
 	}
-	bool validJump()
+	bool validJump() // Salto de caballo
 	{
 		return true;
 	}
@@ -63,11 +63,11 @@ public:
 	{
 		return true;
 	}
-	bool validKingsideCastling()
+	bool validKingsideCastling() // Enroque de rey
 	{
 		return true;
 	}
-	bool validQueensideCastling()
+	bool validQueensideCastling() // Enroque de reina
 	{
 		return true;
 	}
