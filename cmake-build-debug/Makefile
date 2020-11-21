@@ -67,10 +67,10 @@ RM = "E:\Clion\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP"
+CMAKE_SOURCE_DIR = "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codes\Chess_UCSP"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug"
+CMAKE_BINARY_DIR = "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codes\Chess_UCSP\cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug\CMakeFiles" "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codes\Chess_UCSP\cmake-build-debug\CMakeFiles" "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codes\Chess_UCSP\cmake-build-debug\CMakeFiles\progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codigos\Chess_UCSP\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codes\Chess_UCSP\cmake-build-debug\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -142,60 +142,6 @@ Chess_UCSP/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/build
 .PHONY : Chess_UCSP/fast
 
-Librerias/Piezas/Piezas.obj: Librerias/Piezas/Piezas.cpp.obj
-
-.PHONY : Librerias/Piezas/Piezas.obj
-
-# target to build an object file
-Librerias/Piezas/Piezas.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/Piezas/Piezas.cpp.obj
-.PHONY : Librerias/Piezas/Piezas.cpp.obj
-
-Librerias/Piezas/Piezas.i: Librerias/Piezas/Piezas.cpp.i
-
-.PHONY : Librerias/Piezas/Piezas.i
-
-# target to preprocess a source file
-Librerias/Piezas/Piezas.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/Piezas/Piezas.cpp.i
-.PHONY : Librerias/Piezas/Piezas.cpp.i
-
-Librerias/Piezas/Piezas.s: Librerias/Piezas/Piezas.cpp.s
-
-.PHONY : Librerias/Piezas/Piezas.s
-
-# target to generate assembly for a file
-Librerias/Piezas/Piezas.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/Piezas/Piezas.cpp.s
-.PHONY : Librerias/Piezas/Piezas.cpp.s
-
-Librerias/Tablero/Tablero.obj: Librerias/Tablero/Tablero.cpp.obj
-
-.PHONY : Librerias/Tablero/Tablero.obj
-
-# target to build an object file
-Librerias/Tablero/Tablero.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.obj
-.PHONY : Librerias/Tablero/Tablero.cpp.obj
-
-Librerias/Tablero/Tablero.i: Librerias/Tablero/Tablero.cpp.i
-
-.PHONY : Librerias/Tablero/Tablero.i
-
-# target to preprocess a source file
-Librerias/Tablero/Tablero.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.i
-.PHONY : Librerias/Tablero/Tablero.cpp.i
-
-Librerias/Tablero/Tablero.s: Librerias/Tablero/Tablero.cpp.s
-
-.PHONY : Librerias/Tablero/Tablero.s
-
-# target to generate assembly for a file
-Librerias/Tablero/Tablero.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/Tablero/Tablero.cpp.s
-.PHONY : Librerias/Tablero/Tablero.cpp.s
-
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -232,12 +178,6 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Chess_UCSP
-	@echo ... Librerias/Piezas/Piezas.obj
-	@echo ... Librerias/Piezas/Piezas.i
-	@echo ... Librerias/Piezas/Piezas.s
-	@echo ... Librerias/Tablero/Tablero.obj
-	@echo ... Librerias/Tablero/Tablero.i
-	@echo ... Librerias/Tablero/Tablero.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
