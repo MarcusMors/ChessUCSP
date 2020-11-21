@@ -47,7 +47,30 @@ public:
 	{
 		capture(start, end);
 	}
-
+	bool validDiagonal()
+	{
+		return true;
+	}
+	bool validStraight()
+	{
+		return true;
+	}
+	bool validJump()
+	{
+		return true;
+	}
+	bool validEnPassant()
+	{
+		return true;
+	}
+	bool validKingsideCastling()
+	{
+		return true;
+	}
+	bool validQueensideCastling()
+	{
+		return true;
+	}
 	bool piecePossibilities(int place[2]) // ONLY P1 need visual reference
 	{
 		cout << "piecePossibilities" << endl;

@@ -24,20 +24,20 @@ int sumUp(int arr[], int length)
 	return accumulator;
 }
 
-long long max(long long arr[], long long length)
+int max(int arr[], int length)
 {
-	long long max = -10000;
-	for (long long i = 0; i < length; i++)
+	int max = -10000;
+	for (int i = 0; i < length; i++)
 	{
 		max = (max < arr[i]) ? arr[i] : max;
 	}
 	return max;
 }
 
-long long min(long long arr[], long long length)
+int min(int arr[], int length)
 {
-	long long min = 10000;
-	for (long long i = 0; i < length; i++)
+	int min = 10000;
+	for (int i = 0; i < length; i++)
 	{
 		min = (min > arr[i]) ? arr[i] : min;
 	}

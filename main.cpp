@@ -2,7 +2,6 @@
 #include "Librerias/IA/IA.h"
 
 using namespace std;
-// using namespace CHESS_UCSP_HELPERS_H;??
 
 OnceAnnouncement announcement(5);
 
@@ -11,7 +10,7 @@ int game(int P1PiecesInit[][3], int nP1Pieces, int P2PiecesInit[][3], int nP2Pie
 	cout << "Creating the gameboard." << endl;
 	int result = 0;
 	int movements = 0;
-	int difficulty = 3; //movement projection, predicted or calculation in the future
+	int difficulty = 2; //movement projection, predicted or calculation in the future
 	bool turn = true;
 	bool availableMovement = false;
 
@@ -105,6 +104,32 @@ int game(int P1PiecesInit[][3], int nP1Pieces, int P2PiecesInit[][3], int nP2Pie
 		}
 		else //* P2 turn
 		{
+
+			int n;
+			cin >> n;
+			int example[1];
+			int bearingsPoints[n][3];
+			int auxBearingsPoints[3];
+			int start[2] = {0, 0};
+			int maxPoints;
+			int count = 0;
+
+			for (int i = 0; i < n; i++)
+			{
+				cin >> auxBearingsPoints[0] >> auxBearingsPoints[1] >> auxBearingsPoints[2];
+				if (auxBearingsPoints[1] > auxBearingsPoints[0])
+				{
+					continue;
+				}
+				bearingsPoints[count][0] = auxBearingsPoints[0];
+				bearingsPoints[count][1] = auxBearingsPoints[1];
+				bearingsPoints[count][2] = auxBearingsPoints[2];
+				count++;
+			}
+
+			maxPoints = intelligence(start, bearingsPoints, count, 0);
+			std::cout << maxPoints << std::endl;
+
 			//* strategic points (ruin the castle movement, position, get more options, get good options, exchange strain?, etc? suggest please), piece points,
 
 			// pass the state of the game

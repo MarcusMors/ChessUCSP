@@ -3,8 +3,8 @@
 #endif
 
 void cleanScreen(int);
-long long max(long long[], long long);
-long long min(long long[], long long);
+int max(int[], int);
+int min(int[], int);
 int letterToInt(char);
 
 int sumUp(int[], int);
