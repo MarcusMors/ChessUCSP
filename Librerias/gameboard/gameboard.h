@@ -59,7 +59,7 @@ public:
 	{
 		return true;
 	}
-	bool validEnPassant()
+	bool validEnPassant() // Peón al paso
 	{
 		return true;
 	}
