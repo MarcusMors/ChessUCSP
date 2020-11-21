@@ -1,23 +1,23 @@
 #include <iostream>
-#include "Librerias/gameboard/gameboard.h"
+#include "Librerias/IA/IA.h"
 
 using namespace std;
 // using namespace CHESS_UCSP_HELPERS_H;??
 
 OnceAnnouncement announcement(5);
 
-int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int bearingsP2_pieces[][2], int width = 8, int height = 8)
+int game(int P1PiecesInit[][3], int nP1Pieces, int P2PiecesInit[][3], int nP2Pieces, int width = 8, int height = 8)
 {
-	cout << "Creating the game." << endl;
+	cout << "Creating the gameboard." << endl;
 	int result = 0;
 	int movements = 0;
-	int difficulty = 2; //movement projection, predicted or calculation in the future
+	int difficulty = 3; //movement projection, predicted or calculation in the future
 	bool turn = true;
 	bool availableMovement = false;
 
 	//construct/ declaring the pieces
-	Gameboard gameboard(nP1_pieces, nP2_pieces, bearingsP1_pieces, bearingsP2_pieces, width, height);
-	cout << "Game created!" << endl;
+	Gameboard gameboard(P1PiecesInit, nP1Pieces, P2PiecesInit, nP2Pieces, width, height);
+	cout << "Gameboard created!" << endl;
 	//* GAME
 
 	int start[2];
@@ -26,8 +26,9 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 	char endLetter;
 	int startNumber;
 	int endNumber;
-	char piece;
+	char symbol;
 	char endSlot;
+	bool isFree;
 
 	while (true)
 	{
@@ -45,11 +46,12 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 				start[1] = (int)startLetter - ((int)'A'); // 0 - width
 				if ((-1 < start[1]) && (start[1] < width) && (-1 < start[0]) && (start[0] < height))
 				{
-					piece = gameboard.slots[start[0]][start[1]];
-					// piece is a piece and belongs to P1
-					if ((piece != PiecesChar::char_free) && ((int)piece < ((int)'Z' + 1)) && ((int)piece > ((int)'A' - 1)))
+					symbol = gameboard.slots[start[0]][start[1]].symbol;
+					isFree = gameboard.slots[start[0]][start[1]].isFree;
+					// symbol is a symbol and belongs to P1
+					if ((!isFree) && ((int)symbol < ((int)'Z' + 1)) && ((int)symbol > ((int)'A' - 1)))
 					{
-						availableMovement = gameboard.piecePossibilities(start, piece);
+						availableMovement = gameboard.piecePossibilities(start);
 						if (availableMovement)
 						{
 							break;
@@ -76,14 +78,20 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 				end[1] = (int)endLetter - ((int)'A'); // = 0 to width
 				if ((-1 < end[1]) && (end[1] < width) && (-1 < end[0]) && (end[0] < height))
 				{
-					endSlot = gameboard.slots[end[0]][end[1]];
-					if (endSlot == PiecesChar::char_free) // endSlot is empty
+					isFree = gameboard.slots[end[0]][end[1]].isFree;
+					if (isFree) // endSlot is empty
+					{
+						gameboard.move(start, end);
 						break;
+					}
 					if (((int)'a' - 1 < endSlot) && (endSlot < (int)'z' + 1)) // eat P2
-						//King Exception
-						//system Point
-						//eat
+					//King Exception
+					//system Point
+					//eat
+					{
+						gameboard.eat(start, end);
 						break;
+					}
 					else
 						cout << "You can't capture your own pieces." << endl;
 				}
@@ -91,7 +99,6 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 					cout << "Imposible position." << endl;
 			}
 			// make the movement in the gameboard
-			gameboard.move(start, end, true, false);
 			gameboard.show();
 			turn = !turn;
 			movements++;
@@ -115,16 +122,16 @@ int game(int nP1_pieces[6], int nP2_pieces[6], int bearingsP1_pieces[][2], int b
 		;
 		// break;
 	}
-	if (gameboard.P1_kings_ptr[0].checkmate)
-	{
-		result = 0;
-		// break;
-	}
-	else if (gameboard.P2_kings_ptr[0].checkmate)
-	{
-		result = 1;
-		// break;
-	}
+	// if (gameboard.P1_kings_ptr[0].checkmate)
+	// {
+	// 	result = 0;
+	// 	// break;
+	// }
+	// else if (gameboard.P2_kings_ptr[0].checkmate)
+	// {
+	// 	result = 1;
+	// 	// break;
+	// }
 
 	return result;
 }
@@ -136,51 +143,40 @@ int main()
 	int height = 8; //altura
 	int result;
 
-	// The number of pieces
-	// kings, queens, rooks, knights, bishops and pawns.
-	// rey, reina, torre, caballos, alfiles y peones
-	int nP1_pieces[6] = {1, 1, 2, 2, 2, 8};
-	int nP2_pieces[6] = {1, 1, 2, 2, 2, 8};
-
-	int bearingsP1_pieces[16][2] = {
-		// bearings = coordenadas
-		// coordenadas por default de las piezas P1
-		{0, 4}, // kings
-		{0, 3}, // queens
-		{0, 0},
-		{0, 7}, // rooks
-		{0, 1},
-		{0, 6}, // knights
-		{0, 2},
-		{0, 5}, // bishops
-		{1, 0},
-		{1, 1},
-		{1, 2},
-		{1, 3},
-		{1, 4},
-		{1, 5},
-		{1, 6},
-		{1, 7} //pawns
-	};
-	int bearingsP2_pieces[16][2] = {
-		// coordenadas por default de las piezas P2
-		{7, 4}, // kings
-		{7, 3}, // queens
-		{7, 0},
-		{7, 7}, // rooks
-		{7, 1},
-		{7, 6}, // knights
-		{7, 2},
-		{7, 5}, // bishops
-		{6, 0},
-		{6, 1},
-		{6, 2},
-		{6, 3},
-		{6, 4},
-		{6, 5},
-		{6, 6},
-		{6, 7} //pawns
-	};
+	int P1PiecesInit[16][3] = {
+		{7, 0, (int)PiecesChar::charP1_rook},
+		{7, 1, (int)PiecesChar::charP1_knight},
+		{7, 2, (int)PiecesChar::charP1_bishop},
+		{7, 3, (int)PiecesChar::charP1_queen},
+		{7, 4, (int)PiecesChar::charP1_king},
+		{7, 5, (int)PiecesChar::charP1_bishop},
+		{7, 6, (int)PiecesChar::charP1_knight},
+		{7, 7, (int)PiecesChar::charP1_rook},
+		{6, 0, (int)PiecesChar::charP1_pawn},
+		{6, 1, (int)PiecesChar::charP1_pawn},
+		{6, 2, (int)PiecesChar::charP1_pawn},
+		{6, 3, (int)PiecesChar::charP1_pawn},
+		{6, 4, (int)PiecesChar::charP1_pawn},
+		{6, 5, (int)PiecesChar::charP1_pawn},
+		{6, 6, (int)PiecesChar::charP1_pawn},
+		{6, 7, (int)PiecesChar::charP1_pawn}};
+	int P2PiecesInit[16][3] = {
+		{0, 0, (int)PiecesChar::charP2_rook},
+		{0, 1, (int)PiecesChar::charP2_knight},
+		{0, 2, (int)PiecesChar::charP2_bishop},
+		{0, 3, (int)PiecesChar::charP2_queen},
+		{0, 4, (int)PiecesChar::charP2_king},
+		{0, 5, (int)PiecesChar::charP2_bishop},
+		{0, 6, (int)PiecesChar::charP2_knight},
+		{0, 7, (int)PiecesChar::charP2_rook},
+		{1, 0, (int)PiecesChar::charP2_pawn},
+		{1, 1, (int)PiecesChar::charP2_pawn},
+		{1, 2, (int)PiecesChar::charP2_pawn},
+		{1, 3, (int)PiecesChar::charP2_pawn},
+		{1, 4, (int)PiecesChar::charP2_pawn},
+		{1, 5, (int)PiecesChar::charP2_pawn},
+		{1, 6, (int)PiecesChar::charP2_pawn},
+		{1, 7, (int)PiecesChar::charP2_pawn}};
 
 	char command;
 	char settings_command;
@@ -188,7 +184,7 @@ int main()
 	bool settings_break = false;
 	bool subSettings_break = false;
 
-	//* INTERFAZ
+	//* INTERFACE
 	while (true)
 	{
 		cout << "\nWhat do you want to do now?" << endl;
@@ -204,7 +200,7 @@ int main()
 		{
 		case 'P':
 			cout << "\nLet's play!" << endl;
-			result = game(nP1_pieces, nP2_pieces, bearingsP1_pieces, bearingsP2_pieces, 8, 8);
+			result = game(P1PiecesInit, 16, P2PiecesInit, 16, 8, 8);
 			if (result == 0)
 			{
 				cout << " 🥳 P1 won the game!" << endl;
@@ -252,13 +248,13 @@ int main()
 					settings_break = true;
 					break;
 				case '1':
-					cout << "\nNumber P1's pieces\t: " << sumUp(nP1_pieces, 6) << endl;
-					cout << "\tKing(s)\t: " << nP1_pieces[0] << endl;
-					cout << "\tQueen(s)\t: " << nP1_pieces[1] << endl;
-					cout << "\tRook(s)\t: " << nP1_pieces[2] << endl;
-					cout << "\tKnight(s)\t: " << nP1_pieces[3] << endl;
-					cout << "\tBishop(s)\t: " << nP1_pieces[4] << endl;
-					cout << "\tPawn(s)\t: " << nP1_pieces[5] << endl;
+					// cout << "\nNumber P1's pieces\t: " << sumUp(nP1_pieces, 6) << endl;
+					// cout << "\tKing(s)\t: " << nP1_pieces[0] << endl;
+					// cout << "\tQueen(s)\t: " << nP1_pieces[1] << endl;
+					// cout << "\tRook(s)\t: " << nP1_pieces[2] << endl;
+					// cout << "\tKnight(s)\t: " << nP1_pieces[3] << endl;
+					// cout << "\tBishop(s)\t: " << nP1_pieces[4] << endl;
+					// cout << "\tPawn(s)\t: " << nP1_pieces[5] << endl;
 
 					cout << "\n[B]ack" << endl;
 					cout << "[~] Add or remove a piece" << endl;
@@ -302,13 +298,13 @@ int main()
 					break;
 
 				case '2':
-					cout << "\nNumber P2's pieces\t: " << sumUp(nP2_pieces, 6) << endl;
-					cout << "\tKing(s)\t: " << nP2_pieces[0] << endl;
-					cout << "\tQueen(s)\t: " << nP2_pieces[1] << endl;
-					cout << "\tRook(s)\t: " << nP2_pieces[2] << endl;
-					cout << "\tKnight(s)\t: " << nP2_pieces[3] << endl;
-					cout << "\tBishop(s)\t: " << nP2_pieces[4] << endl;
-					cout << "\tPawn(s)\t: " << nP2_pieces[5] << endl;
+					// cout << "\nNumber P2's pieces\t: " << sumUp(nP2_pieces, 6) << endl;
+					// cout << "\tKing(s)\t: " << nP2_pieces[0] << endl;
+					// cout << "\tQueen(s)\t: " << nP2_pieces[1] << endl;
+					// cout << "\tRook(s)\t: " << nP2_pieces[2] << endl;
+					// cout << "\tKnight(s)\t: " << nP2_pieces[3] << endl;
+					// cout << "\tBishop(s)\t: " << nP2_pieces[4] << endl;
+					// cout << "\tPawn(s)\t: " << nP2_pieces[5] << endl;
 					int nP2_king[1][2];
 					int nP2_queen[1][2];
 					int nP2_rook[2][2];

@@ -4,239 +4,56 @@
 
 #include <iostream>
 #include "../pieces/pieces.h"
-#include "../enums/enums.h"
-#include "../helpers/helpers.h"
-
-int P1_score = 0;
-int P2_score = 0;
+// #include "../helpers/helpers.h"
 
 using namespace std;
 class Gameboard
 {
 public:
 	// 2D ptrptr?
-	char slots[26][26];
-
+	Piece slots[26][26];
 	int width;
 	int height;
-	// Pieces
-	King *P1_kings_ptr;
-	Queen *P1_queens_ptr;
-	Rook *P1_rooks_ptr;
-	Knight *P1_knights_ptr;
-	Bishop *P1_bishops_ptr;
-	Pawn *P1_pawns_ptr;
-
-	King *P2_kings_ptr;
-	Queen *P2_queens_ptr;
-	Rook *P2_rooks_ptr;
-	Knight *P2_knights_ptr;
-	Bishop *P2_bishops_ptr;
-	Pawn *P2_pawns_ptr;
-	int nP1_pieces[6];
-	int nP2_pieces[6];
 
 	// Gameboard() {}
-	Gameboard(int inP1_pieces[6], int inP2_pieces[6], int bearingsP1_pieces[][2], int bearingsP2_pieces[][2], int iWidth = 8, int iHeight = 8)
+	Gameboard(int P1PiecesInit[][3], int nP1Pieces, int P2PiecesInit[][3], int nP2Pieces, int iWidth, int iHeight)
 	{
-		cout << "Inside Gameboard" << endl;
+		cout << "Inside the Gameboard" << endl;
 		width = iWidth;
 		height = iHeight;
 
-		for (int i = 0; i < 6; i++)
-		{
-			nP1_pieces[i] = inP1_pieces[i];
-		}
-		for (int i = 0; i < 6; i++)
-		{
-			nP2_pieces[i] = inP2_pieces[i];
-		}
-
-		P1_kings_ptr = new King[nP1_pieces[0]];
-		P1_queens_ptr = new Queen[nP1_pieces[1]];
-		P1_rooks_ptr = new Rook[nP1_pieces[2]];
-		P1_knights_ptr = new Knight[nP1_pieces[3]];
-		P1_bishops_ptr = new Bishop[nP1_pieces[4]];
-		P1_pawns_ptr = new Pawn[nP1_pieces[5]];
-
-		P2_kings_ptr = new King[nP2_pieces[0]];
-		P2_queens_ptr = new Queen[nP2_pieces[1]];
-		P2_rooks_ptr = new Rook[nP2_pieces[2]];
-		P2_knights_ptr = new Knight[nP2_pieces[3]];
-		P2_bishops_ptr = new Bishop[nP2_pieces[4]];
-		P2_pawns_ptr = new Pawn[nP2_pieces[5]];
-
-		int accumulatedP1_pieces[6];
-		int accumulatedP2_pieces[6];
-
-		int totalP1_pieces = sumUp(nP1_pieces, 6);
-		int totalP2_pieces = sumUp(nP2_pieces, 6);
-		int accumulatorP1 = 0;
-		int accumulatorP2 = 0;
-
-		for (int i = 0; i < 6; i++)
-		{
-			accumulatorP1 += nP1_pieces[i];
-			accumulatorP2 += nP2_pieces[i];
-			accumulatedP1_pieces[i] = accumulatorP1;
-			accumulatedP2_pieces[i] = accumulatorP2;
-		}
-		cout << "Init Gameboard" << endl;
-		initGameboard();
-		cout << "filling the Gameboard" << endl;
-		fillGameboard(accumulatedP1_pieces, totalP1_pieces, bearingsP1_pieces, true);  //P1
-		fillGameboard(accumulatedP2_pieces, totalP2_pieces, bearingsP2_pieces, false); //P2
+		initGameboard(P1PiecesInit, nP1Pieces, P2PiecesInit, nP2Pieces);
 		initShowVars();
 	}
-	bool validMovement()
+	void move(int start[2], int end[2]) // end MUST BE FREE
 	{
-		// Your king has been moved earlier in the game.
-		// The rook that you would castle with has been moved earlier in the game.
-		// There are pieces standing between your king and rook.
-		// The king is in check.
-		// The king moves through a square that is attacked by a piece of the opponent.
-		// The king would be in check after castling.
-		bool valid;
-		return valid;
+		slots[end[0]][end[1]].setPiece(slots[start[0]][start[1]]);
+		slots[start[0]][start[1]].setFree();
 	}
-	void move(int start[2], int end[2], bool player, bool eat)
+	void capture(int start[2], int end[2])
 	{
-		char piece = slots[start[0]][start[1]];
-		if (player)
+		if (slots[start[0]][start[1]].player) //P1
 		{
-			switch (piece)
-			{
-			case PiecesChar::charP1_king:
-				for (int i = 0; i < nP1_pieces[0]; i++)
-					if ((start[0] == P1_kings_ptr[i].position[0]) && (start[1] == P1_kings_ptr[i].position[1]))
-					{
-						P1_kings_ptr[i].position[0] = end[0];
-						P1_kings_ptr[i].position[1] = end[1];
-						P1_kings_ptr[i].movements++;
-					};
-				break;
-			case PiecesChar::charP1_queen:
-				for (int i = 0; i < nP1_pieces[1]; i++)
-					if ((start[0] == P1_queens_ptr[i].position[0]) && (start[1] == P1_queens_ptr[i].position[1]))
-					{
-						P1_queens_ptr[i].position[0] = end[0];
-						P1_queens_ptr[i].position[1] = end[1];
-					};
-				break;
-			case PiecesChar::charP1_rook:
-				for (int i = 0; i < nP1_pieces[2]; i++)
-					if ((start[0] == P1_rooks_ptr[i].position[0]) && (start[1] == P1_rooks_ptr[i].position[1]))
-					{
-						P1_rooks_ptr[i].position[0] = end[0];
-						P1_rooks_ptr[i].position[1] = end[1];
-						P1_rooks_ptr[i].movements++;
-					};
-				break;
-			case PiecesChar::charP1_knight:
-				for (int i = 0; i < nP1_pieces[3]; i++)
-					if ((start[0] == P1_knights_ptr[i].position[0]) && (start[1] == P1_knights_ptr[i].position[1]))
-					{
-						P1_knights_ptr[i].position[0] = end[0];
-						P1_knights_ptr[i].position[1] = end[1];
-					};
-				break;
-			case PiecesChar::charP1_bishop:
-				for (int i = 0; i < nP1_pieces[4]; i++)
-					if ((start[0] == P1_bishops_ptr[i].position[0]) && (start[1] == P1_bishops_ptr[i].position[1]))
-					{
-						P1_bishops_ptr[i].position[0] = end[0];
-						P1_bishops_ptr[i].position[1] = end[1];
-					};
-				break;
-			case PiecesChar::charP1_pawn:
-				for (int i = 0; i < nP1_pieces[5]; i++)
-					if ((start[0] == P1_pawns_ptr[i].position[0]) && (start[1] == P1_pawns_ptr[i].position[1]))
-					{
-						P1_pawns_ptr[i].position[0] = end[0];
-						P1_pawns_ptr[i].position[1] = end[1];
-						P1_pawns_ptr[i].movements++;
-					};
-				break;
-
-			default:
-				std::cout << "An error happened while moving" << std::endl;
-				break;
-			}
+			P1_score += slots[end[0]][end[1]].points;
 		}
 		else
 		{
-			switch (piece)
-			{
-			case PiecesChar::charP2_king:
-				for (int i = 0; i < nP1_pieces[5]; i++)
-					if ((start[0] == P2_kings_ptr[i].position[0]) && (start[1] == P2_kings_ptr[i].position[1]))
-					{
-						P2_kings_ptr[i].position[0] = end[0];
-						P2_kings_ptr[i].position[1] = end[1];
-						P2_kings_ptr[i].movements++;
-					};
-				break;
-			case PiecesChar::charP2_queen:
-				for (int i = 0; i < nP2_pieces[5]; i++)
-					if ((start[0] == P2_queens_ptr[i].position[0]) && (start[1] == P2_queens_ptr[i].position[1]))
-					{
-						P2_queens_ptr[i].position[0] = end[0];
-						P2_queens_ptr[i].position[1] = end[1];
-					};
-				break;
-			case PiecesChar::charP2_rook:
-				for (int i = 0; i < nP2_pieces[5]; i++)
-					if ((start[0] == P2_rooks_ptr[i].position[0]) && (start[1] == P2_rooks_ptr[i].position[1]))
-					{
-						P2_rooks_ptr[i].position[0] = end[0];
-						P2_rooks_ptr[i].position[1] = end[1];
-						P2_rooks_ptr[i].movements++;
-					};
-				break;
-			case PiecesChar::charP2_knight:
-				for (int i = 0; i < nP2_pieces[5]; i++)
-					if ((start[0] == P2_knights_ptr[i].position[0]) && (start[1] == P2_knights_ptr[i].position[1]))
-					{
-						P2_knights_ptr[i].position[0] = end[0];
-						P2_knights_ptr[i].position[1] = end[1];
-					};
-				break;
-			case PiecesChar::charP2_bishop:
-				for (int i = 0; i < nP2_pieces[5]; i++)
-					if ((start[0] == P2_bishops_ptr[i].position[0]) && (start[1] == P2_bishops_ptr[i].position[1]))
-					{
-						P2_bishops_ptr[i].position[0] = end[0];
-						P2_bishops_ptr[i].position[1] = end[1];
-					};
-				break;
-			case PiecesChar::charP2_pawn:
-				for (int i = 0; i < nP2_pieces[5]; i++)
-					if ((start[0] == P2_pawns_ptr[i].position[0]) && (start[1] == P2_pawns_ptr[i].position[1]))
-					{
-						P2_pawns_ptr[i].position[0] = end[0];
-						P2_pawns_ptr[i].position[1] = end[1];
-						P2_pawns_ptr[i].movements++;
-					};
-				break;
-
-			default:
-				std::cout << "An error happened while moving" << std::endl;
-				break;
-			}
+			P2_score += slots[end[0]][end[1]].points;
 		}
-		// how can we get the object?
-		slots[start[0]][start[1]] = PiecesChar::char_free;
-		slots[end[0]][end[1]] = piece;
+		slots[end[0]][end[1]].setFree();
+		move(start, end);
 	}
-	// bool bishopValid(int start[2], int end[2])
-	// {
-	// }
-	bool piecePossibilities(int place[2], char piece) // ONLY P1 need visual reference
+	void eat(int start[2], int end[2])
 	{
-	    cout<<"pieceposib"<<endl;
+		capture(start, end);
+	}
+
+	bool piecePossibilities(int place[2]) // ONLY P1 need visual reference
+	{
+		cout << "piecePossibilities" << endl;
 		int piecePossibilities;
 		bool availableMovement = false;
-		switch (piece)
+		switch (slots[place[0]][place[1]].symbol)
 		{
 		case PiecesChar::charP2_king:
 			piecePossibilities = 0;
@@ -284,13 +101,13 @@ public:
 				undrawLines(place);
 				break;
 			case 3:
-                undrawJumps(place);
+				undrawJumps(place);
 				break;
 			case 4:
 				undrawDiagonals(place);
 				break;
 			case 5:
-                undrawLines_P(place);
+				undrawLines_P(place);
 				break;
 
 			default:
@@ -338,7 +155,7 @@ public:
 				{
 					if (j == 1)
 					{
-						slotPiece[slotWidth / 2] = (char)slots[i][o];
+						slotPiece[slotWidth / 2] = slots[i][o].symbol;
 						cout << slotPiece << meridianChar;
 					}
 					else
@@ -410,151 +227,183 @@ private:
 			slotPiece[i] = blankChar;
 		}
 	}
-    bool drawLines_P(int place[2]){
-        bool availableMovement = false;
-        int p_y=place[0]-1;
-        int cas=0;
-        if(place[0]==6){
-            cas=2;
-        }else{
-            cas=1;
-        }
-        for (int i=0; i< cas; i++) {
-            if (slots[p_y][place[1]] == PiecesChar::char_free){
-                slots[p_y][place[1]] = '*';
-                availableMovement = true;
-                p_y--;
-            }else{
-                break;
-            }
-        }
-        return availableMovement;
-    }
-    void undrawLines_P(int place[2]){
-        int p_y=place[0]-1;
-        int cas=0;
-        if(place[0]==6){
-            cas=2;
-        }else{
-            cas=1;
-        }
-        for (int j=0; j < cas; j++) {
-            if (slots[p_y][place[1]]  == '*' ){
-                slots[p_y][place[1]]  = PiecesChar::char_free;
-                p_y--;
-            }else{
-                break;
-            }
-        }
-    }
+	bool drawLines_P(int place[2])
+	{
+		bool availableMovement = false;
+		int p_y = place[0] - 1;
+		int cas = 0;
+		if (place[0] == 6)
+		{
+			cas = 2;
+		}
+		else
+		{
+			cas = 1;
+		}
+		for (int i = 0; i < cas; i++)
+		{
+			if (slots[p_y][place[1]].symbol == PiecesChar::char_free)
+			{
+				slots[p_y][place[1]].symbol = '*';
+				availableMovement = true;
+				p_y--;
+			}
+			else
+			{
+				break;
+			}
+		}
+		return availableMovement;
+	}
+	void undrawLines_P(int place[2])
+	{
+		int p_y = place[0] - 1;
+		int cas = 0;
+		if (place[0] == 6)
+		{
+			cas = 2;
+		}
+		else
+		{
+			cas = 1;
+		}
+		for (int j = 0; j < cas; j++)
+		{
+			if (slots[p_y][place[1]].symbol == '*')
+			{
+				slots[p_y][place[1]].symbol = PiecesChar::char_free;
+				p_y--;
+			}
+			else
+			{
+				break;
+			}
+		}
+	}
 	void undrawLines(int place[2])
 	{
 		//(+x) line
 		for (int j = place[1] + 1; j < width; j++)
 		{
-			if (slots[place[0]][j] == '*')
-				slots[place[0]][j] = PiecesChar::char_free;
+			if (slots[place[0]][j].symbol == '*')
+				slots[place[0]][j].symbol = PiecesChar::char_free;
 			else
 				break;
 		}
 		//(+y) line
 		for (int i = place[0] - 1; - 1 < i; i--)
 		{
-			if (slots[i][place[1]] == '*')
-				slots[i][place[1]] = PiecesChar::char_free;
+			if (slots[i][place[1]].symbol == '*')
+				slots[i][place[1]].symbol = PiecesChar::char_free;
 			else
 				break;
 		}
 		//(-x) line
 		for (int j = place[1] - 1; - 1 < j; j--)
 		{
-			if (slots[place[0]][j] == '*')
-				slots[place[0]][j] = PiecesChar::char_free;
+			if (slots[place[0]][j].symbol == '*')
+				slots[place[0]][j].symbol = PiecesChar::char_free;
 			else
 				break;
 		}
 		//(-y) line
 		for (int i = place[0] + 1; i < height; i++)
 		{
-			if (slots[i][place[1]] == '*')
-				slots[i][place[1]] = PiecesChar::char_free;
+			if (slots[i][place[1]].symbol == '*')
+				slots[i][place[1]].symbol = PiecesChar::char_free;
 			else
 				break;
 		}
 	}
-    bool drawJumps(int place[2])//Knight Jumps
-    {
-        bool availableMovement = false;
-        if ((place[0] > 1) && (place[1] > 0) && (slots[place[0] - 2][place[1] - 1] == PiecesChar::char_free)) {
-            slots[place[0] - 2][place[1] - 1] = '*';
-            availableMovement = true;
-        }
-        if ((place[0] > 1) && (place[1] < 7) && (slots[place[0] - 2][place[1] + 1] == PiecesChar::char_free)) {
-            slots[place[0] - 2][place[1] + 1] = '*';
-            availableMovement = true;
-        }
-        if ((place[0] > 0) && (place[1] > 1) && (slots[place[0] - 1][place[1] - 2] == PiecesChar::char_free)) {
-            slots[place[0] - 1][place[1] - 2] = '*';
-            availableMovement = true;
-        }
-        if ((place[0] < 7) && (place[1] > 1) && (slots[place[0] + 1][place[1] - 2] == PiecesChar::char_free)) {
-            slots[place[0] + 1][place[1] - 2] = '*';
-            availableMovement = true;
-        }
-        if ((place[0] < 6) && (place[1] > 0) && (slots[place[0] + 2][place[1] - 1] == PiecesChar::char_free)) {
-            slots[place[0] + 2][place[1] - 1] = '*';
-            availableMovement = true;
-        }
-        if ((place[0] < 6) && (place[1] < 7) && (slots[place[0] + 2][place[1] + 1] == PiecesChar::char_free)) {
-            slots[place[0] + 2][place[1] + 1] = '*';
-            availableMovement = true;
-        }
-        if ((place[0] > 0) && (place[1] < 6) && (slots[place[0] - 1][place[1] + 2] == PiecesChar::char_free)) {
-            slots[place[0] - 1][place[1] + 2] = '*';
-            availableMovement = true;
-        }
-        if ((place[0] < 7) && (place[1] < 6) && (slots[place[0] + 1][place[1] + 2] == PiecesChar::char_free)) {
-            slots[place[0] + 1][place[1] + 2] = '*';
-            availableMovement = true;
-        }
-        return availableMovement;
-    }
-    void undrawJumps(int place[2])
-    {
-        if ((place[0] > 1) && (place[1] > 0) && (slots[place[0] - 2][place[1] - 1] == '*')) {
-            slots[place[0] - 2][place[1] - 1] = PiecesChar::char_free;
-        }
-        if ((place[0] > 1) && (place[1] < 7) && (slots[place[0] - 2][place[1] + 1] == '*')) {
-            slots[place[0] - 2][place[1] + 1] = PiecesChar::char_free;
-        }
-        if ((place[0] > 0) && (place[1] > 1) && (slots[place[0] - 1][place[1] - 2] == '*')) {
-            slots[place[0] - 1][place[1] - 2] = PiecesChar::char_free;
-        }
-        if ((place[0] < 7) && (place[1] > 1) && (slots[place[0] + 1][place[1] - 2] == '*')) {
-            slots[place[0] + 1][place[1] - 2] = PiecesChar::char_free;
-        }
-        if ((place[0] < 6) && (place[1] > 0) && (slots[place[0] + 2][place[1] - 1] == '*')) {
-            slots[place[0] + 2][place[1] - 1] = PiecesChar::char_free;
-        }
-        if ((place[0] < 6) && (place[1] < 7) && (slots[place[0] + 2][place[1] + 1] == '*')) {
-            slots[place[0] + 2][place[1] + 1] = PiecesChar::char_free;
-        }
-        if ((place[0] > 0) && (place[1] < 6) && (slots[place[0] - 1][place[1] + 2] == '*')) {
-            slots[place[0] - 1][place[1] + 2] = PiecesChar::char_free;
-        }
-        if ((place[0] < 7) && (place[1] < 6) && (slots[place[0] + 1][place[1] + 2] == '*')) {
-            slots[place[0] + 1][place[1] + 2] = PiecesChar::char_free;
-        }
-    }
-    bool drawLines(int place[2])
+	bool drawJumps(int place[2]) //Knight Jumps
+	{
+		bool availableMovement = false;
+		if ((place[0] > 1) && (place[1] > 0) && (slots[place[0] - 2][place[1] - 1].symbol == PiecesChar::char_free))
+		{
+			slots[place[0] - 2][place[1] - 1].symbol = '*';
+			availableMovement = true;
+		}
+		if ((place[0] > 1) && (place[1] < 7) && (slots[place[0] - 2][place[1] + 1].symbol == PiecesChar::char_free))
+		{
+			slots[place[0] - 2][place[1] + 1].symbol = '*';
+			availableMovement = true;
+		}
+		if ((place[0] > 0) && (place[1] > 1) && (slots[place[0] - 1][place[1] - 2].symbol == PiecesChar::char_free))
+		{
+			slots[place[0] - 1][place[1] - 2].symbol = '*';
+			availableMovement = true;
+		}
+		if ((place[0] < 7) && (place[1] > 1) && (slots[place[0] + 1][place[1] - 2].symbol == PiecesChar::char_free))
+		{
+			slots[place[0] + 1][place[1] - 2].symbol = '*';
+			availableMovement = true;
+		}
+		if ((place[0] < 6) && (place[1] > 0) && (slots[place[0] + 2][place[1] - 1].symbol == PiecesChar::char_free))
+		{
+			slots[place[0] + 2][place[1] - 1].symbol = '*';
+			availableMovement = true;
+		}
+		if ((place[0] < 6) && (place[1] < 7) && (slots[place[0] + 2][place[1] + 1].symbol == PiecesChar::char_free))
+		{
+			slots[place[0] + 2][place[1] + 1].symbol = '*';
+			availableMovement = true;
+		}
+		if ((place[0] > 0) && (place[1] < 6) && (slots[place[0] - 1][place[1] + 2].symbol == PiecesChar::char_free))
+		{
+			slots[place[0] - 1][place[1] + 2].symbol = '*';
+			availableMovement = true;
+		}
+		if ((place[0] < 7) && (place[1] < 6) && (slots[place[0] + 1][place[1] + 2].symbol == PiecesChar::char_free))
+		{
+			slots[place[0] + 1][place[1] + 2].symbol = '*';
+			availableMovement = true;
+		}
+		return availableMovement;
+	}
+	void undrawJumps(int place[2])
+	{
+		if ((place[0] > 1) && (place[1] > 0) && (slots[place[0] - 2][place[1] - 1].symbol == '*'))
+		{
+			slots[place[0] - 2][place[1] - 1].symbol = PiecesChar::char_free;
+		}
+		if ((place[0] > 1) && (place[1] < 7) && (slots[place[0] - 2][place[1] + 1].symbol == '*'))
+		{
+			slots[place[0] - 2][place[1] + 1].symbol = PiecesChar::char_free;
+		}
+		if ((place[0] > 0) && (place[1] > 1) && (slots[place[0] - 1][place[1] - 2].symbol == '*'))
+		{
+			slots[place[0] - 1][place[1] - 2].symbol = PiecesChar::char_free;
+		}
+		if ((place[0] < 7) && (place[1] > 1) && (slots[place[0] + 1][place[1] - 2].symbol == '*'))
+		{
+			slots[place[0] + 1][place[1] - 2].symbol = PiecesChar::char_free;
+		}
+		if ((place[0] < 6) && (place[1] > 0) && (slots[place[0] + 2][place[1] - 1].symbol == '*'))
+		{
+			slots[place[0] + 2][place[1] - 1].symbol = PiecesChar::char_free;
+		}
+		if ((place[0] < 6) && (place[1] < 7) && (slots[place[0] + 2][place[1] + 1].symbol == '*'))
+		{
+			slots[place[0] + 2][place[1] + 1].symbol = PiecesChar::char_free;
+		}
+		if ((place[0] > 0) && (place[1] < 6) && (slots[place[0] - 1][place[1] + 2].symbol == '*'))
+		{
+			slots[place[0] - 1][place[1] + 2].symbol = PiecesChar::char_free;
+		}
+		if ((place[0] < 7) && (place[1] < 6) && (slots[place[0] + 1][place[1] + 2].symbol == '*'))
+		{
+			slots[place[0] + 1][place[1] + 2].symbol = PiecesChar::char_free;
+		}
+	}
+	bool drawLines(int place[2])
 	{
 		bool availableMovement = false;
 		//(+x) line
 		for (int j = place[1] + 1; j < width; j++)
 		{
-			if (slots[place[0]][j] == PiecesChar::char_free)
+			if (slots[place[0]][j].symbol == PiecesChar::char_free)
 			{
-				slots[place[0]][j] = '*';
+				slots[place[0]][j].symbol = '*';
 				availableMovement = true;
 			}
 			else
@@ -563,9 +412,9 @@ private:
 		//(+y) line
 		for (int i = place[0] - 1; - 1 < i; i--)
 		{
-			if (slots[i][place[1]] == PiecesChar::char_free)
+			if (slots[i][place[1]].symbol == PiecesChar::char_free)
 			{
-				slots[i][place[1]] = '*';
+				slots[i][place[1]].symbol = '*';
 				availableMovement = true;
 			}
 			else
@@ -574,9 +423,9 @@ private:
 		//(-x) line
 		for (int j = place[1] - 1; - 1 < j; j--)
 		{
-			if (slots[place[0]][j] == PiecesChar::char_free)
+			if (slots[place[0]][j].symbol == PiecesChar::char_free)
 			{
-				slots[place[0]][j] = '*';
+				slots[place[0]][j].symbol = '*';
 				availableMovement = true;
 			}
 			else
@@ -585,9 +434,9 @@ private:
 		//(-y) line
 		for (int i = place[0] + 1; i < height; i++)
 		{
-			if (slots[i][place[1]] == PiecesChar::char_free)
+			if (slots[i][place[1]].symbol == PiecesChar::char_free)
 			{
-				slots[i][place[1]] = '*';
+				slots[i][place[1]].symbol = '*';
 				availableMovement = true;
 			}
 			else
@@ -603,9 +452,9 @@ private:
 		j = place[1] + 1;
 		for (; (-1 < i) && (j < width); (i--) && (j++))
 		{
-			if (slots[i][j] == '*')
+			if (slots[i][j].symbol == '*')
 			{
-				slots[i][j] = PiecesChar::char_free;
+				slots[i][j].symbol = PiecesChar::char_free;
 			}
 			else
 				break;
@@ -615,9 +464,9 @@ private:
 		j = place[1] - 1;
 		for (; (-1 < i) && (-1 < j); (i--) && (j--))
 		{
-			if (slots[i][j] == '*')
+			if (slots[i][j].symbol == '*')
 			{
-				slots[i][j] = PiecesChar::char_free;
+				slots[i][j].symbol = PiecesChar::char_free;
 			}
 			else
 				break;
@@ -627,9 +476,9 @@ private:
 		j = place[1] - 1;
 		for (; (i < height) && (-1 < j); (i++) && (j--))
 		{
-			if (slots[i][j] == '*')
+			if (slots[i][j].symbol == '*')
 			{
-				slots[i][j] = PiecesChar::char_free;
+				slots[i][j].symbol = PiecesChar::char_free;
 			}
 			else
 				break;
@@ -639,9 +488,9 @@ private:
 		j = place[1] + 1;
 		for (; (i < height) && (j < width); (i++) && (j++))
 		{
-			if (slots[i][j] == '*')
+			if (slots[i][j].symbol == '*')
 			{
-				slots[i][j] = PiecesChar::char_free;
+				slots[i][j].symbol = PiecesChar::char_free;
 			}
 			else
 				break;
@@ -652,41 +501,26 @@ private:
 	{
 		bool availableMovement = false;
 		int i, j;
-		// while ((-1 < i) && (-1 < j))
-		// {
-		// }
-		//(+x;+y) diagonal
+
 		i = place[0] - 1;
 		j = place[1] + 1;
 		for (; (-1 < i) && (j < width); (i--) && (j++))
 		{
-			if (slots[i][j] == PiecesChar::char_free)
+			if (slots[i][j].symbol == PiecesChar::char_free)
 			{
-				slots[i][j] = '*';
+				slots[i][j].symbol = '*';
 				availableMovement = true;
 			}
 			else
 				break;
 		}
-		// for (int i = place[0] - 1; (-1 < i) && (j < width); i--)
-		// {
-		// 	j++;
-		// 	if (slots[i][j] == PiecesChar::char_free)
-		// 		slots[i][j] = '*';
-		// 	else
-		// 		break;
-		// }
-		// j = place[1];
-		// for(int xy[2] = {place[0] + 1 ,place[1]-1}; ()&&();xy[0]++)
-
-		//(-x;+y) diagonal
 		i = place[0] - 1;
 		j = place[1] - 1;
 		for (; (-1 < i) && (-1 < j); (i--) && (j--))
 		{
-			if (slots[i][j] == PiecesChar::char_free)
+			if (slots[i][j].symbol == PiecesChar::char_free)
 			{
-				slots[i][j] = '*';
+				slots[i][j].symbol = '*';
 				availableMovement = true;
 			}
 			else
@@ -697,9 +531,9 @@ private:
 		j = place[1] - 1;
 		for (; (i < height) && (-1 < j); (i++) && (j--))
 		{
-			if (slots[i][j] == PiecesChar::char_free)
+			if (slots[i][j].symbol == PiecesChar::char_free)
 			{
-				slots[i][j] = '*';
+				slots[i][j].symbol = '*';
 				availableMovement = true;
 			}
 			else
@@ -710,9 +544,9 @@ private:
 		j = place[1] + 1;
 		for (; (i < height) && (j < width); (i++) && (j++))
 		{
-			if (slots[i][j] == PiecesChar::char_free)
+			if (slots[i][j].symbol == PiecesChar::char_free)
 			{
-				slots[i][j] = '*';
+				slots[i][j].symbol = '*';
 				availableMovement = true;
 			}
 			else
@@ -721,162 +555,71 @@ private:
 		return availableMovement;
 	}
 
-	void initGameboard()
+	void initGameboard(int P1PiecesInit[][3], int nP1Pieces, int P2PiecesInit[][3], int nP2Pieces)
 	{
 		for (int i = 0; i < width; i++)
 			for (int j = 0; j < height; j++)
-				slots[i][j] = PiecesChar::char_free;
-	}
+				slots[i][j] = Piece(PiecesChar::char_free, 1, 0, 0);
 
-	void fillGameboard(int accumulated[6], int total, int bearings[][2], bool player)
-	{
+		int points;
 
-		int piece = 0;
-		int pieceIndex = 0;
-
-		char char_king;	 // char de rey
-		char char_queen; // char de reina
-		char char_rook;	 // char de ...
-		char char_knight;
-		char char_bishop;
-		char char_pawn;
-
-		King *kings_ptrptr;
-		Queen *queens_ptrptr;
-		Rook *rooks_ptrptr;
-		Knight *knights_ptrptr;
-		Bishop *bishops_ptrptr;
-		Pawn *pawns_ptrptr;
-
-		if (player) // P1
+		for (int i = 0; i < nP1Pieces; i++)
 		{
-			char_king = PiecesChar::charP1_king;
-			char_queen = PiecesChar::charP1_queen;
-			char_rook = PiecesChar::charP1_rook;
-			char_knight = PiecesChar::charP1_knight;
-			char_bishop = PiecesChar::charP1_bishop;
-			char_pawn = PiecesChar::charP1_pawn;
-
-			kings_ptrptr = P1_kings_ptr;
-			queens_ptrptr = P1_queens_ptr;
-			rooks_ptrptr = P1_rooks_ptr;
-			knights_ptrptr = P1_knights_ptr;
-			bishops_ptrptr = P1_bishops_ptr;
-			pawns_ptrptr = P1_pawns_ptr;
-		}
-		else // P2
-		{
-			char_king = PiecesChar::charP2_king;
-			char_queen = PiecesChar::charP2_queen;
-			char_rook = PiecesChar::charP2_rook;
-			char_knight = PiecesChar::charP2_knight;
-			char_bishop = PiecesChar::charP2_bishop;
-			char_pawn = PiecesChar::charP2_pawn;
-
-			kings_ptrptr = P2_kings_ptr;
-			queens_ptrptr = P2_queens_ptr;
-			rooks_ptrptr = P2_rooks_ptr;
-			knights_ptrptr = P2_knights_ptr;
-			bishops_ptrptr = P2_bishops_ptr;
-			pawns_ptrptr = P2_pawns_ptr;
-		}
-
-		//kings, queens, rooks, knights, bishops and pawns.
-
-		for (int i = 0; i < total; i++)
-		{
-			if (i < accumulated[piece])
+			switch (P1PiecesInit[i][2])
 			{
-				switch (piece)
-				{
-				case 0: //King
-					kings_ptrptr[pieceIndex] = King(bearings[i], player);
-					slots[bearings[i][0]][bearings[i][1]] = char_king;
-					break;
-				case 1: //Queen
-					queens_ptrptr[pieceIndex] = Queen(bearings[i], player);
-					slots[bearings[i][0]][bearings[i][1]] = char_queen;
-					break;
-				case 2: //Rook
-					rooks_ptrptr[pieceIndex] = Rook(bearings[i], player);
-					slots[bearings[i][0]][bearings[i][1]] = char_rook;
-					break;
-				case 3: //Knight
-					knights_ptrptr[pieceIndex] = Knight(bearings[i], player);
-					slots[bearings[i][0]][bearings[i][1]] = char_knight;
-					break;
-				case 4: //Bishop
-					bishops_ptrptr[pieceIndex] = Bishop(bearings[i], player);
-					slots[bearings[i][0]][bearings[i][1]] = char_bishop;
-					break;
-				case 5: //Pawn
-					pawns_ptrptr[pieceIndex] = Pawn(bearings[i], player);
-					slots[bearings[i][0]][bearings[i][1]] = char_pawn;
-					break;
-				default:
-					cout << "\nAn error happened while initializing" << endl;
-					cout << "iterator\t: " << i << endl;
-					cout << "accumulated\t: " << accumulated[piece] << endl;
-					cout << "piece\t: " << piece << endl;
-					cout << "pieceIndex\t: " << pieceIndex << endl;
-					break;
-				}
-				pieceIndex++;
-			}
-			else
-			{
-				i -= 1;
-				piece += 1;
-				pieceIndex = 0;
-			}
-		}
-	}
+			case PiecesChar::charP1_king:
+				points = PiecesPoints::kingPoints;
+				break;
+			case PiecesChar::charP1_queen:
+				points = PiecesPoints::queenPoints;
+				break;
+			case PiecesChar::charP1_rook:
+				points = PiecesPoints::rookPoints;
+				break;
+			case PiecesChar::charP1_knight:
+				points = PiecesPoints::knightPoints;
+				break;
+			case PiecesChar::charP1_bishop:
+				points = PiecesPoints::bishopPoints;
+				break;
+			case PiecesChar::charP1_pawn:
+				points = PiecesPoints::pawnPoints;
+				break;
 
-	/*
-	int getEntity(int place[2])
-	{
-		switch (slots[place[0]][place[1]])
+			default:
+				points = 0;
+				break;
+			}
+			slots[P1PiecesInit[i][0]][P1PiecesInit[i][1]] = Piece((char)P1PiecesInit[i][2], 0, 1, points);
+		}
+		for (int i = 0; i < nP2Pieces; i++)
 		{
-		case PiecesChar::char_free:
-			return PiecesInt::int_free;
-			break;
-		case PiecesChar::charP1_king:
-			return PiecesInt::intP1_king;
-			break;
-		case PiecesChar::charP1_queen:
-			return PiecesInt::intP1_queen;
-			break;
-		case PiecesChar::charP1_rook:
-			return PiecesInt::intP1_rook;
-			break;
-		case PiecesChar::charP1_bishop:
-			return PiecesInt::intP1_bishop;
-			break;
-		case PiecesChar::charP1_knight:
-			return PiecesInt::intP1_knight;
-			break;
-		case PiecesChar::charP1_pawn:
-			return PiecesInt::intP1_pawn;
-			break;
-		case PiecesChar::charP2_king:
-			return PiecesInt::intP2_king;
-			break;
-		case PiecesChar::charP2_queen:
-			return PiecesInt::intP2_queen;
-			break;
-		case PiecesChar::charP2_rook:
-			return PiecesInt::intP2_rook;
-			break;
-		case PiecesChar::charP2_bishop:
-			return PiecesInt::intP2_bishop;
-			break;
-		case PiecesChar::charP2_knight:
-			return PiecesInt::intP2_knight;
-			break;
-		case PiecesChar::charP2_pawn:
-			return PiecesInt::intP2_pawn;
-			break;
+			switch (P2PiecesInit[i][2])
+			{
+			case PiecesChar::charP2_king:
+				points = PiecesPoints::kingPoints;
+				break;
+			case PiecesChar::charP2_queen:
+				points = PiecesPoints::queenPoints;
+				break;
+			case PiecesChar::charP2_rook:
+				points = PiecesPoints::rookPoints;
+				break;
+			case PiecesChar::charP2_knight:
+				points = PiecesPoints::knightPoints;
+				break;
+			case PiecesChar::charP2_bishop:
+				points = PiecesPoints::bishopPoints;
+				break;
+			case PiecesChar::charP2_pawn:
+				points = PiecesPoints::pawnPoints;
+				break;
+
+			default:
+				points = 0;
+				break;
+			}
+			slots[P2PiecesInit[i][0]][P2PiecesInit[i][1]] = Piece((char)P2PiecesInit[i][2], 0, 1, points);
 		}
 	}
-		*/
 };
