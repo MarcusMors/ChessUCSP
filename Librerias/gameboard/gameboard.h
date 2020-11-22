@@ -47,13 +47,103 @@ public:
 	{
 		capture(start, end);
 	}
-	bool validDiagonal() // Diagonal
+	bool validDiagonal(int start[2], int end[2]) // Diagonal
 	{
-		return true;
+		if ((abs(start[0] - end[0]) == 1) && (abs(start[1] - end[1]) == 1))
+			return true;
+		else if (abs(start[0] - end[0]) == abs(start[1] - end[1]))
+		{
+			bool isUp = ((start[0] - end[0]) > 0) ? true : false;
+			bool isLeft = ((start[1] - end[1]) > 0) ? true : false;
+			int i, it, iLimit;
+			int j, jt, jLimit;
+			if (isUp)
+			{
+				iLimit = -1;
+				i = start[0] - 1;
+				it = -1;
+			}
+			else
+			{
+				iLimit = height;
+				i = start[0] + 1;
+				it = 1;
+			}
+			if (isLeft)
+			{
+				jLimit = -1;
+				j = start[1] - 1;
+				jt = -1;
+			}
+			else
+			{
+				jLimit = width;
+				j = start[1] + 1;
+				jt = 1;
+			}
+
+			for (; (i != iLimit) && (j != jLimit); (i += it) && (j += jt))
+			{
+				if (slots[i][j].symbol != PiecesChar::char_free)
+					return false;
+			}
+			return true;
+		}
+		else
+			return false;
 	}
-	bool validStraight() // Línea recta
+	bool validStraight(int start[2], int end[2]) // Línea recta
 	{
-		return true;
+		if ((abs(start[0] - end[0]) == 0) && (abs(start[1] - end[1]) == 0))
+			return true;
+		else if (start[0] == end[0])
+		{
+			bool isLeft = ((start[1] - end[1]) > 0) ? true : false;
+			int j, jt, jLimit;
+			if (isLeft)
+			{
+				jLimit = -1;
+				j = start[1] - 1;
+				jt = -1;
+			}
+			else
+			{
+				jLimit = width;
+				j = start[1] + 1;
+				jt = 1;
+			}
+			for (; (j != jLimit); (j += jt))
+			{
+				if (slots[start[0]][j].symbol != PiecesChar::char_free)
+					return false;
+			}
+			return true;
+		}
+		else if (start[1] == end[1])
+		{
+			bool isUp = ((start[0] - end[0]) > 0) ? true : false;
+			int i, it, iLimit;
+			if (isUp)
+			{
+				iLimit = -1;
+				i = start[0] - 1;
+				it = -1;
+			}
+			else
+			{
+				iLimit = height;
+				i = start[0] + 1;
+				it = 1;
+			}
+			for (; (i != iLimit); (i += jt))
+			{
+				if (slots[i][start[1]].symbol != PiecesChar::char_free)
+					return false;
+			}
+			return true;
+		}
+		else
+			return false;
 	}
 	bool validJump() // Salto de caballo
 	{
