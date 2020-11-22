@@ -48,7 +48,7 @@ int intelligence(int start[2], int bearingsPoints[][3] = {0}, int length = 0, in
 				auxEnd[0] = bearingsPoints[j][0];
 				auxEnd[1] = bearingsPoints[j][1];
 
-				if (reachable(auxStart, auxEnd))
+				if (reachable(auxStart, auxEnd,' '))
 				{
 					auxBearingsPoints[counter][2] = bearingsPoints[j][2];
 					counter++;

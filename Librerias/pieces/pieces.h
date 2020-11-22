@@ -8,7 +8,6 @@ int P1_score = 0;
 int P2_score = 0;
 class Piece
 {
-
 public:
 	char symbol;
 	bool isFree;
@@ -28,7 +27,6 @@ public:
 	// bool inCheck();
 	// void eat(Piece);
 	// void capture(Piece);
-
 protected:
 private:
 };
