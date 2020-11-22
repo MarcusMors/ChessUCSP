@@ -1,16 +1,16 @@
 #include <iostream>
-#include "helpers.h"
+#include "minMax.h"
 
 using namespace std;
 
-int sumUp(int arr[], int length)
-{
-	int accumulator = 0;
-	for (int i = 0; i < length; i++)
-		accumulator += arr[i];
+// int sumUp(int arr[], int length)
+// {
+// 	int accumulator = 0;
+// 	for (int i = 0; i < length; i++)
+// 		accumulator += arr[i];
 
-	return accumulator;
-}
+// 	return accumulator;
+// }
 
 int max(int arr[], int length)
 {

@@ -1,4 +1,5 @@
 #include <iostream>
+#include "IA.h"
 
 using namespace std;
 
@@ -9,54 +10,55 @@ bool reachable(int start[2], int end[2], char symbol)
 	return ((x >= 0) && (x >= y)) ? true : false;
 }
 
-int intelligence(int start[2], int bearingsPoints[][3] = {0}, int length = 0, int accumulated = 0, int difficulty = 3, int deep = 0, bool A = true)
+int intelligence(
+	Piece slots[26][26], int width, int height,
+	int start[2], int bearings[][2], int length,
+	int accumulated, int difficulty, int deep, bool A)
 {
-	// A = true = IA A
-	// A = false = IA B
-	if (deep == difficulty)
+	// A = (A == true)? intelligence A : intelligence B;
+	if (deep == difficulty || length == 0)
 	{
 		return accumulated;
 	}
-	// if (length == 0)
-	// {
-	// 	return accumulated;
-	// }
 	else if (length == 1)
 	{
-		return accumulated + bearingsPoints[0][2];
+		return accumulated + slots[bearings[0][0]][bearings[0][1]].points;
 	}
+
 	int arr[length];
 	int auxStart[2];
 	int auxEnd[2];
-	int counter;
+	int auxLength;
 
 	for (int i = 0; i < length; i++)
 	{
-		counter = 0;
-		int auxLength = (length);
-		int auxBearingsPoints[auxLength][3];
+		auxLength = 0;
+		int auxBearings[length][2];
 
 		//auxStart == Bot Piece
-		auxStart[0] = bearingsPoints[i][0];
-		auxStart[1] = bearingsPoints[i][1];
+		auxStart[0] = slots[i][0];
+		auxStart[1] = slots[i][1];
 
-		for (int j = 0; j < auxLength; j++)
+		for (int j = 0; j < length; j++)
 		{
 			if (j != i)
 			{
 				// Availables slots and Pieces
-				auxEnd[0] = bearingsPoints[j][0];
-				auxEnd[1] = bearingsPoints[j][1];
+				auxEnd[0] = slots[j][0];
+				auxEnd[1] = slots[j][1];
 
-				if (reachable(auxStart, auxEnd,' '))
+				if (reachable(auxStart, auxEnd, ' '))
 				{
-					auxBearingsPoints[counter][2] = bearingsPoints[j][2];
-					counter++;
+					auxBearings[auxLength][2] = slots[j][2];
+					auxLength++;
 				}
 			}
 		}
 		deep++;
-		arr[i] = intelligence(auxStart, auxBearingsPoints, counter, accumulated + bearingsPoints[i][2], difficulty, deep, (!A));
+		arr[i] = intelligence(
+			slots, width, height,
+			auxStart, auxBearings, auxLength,
+			accumulated, difficulty, deep, (!A))
 	}
 
 	if (A)

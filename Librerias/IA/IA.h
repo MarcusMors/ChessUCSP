@@ -2,6 +2,12 @@
 #define CHESS_UCSP_IA_H
 #endif
 
+#include "../minMax/minMax.h"
 #include "../gameboard/gameboard.h"
 
-long long intelligence(int[2], int [][3], int length, int accumulated, int difficult, int deep, bool);
+// start[2], slots[26][26], width, height, bearings[][2], length,
+// accumulated, difficulty, deep, A
+int intelligence(
+	Piece[26][26], int, int,
+	int[2], int[][2], int,
+	int, int, int, bool);
