@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Librerias/IA/IA.h"
+#include "Librerias/interface/interface.h"
 
 using namespace std;
 
