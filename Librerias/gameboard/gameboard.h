@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "../pieces/pieces.h"
-// #include "../helpers/helpers.h"
+#include "../helpers/helpers.h"
 
 using namespace std;
 class Gameboard
@@ -135,7 +135,7 @@ public:
 				i = start[0] + 1;
 				it = 1;
 			}
-			for (; (i != iLimit); (i += jt))
+			for (; (i != iLimit); (i += it))
 			{
 				if (slots[i][start[1]].symbol != PiecesChar::char_free)
 					return false;

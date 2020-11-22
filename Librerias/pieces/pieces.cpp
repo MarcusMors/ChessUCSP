@@ -1,6 +1,5 @@
 #include "pieces.h"
 
-Piece::Piece() {}
 Piece::Piece(char iSymbol, bool iIsFree, bool iPlayer, int iPoints)
 {
 	symbol = iSymbol;

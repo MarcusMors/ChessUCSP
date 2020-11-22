@@ -4,4 +4,4 @@
 
 #include "../gameboard/gameboard.h"
 
-long long intelligence(long long start[2], long long bearingsPoints[][3] = {0}, long long length = 0, long long accumulated = 0, int difficult = 3, int deep = 0, int AorB = true);
+long long intelligence(int[2], int [][3], int length, int accumulated, int difficult, int deep, bool);

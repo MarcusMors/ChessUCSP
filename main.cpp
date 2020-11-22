@@ -127,7 +127,7 @@ int game(int P1PiecesInit[][3], int nP1Pieces, int P2PiecesInit[][3], int nP2Pie
 				count++;
 			}
 
-			maxPoints = intelligence(start, bearingsPoints, count, 0);
+			maxPoints = intelligence(start, bearingsPoints, count, 0,difficulty,0,true);
 			std::cout << maxPoints << std::endl;
 
 			//* strategic points (ruin the castle movement, position, get more options, get good options, exchange strain?, etc? suggest please), piece points,
