@@ -1,6 +1,8 @@
 #include <iostream>
 #include "interface.h"
 
+using namespace std;
+
 void cleanScreen(int I)
 {
 	for (int i = 0; i < I; i++)
