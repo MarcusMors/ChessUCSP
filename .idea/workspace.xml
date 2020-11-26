@@ -23,15 +23,33 @@
       <config projectName="Chess_UCSP" targetName="Chess_UCSP" />
     </generated>
   </component>
-  <component name="CMakeSettings">
+  <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="397bc5a6-c9d1-4ccd-823c-73efbe140046" name="Default Changelist" comment="">
+    <list default="true" id="397bc5a6-c9d1-4ccd-823c-73efbe140046" name="Default Changelist" comment="merge">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.3/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.3/CMakeCCompiler.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.3/CMakeCXXCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.3/CMakeCXXCompiler.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.3/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.3/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.3/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdC/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdC/a.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdCXX/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdCXX/a.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Chess_UCSP.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Chess_UCSP.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Chess_UCSP.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Chess_UCSP.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Chess_UCSP.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Chess_UCSP.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Chess_UCSP.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Chess_UCSP.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Chess_UCSP.dir/objects1.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Chess_UCSP.dir/objects1.rsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Chess_UCSP.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Chess_UCSP.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Chess_UCSP.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Chess_UCSP.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +85,11 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager">
+    <configuration name="Chess_UCSP" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Chess_UCSP" TARGET_NAME="Chess_UCSP" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Chess_UCSP" RUN_TARGET_NAME="Chess_UCSP">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -101,6 +124,14 @@
       <workItem from="1606411182618" duration="4272000" />
       <workItem from="1606422379218" duration="3153000" />
     </task>
+    <task id="LOCAL-00001" summary="merge">
+      <created>1606428810599</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606428810599</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,34 +149,47 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="139" y="0" key="CommitChangelistDialog2" timestamp="1606428644135">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="139" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1606428644135" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1605971142248">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605971142248" />
-    <state width="1877" height="121" key="GridCell.Tab.0.bottom" timestamp="1606422500938">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1237" height="562" key="GridCell.Tab.0.bottom" timestamp="1606429522074">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state width="1237" height="562" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1606429522074" />
     <state width="1877" height="121" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606422500938" />
-    <state width="1877" height="121" key="GridCell.Tab.0.center" timestamp="1606422500938">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1237" height="562" key="GridCell.Tab.0.center" timestamp="1606429522074">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state width="1237" height="562" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1606429522074" />
     <state width="1877" height="121" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606422500938" />
-    <state width="1877" height="121" key="GridCell.Tab.0.left" timestamp="1606422500938">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1237" height="562" key="GridCell.Tab.0.left" timestamp="1606429522074">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state width="1237" height="562" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1606429522074" />
     <state width="1877" height="121" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606422500938" />
-    <state width="1877" height="121" key="GridCell.Tab.0.right" timestamp="1606422500938">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1237" height="562" key="GridCell.Tab.0.right" timestamp="1606429522074">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state width="1237" height="562" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1606429522074" />
     <state width="1877" height="121" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606422500938" />
     <state x="130" y="69" key="MergeDialog" timestamp="1605708872835">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="130" y="69" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605708872835" />
-    <state x="250" y="144" width="723" height="597" key="MultipleFileMergeDialog" timestamp="1605708876685">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="167" y="100" width="723" height="597" key="MultipleFileMergeDialog" timestamp="1606428801564">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state x="167" y="100" key="MultipleFileMergeDialog/0.0.1280.720@0.0.1280.720" timestamp="1606428801564" />
     <state x="250" y="144" width="723" height="597" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605708876685" />
     <state x="0" y="0" width="1578" height="757" key="dock-window-1" timestamp="1606406015394">
       <screen x="0" y="0" width="1920" height="1040" />

@@ -82,18 +82,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="D:/Chess_UCSP/Librerias/interface/interface.cpp">
-			<Option target="Chess_UCSP"/>
-		</Unit>
-		<Unit filename="D:/Chess_UCSP/Librerias/interface/interface.h">
-			<Option target="Chess_UCSP"/>
-		</Unit>
-		<Unit filename="D:/Chess_UCSP/Librerias/minMax/minMax.cpp">
-			<Option target="Chess_UCSP"/>
-		</Unit>
-		<Unit filename="D:/Chess_UCSP/Librerias/minMax/minMax.h">
-			<Option target="Chess_UCSP"/>
-		</Unit>
 		<Unit filename="D:/Chess_UCSP/main.cpp">
 			<Option target="Chess_UCSP"/>
 		</Unit>

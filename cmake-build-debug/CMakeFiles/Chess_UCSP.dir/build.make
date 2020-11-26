@@ -90,51 +90,19 @@ CMakeFiles/Chess_UCSP.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Chess_UCSP.dir/main.cpp.s"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Chess_UCSP\main.cpp -o CMakeFiles\Chess_UCSP.dir\main.cpp.s
 
-CMakeFiles/Chess_UCSP.dir/Librerias/minMax/minMax.cpp.obj: CMakeFiles/Chess_UCSP.dir/flags.make
-CMakeFiles/Chess_UCSP.dir/Librerias/minMax/minMax.cpp.obj: CMakeFiles/Chess_UCSP.dir/includes_CXX.rsp
-CMakeFiles/Chess_UCSP.dir/Librerias/minMax/minMax.cpp.obj: ../Librerias/minMax/minMax.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Chess_UCSP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Chess_UCSP.dir/Librerias/minMax/minMax.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Chess_UCSP.dir\Librerias\minMax\minMax.cpp.obj -c D:\Chess_UCSP\Librerias\minMax\minMax.cpp
-
-CMakeFiles/Chess_UCSP.dir/Librerias/minMax/minMax.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Chess_UCSP.dir/Librerias/minMax/minMax.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Chess_UCSP\Librerias\minMax\minMax.cpp > CMakeFiles\Chess_UCSP.dir\Librerias\minMax\minMax.cpp.i
-
-CMakeFiles/Chess_UCSP.dir/Librerias/minMax/minMax.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Chess_UCSP.dir/Librerias/minMax/minMax.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Chess_UCSP\Librerias\minMax\minMax.cpp -o CMakeFiles\Chess_UCSP.dir\Librerias\minMax\minMax.cpp.s
-
-CMakeFiles/Chess_UCSP.dir/Librerias/interface/interface.cpp.obj: CMakeFiles/Chess_UCSP.dir/flags.make
-CMakeFiles/Chess_UCSP.dir/Librerias/interface/interface.cpp.obj: CMakeFiles/Chess_UCSP.dir/includes_CXX.rsp
-CMakeFiles/Chess_UCSP.dir/Librerias/interface/interface.cpp.obj: ../Librerias/interface/interface.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Chess_UCSP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Chess_UCSP.dir/Librerias/interface/interface.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Chess_UCSP.dir\Librerias\interface\interface.cpp.obj -c D:\Chess_UCSP\Librerias\interface\interface.cpp
-
-CMakeFiles/Chess_UCSP.dir/Librerias/interface/interface.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Chess_UCSP.dir/Librerias/interface/interface.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Chess_UCSP\Librerias\interface\interface.cpp > CMakeFiles\Chess_UCSP.dir\Librerias\interface\interface.cpp.i
-
-CMakeFiles/Chess_UCSP.dir/Librerias/interface/interface.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Chess_UCSP.dir/Librerias/interface/interface.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Chess_UCSP\Librerias\interface\interface.cpp -o CMakeFiles\Chess_UCSP.dir\Librerias\interface\interface.cpp.s
-
 # Object files for target Chess_UCSP
 Chess_UCSP_OBJECTS = \
-"CMakeFiles/Chess_UCSP.dir/main.cpp.obj" \
-"CMakeFiles/Chess_UCSP.dir/Librerias/minMax/minMax.cpp.obj" \
-"CMakeFiles/Chess_UCSP.dir/Librerias/interface/interface.cpp.obj"
+"CMakeFiles/Chess_UCSP.dir/main.cpp.obj"
 
 # External object files for target Chess_UCSP
 Chess_UCSP_EXTERNAL_OBJECTS =
 
 Chess_UCSP.exe: CMakeFiles/Chess_UCSP.dir/main.cpp.obj
-Chess_UCSP.exe: CMakeFiles/Chess_UCSP.dir/Librerias/minMax/minMax.cpp.obj
-Chess_UCSP.exe: CMakeFiles/Chess_UCSP.dir/Librerias/interface/interface.cpp.obj
 Chess_UCSP.exe: CMakeFiles/Chess_UCSP.dir/build.make
 Chess_UCSP.exe: CMakeFiles/Chess_UCSP.dir/linklibs.rsp
 Chess_UCSP.exe: CMakeFiles/Chess_UCSP.dir/objects1.rsp
 Chess_UCSP.exe: CMakeFiles/Chess_UCSP.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Chess_UCSP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Chess_UCSP.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Chess_UCSP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Chess_UCSP.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Chess_UCSP.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
