@@ -1,3 +1,8 @@
+// #ifndef CHESS_UCSP_PIECES_H
+// #define CHESS_UCSP_PIECES_H
+// #endif
+
+#pragma once
 #include "../enums/enums.h"
 
 int P1_score = 0;

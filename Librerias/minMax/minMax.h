@@ -1,3 +1,8 @@
+// #ifndef CHESS_UCSP_MINMAX_H
+// #define CHESS_UCSP_MINMAX_H
+// #endif
+
+#pragma once
 
 // int sumUp(int arr[], int length)
 // {

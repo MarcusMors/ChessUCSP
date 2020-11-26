@@ -1,3 +1,8 @@
+// #ifndef CHESS_UCSP_GAMEBOARD_H
+// #define CHESS_UCSP_GAMEBOARD_H
+// #endif
+#pragma once
+
 #include <iostream>
 #include "../pieces/pieces.h"
 

@@ -1,4 +1,8 @@
-#include <iostream>
+// #ifndef CHESS_UCSP_IA_H
+// #define CHESS_UCSP_IA_H
+// #endif
+
+#pragma once
 
 #include "../minMax/minMax.h"
 #include "../gameboard/gameboard.h"
