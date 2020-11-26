@@ -53,8 +53,8 @@ public:
 			return true;
 		else if (abs(start[0] - end[0]) == abs(start[1] - end[1]))
 		{
-			bool isUp = ((start[0] - end[0]) > 0) ? true : false;
-			bool isLeft = ((start[1] - end[1]) > 0) ? true : false;
+			bool isUp = ((start[0] - end[0]) > 0);
+			bool isLeft = ((start[1] - end[1]) > 0);
 			int i, it, iLimit;
 			int j, jt, jLimit;
 			if (isUp)
@@ -98,7 +98,7 @@ public:
 			return true;
 		else if (start[0] == end[0])
 		{
-			bool isLeft = ((start[1] - end[1]) > 0) ? true : false;
+			bool isLeft = ((start[1] - end[1]) > 0);
 			int j, jt, jLimit;
 			if (isLeft)
 			{
@@ -121,7 +121,7 @@ public:
 		}
 		else if (start[1] == end[1])
 		{
-			bool isUp = ((start[0] - end[0]) > 0) ? true : false;
+			bool isUp = ((start[0] - end[0]) > 0);
 			int i, it, iLimit;
 			if (isUp)
 			{
@@ -168,30 +168,30 @@ public:
 		bool availableMovement = false;
 		switch (slots[place[0]][place[1]].symbol)
 		{
-		case PiecesChar::charP2_king:
+		case PiecesChar::charP1_king:
 			piecePossibilities = 0;
 			availableMovement;
 			break;
-		case PiecesChar::charP2_queen:
+		case PiecesChar::charP1_queen:
 			piecePossibilities = 1;
 			if (drawDiagonals(place))
 				availableMovement = true;
 			if (drawLines(place))
 				availableMovement = true;
 			break;
-		case PiecesChar::charP2_rook:
+		case PiecesChar::charP1_rook:
 			piecePossibilities = 2;
 			availableMovement = drawLines(place);
 			break;
-		case PiecesChar::charP2_knight:
+		case PiecesChar::charP1_knight:
 			piecePossibilities = 3;
 			availableMovement = drawJumps(place);
 			break;
-		case PiecesChar::charP2_bishop:
+		case PiecesChar::charP1_bishop:
 			piecePossibilities = 4;
 			availableMovement = drawDiagonals(place);
 			break;
-		case PiecesChar::charP2_pawn:
+		case PiecesChar::charP1_pawn:
 			availableMovement = drawLines_P(place);
 			piecePossibilities = 5;
 			break;
@@ -667,15 +667,14 @@ private:
 		}
 		return availableMovement;
 	}
-
 	void initGameboard(int P1PiecesInit[][3], int nP1Pieces, int P2PiecesInit[][3], int nP2Pieces)
 	{
-		for (int i = 0; i < width; i++)
-			for (int j = 0; j < height; j++)
-				slots[i][j] = Piece(PiecesChar::char_free, 1, 0, 0);
-
+		for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                slots[i][j] = Piece(PiecesChar::char_free, 1, 0, 0);
+            }
+        }
 		int points;
-
 		for (int i = 0; i < nP1Pieces; i++)
 		{
 			switch (P1PiecesInit[i][2])

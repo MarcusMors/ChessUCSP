@@ -1,7 +1,8 @@
 #include <iostream>
 #include "Librerias/IA/IA.h"
 #include "Librerias/interface/interface.h"
-
+#include "Librerias/enums/enums.h"
+#include "Librerias/gameboard/gameboard.h"
 using namespace std;
 
 OnceAnnouncement announcement(5);
@@ -29,7 +30,6 @@ int game(int P1PiecesInit[][3], int nP1Pieces, int P2PiecesInit[][3], int nP2Pie
 	char symbol;
 	char endSlot;
 	bool isFree;
-
 	while (true)
 	{
 		// show gameboard
@@ -44,12 +44,15 @@ int game(int P1PiecesInit[][3], int nP1Pieces, int P2PiecesInit[][3], int nP2Pie
 				start[0]--;
 				startLetter = toupper(startLetter);
 				start[1] = (int)startLetter - ((int)'A'); // 0 - width
+				cout<<start[0]<<start[1]<<endl;
 				if ((-1 < start[1]) && (start[1] < width) && (-1 < start[0]) && (start[0] < height))
 				{
 					symbol = gameboard.slots[start[0]][start[1]].symbol;
+					//symbol = toupper(symbol);
 					isFree = gameboard.slots[start[0]][start[1]].isFree;
+					cout<<symbol<<isFree<<endl;
 					// symbol is a symbol and belongs to P1
-					if ((!isFree) && ((int)symbol < ((int)'Z' + 1)) && ((int)symbol > ((int)'A' - 1)))
+					if ((!isFree) && ((int)symbol < ((int)'z' + 1)) && ((int)symbol > ((int)'a' - 1)))
 					{
 						availableMovement = gameboard.piecePossibilities(start);
 						if (availableMovement)
@@ -104,7 +107,7 @@ int game(int P1PiecesInit[][3], int nP1Pieces, int P2PiecesInit[][3], int nP2Pie
 			movements++;
 		}
 		else //* P2 turn
-		{
+		{/*
 
 			int n;
 			cin >> n;
@@ -128,8 +131,8 @@ int game(int P1PiecesInit[][3], int nP1Pieces, int P2PiecesInit[][3], int nP2Pie
 				count++;
 			}
 
-			maxPoints = intelligence(start, bearingsPoints, count, 0, difficulty, 0, true);
-			std::cout << maxPoints << std::endl;
+			//maxPoints = intelligence(start, bearingsPoints, count, 0, difficulty, 0, true);
+			//std::cout << maxPoints << std::endl;
 
 			//* strategic points (ruin the castle movement, position, get more options, get good options, exchange strain?, etc? suggest please), piece points,
 
@@ -138,7 +141,7 @@ int game(int P1PiecesInit[][3], int nP1Pieces, int P2PiecesInit[][3], int nP2Pie
 			// judge the options: defense, attack, develop (inrook), exchange chain,
 			// make a plan
 			// make the first movement plan
-			// make the movement in the gameboard
+			// make the movement in the gameboard*/
 			turn = !turn;
 			movements++;
 		}

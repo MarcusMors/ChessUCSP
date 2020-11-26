@@ -4,12 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/Los Romeros/Desktop/UCSP - LALO/2do semestre/Ciencia de la computacion I/Codes/Chess_UCSP/main.cpp" "C:/Users/Los Romeros/Desktop/UCSP - LALO/2do semestre/Ciencia de la computacion I/Codes/Chess_UCSP/cmake-build-debug/CMakeFiles/Chess_UCSP.dir/main.cpp.obj"
+  "C:/Users/Javier/CLionProjects/ChessUCSP/main.cpp" "C:/Users/Javier/CLionProjects/ChessUCSP/cmake-build-debug/CMakeFiles/Chess_UCSP.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../$(CMAKE_CURRENT_SOURCE_DIR)/Librerias"
   )
 
 # Targets to which this target links.
