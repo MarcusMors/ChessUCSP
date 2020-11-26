@@ -1,5 +1,4 @@
 .vscode/
 .idea
 cmake-build-debug/
-CMakeLists.txt
-.gitignore
+build
