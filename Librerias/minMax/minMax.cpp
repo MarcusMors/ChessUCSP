@@ -1,4 +1,3 @@
-#include <iostream>
 #include "minMax.h"
 
 using namespace std;

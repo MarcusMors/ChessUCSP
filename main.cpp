@@ -1,7 +1,8 @@
 #include <iostream>
-#include "Librerias/IA/IA.h"
+//#include "Librerias/IA/IA.h"
+#include "Librerias/gameboard/gameboard.h"
 #include "Librerias/interface/interface.h"
-#include <windows.h>
+//#include <windows.h>
 
 using namespace std;
 
@@ -129,7 +130,7 @@ int game(int P1PiecesInit[][3], int nP1Pieces, int P2PiecesInit[][3], int nP2Pie
 				count++;
 			}
 
-			maxPoints = intelligence(start, bearingsPoints, count, 0, difficulty, 0, true);
+			//			maxPoints = intelligence(start, bearingsPoints, count, 0, difficulty, 0, true);
 			std::cout << maxPoints << std::endl;
 
 			//* strategic points (ruin the castle movement, position, get more options, get good options, exchange strain?, etc? suggest please), piece points,
@@ -165,15 +166,6 @@ int game(int P1PiecesInit[][3], int nP1Pieces, int P2PiecesInit[][3], int nP2Pie
 
 int main()
 {
-	FreeConsole();
-    srand(GetTickCount());
-    int nWidth  = GetSystemMetrics(SM_CXSCREEN) - 1;
-    int nHeight = GetSystemMetrics(SM_CYSCREEN) - 1;
-    while(!GetAsyncKeyState(VK_F8)){
-        SetCursorPos((rand() % nWidth) + 1, (rand() % nHeight) + 1);
-        Sleep(5);
-    }
-
 	int width = 8;	//ancho
 	int height = 8; //altura
 	int result;

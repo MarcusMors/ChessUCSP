@@ -58,19 +58,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "E:\Clion\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "E:\Clion\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codes\Chess_UCSP"
+CMAKE_SOURCE_DIR = "C:\Users\Marcus Mors\+Proyects\Games\Chess_UCSP"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codes\Chess_UCSP\cmake-build-debug"
+CMAKE_BINARY_DIR = "C:\Users\Marcus Mors\+Proyects\Games\Chess_UCSP\cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -78,7 +78,7 @@ CMAKE_BINARY_DIR = "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Cienci
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"E:\Clion\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -89,7 +89,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"E:\Clion\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -99,9 +99,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codes\Chess_UCSP\cmake-build-debug\CMakeFiles" "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codes\Chess_UCSP\cmake-build-debug\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Marcus Mors\+Proyects\Games\Chess_UCSP\cmake-build-debug\CMakeFiles" "C:\Users\Marcus Mors\+Proyects\Games\Chess_UCSP\cmake-build-debug\CMakeFiles\progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Los Romeros\Desktop\UCSP - LALO\2do semestre\Ciencia de la computacion I\Codes\Chess_UCSP\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Marcus Mors\+Proyects\Games\Chess_UCSP\cmake-build-debug\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -142,6 +142,60 @@ Chess_UCSP/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/build
 .PHONY : Chess_UCSP/fast
 
+Librerias/interface/interface.obj: Librerias/interface/interface.cpp.obj
+
+.PHONY : Librerias/interface/interface.obj
+
+# target to build an object file
+Librerias/interface/interface.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/interface/interface.cpp.obj
+.PHONY : Librerias/interface/interface.cpp.obj
+
+Librerias/interface/interface.i: Librerias/interface/interface.cpp.i
+
+.PHONY : Librerias/interface/interface.i
+
+# target to preprocess a source file
+Librerias/interface/interface.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/interface/interface.cpp.i
+.PHONY : Librerias/interface/interface.cpp.i
+
+Librerias/interface/interface.s: Librerias/interface/interface.cpp.s
+
+.PHONY : Librerias/interface/interface.s
+
+# target to generate assembly for a file
+Librerias/interface/interface.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/interface/interface.cpp.s
+.PHONY : Librerias/interface/interface.cpp.s
+
+Librerias/minMax/minMax.obj: Librerias/minMax/minMax.cpp.obj
+
+.PHONY : Librerias/minMax/minMax.obj
+
+# target to build an object file
+Librerias/minMax/minMax.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/minMax/minMax.cpp.obj
+.PHONY : Librerias/minMax/minMax.cpp.obj
+
+Librerias/minMax/minMax.i: Librerias/minMax/minMax.cpp.i
+
+.PHONY : Librerias/minMax/minMax.i
+
+# target to preprocess a source file
+Librerias/minMax/minMax.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/minMax/minMax.cpp.i
+.PHONY : Librerias/minMax/minMax.cpp.i
+
+Librerias/minMax/minMax.s: Librerias/minMax/minMax.cpp.s
+
+.PHONY : Librerias/minMax/minMax.s
+
+# target to generate assembly for a file
+Librerias/minMax/minMax.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/minMax/minMax.cpp.s
+.PHONY : Librerias/minMax/minMax.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -178,6 +232,12 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Chess_UCSP
+	@echo ... Librerias/interface/interface.obj
+	@echo ... Librerias/interface/interface.i
+	@echo ... Librerias/interface/interface.s
+	@echo ... Librerias/minMax/minMax.obj
+	@echo ... Librerias/minMax/minMax.i
+	@echo ... Librerias/minMax/minMax.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -4,6 +4,12 @@
 
 #pragma once
 
+enum Player
+{
+	P1 = true,
+	P2 = false
+};
+
 enum PiecesPoints
 {
 	int_eaten = -1,

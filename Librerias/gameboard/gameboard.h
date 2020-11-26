@@ -1,6 +1,7 @@
-// #ifndef CHESS_UCSP_GAMEBOARD_H
-// #define CHESS_UCSP_GAMEBOARD_H
-// #endif
+#ifndef CHESS_UCSP_GAMEBOARD_H
+#define CHESS_UCSP_GAMEBOARD_H
+#endif
+
 #pragma once
 
 #include <iostream>
@@ -703,7 +704,7 @@ private:
 				points = 0;
 				break;
 			}
-			slots[P1PiecesInit[i][0]][P1PiecesInit[i][1]] = Piece((char)P1PiecesInit[i][2], 0, 1, points);
+			slots[P1PiecesInit[i][0]][P1PiecesInit[i][1]] = Piece((char)P1PiecesInit[i][2], 0, Player::P1, points);
 		}
 		for (int i = 0; i < nP2Pieces; i++)
 		{
@@ -732,7 +733,7 @@ private:
 				points = 0;
 				break;
 			}
-			slots[P2PiecesInit[i][0]][P2PiecesInit[i][1]] = Piece((char)P2PiecesInit[i][2], 0, 1, points);
+			slots[P2PiecesInit[i][0]][P2PiecesInit[i][1]] = Piece((char)P2PiecesInit[i][2], 0, Player::P2, points);
 		}
 	}
 };
