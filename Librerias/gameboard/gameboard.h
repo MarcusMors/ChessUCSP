@@ -1,12 +1,12 @@
 // #ifndef CHESS_UCSP_GAMEBOARD_H
 // #define CHESS_UCSP_GAMEBOARD_H
 // #endif
+#pragma once
 
 #include <iostream>
 #include "../pieces/pieces.h"
 #include "../enums/enums.h"
 #include "../helpers/helpers.h"
-#pragma once
 
 int P1_score = 0;
 int P2_score = 0;

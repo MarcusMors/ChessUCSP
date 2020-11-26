@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Librerias/gameboard/gameboard.h"
+#include "Librerias/helpers/helpers.h"
 
 using namespace std;
 // using namespace CHESS_UCSP_HELPERS_H;??

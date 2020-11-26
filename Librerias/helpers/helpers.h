@@ -11,7 +11,7 @@ int letterToInt(char);
 
 int sumUp(int[], int);
 
-char anything;
+// char anything;
 class OnceAnnouncement
 {
 public:

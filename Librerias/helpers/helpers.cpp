@@ -144,7 +144,7 @@ OnceAnnouncement::OnceAnnouncement(int I)
 		cleanScreen(15);
 		cout << "\t\tInput [anything] to continue:" << endl;
 		cout << "\t\t\t\t";
-		cin >> anything;
+		// cin >> anything;
 	}
 }
 OnceAnnouncement::~OnceAnnouncement()
@@ -152,8 +152,3 @@ OnceAnnouncement::~OnceAnnouncement()
 	cout << "Credits\n";
 	// creditos
 }
-
-//! ASK LOAIZA-SENSEI
-// OnceAnnouncement::OnceAnnouncement(int I = 0)
-// {
-// }
