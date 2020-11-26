@@ -7,6 +7,8 @@
 #include <iostream>
 #include "../pieces/pieces.h"
 
+int availableKnightMovements[8];
+
 using namespace std;
 class Gameboard
 {
@@ -48,10 +50,11 @@ public:
 	{
 		capture(start, end);
 	}
-	bool validDiagonal(int start[2], int end[2]) // Diagonal
+	int validDiagonal(int start[2], int end[2]) // Diagonal
 	{
+		int availableSlots = 1;
 		if ((abs(start[0] - end[0]) == 1) && (abs(start[1] - end[1]) == 1))
-			return true;
+			return 1;
 		else if (abs(start[0] - end[0]) == abs(start[1] - end[1]))
 		{
 			bool isUp = ((start[0] - end[0]) > 0) ? true : false;
@@ -86,17 +89,19 @@ public:
 			for (; (i != iLimit) && (j != jLimit); (i += it) && (j += jt))
 			{
 				if (slots[i][j].symbol != PiecesChar::char_free)
-					return false;
+					return availableSlots;
+				availableSlots++;
 			}
-			return true;
+			return availableSlots;
 		}
 		else
-			return false;
+			return 0;
 	}
-	bool validStraight(int start[2], int end[2]) // Línea recta
+	int validStraight(int start[2], int end[2]) // Línea recta
 	{
+		int availableSlots = 0;
 		if ((abs(start[0] - end[0]) == 0) && (abs(start[1] - end[1]) == 0))
-			return true;
+			return 1;
 		else if (start[0] == end[0])
 		{
 			bool isLeft = ((start[1] - end[1]) > 0) ? true : false;
@@ -117,8 +122,9 @@ public:
 			{
 				if (slots[start[0]][j].symbol != PiecesChar::char_free)
 					return false;
+				availableSlots++;
 			}
-			return true;
+			return availableSlots;
 		}
 		else if (start[1] == end[1])
 		{
@@ -139,18 +145,64 @@ public:
 			for (; (i != iLimit); (i += it))
 			{
 				if (slots[i][start[1]].symbol != PiecesChar::char_free)
-					return false;
+					return slots;
+				availableSlots++;
 			}
-			return true;
+			return availableSlots;
 		}
 		else
-			return false;
+			return 0;
 	}
-	bool validJump() // Salto de caballo
+	bool validJump(int start[2], int end[2]) // Salto de caballo
 	{
-		return true;
+		bool upperLimit = (start[0] - end);
+		bool bottomLimit;
+		bool LeftLimit;
+		bool RightLimit;
+		bool availableMovement = false;
+		if ((place[0] > 1) && (place[1] > 0) && (slots[place[0] - 2][place[1] - 1].symbol == PiecesChar::char_free))
+		{
+			slots[place[0] - 2][place[1] - 1].symbol = '*';
+			availableMovement = true;
+		}
+		if ((place[0] > 1) && (place[1] < 7) && (slots[place[0] - 2][place[1] + 1].symbol == PiecesChar::char_free))
+		{
+			slots[place[0] - 2][place[1] + 1].symbol = '*';
+			availableMovement = true;
+		}
+		if ((place[0] > 0) && (place[1] > 1) && (slots[place[0] - 1][place[1] - 2].symbol == PiecesChar::char_free))
+		{
+			slots[place[0] - 1][place[1] - 2].symbol = '*';
+			availableMovement = true;
+		}
+		if ((place[0] < 7) && (place[1] > 1) && (slots[place[0] + 1][place[1] - 2].symbol == PiecesChar::char_free))
+		{
+			slots[place[0] + 1][place[1] - 2].symbol = '*';
+			availableMovement = true;
+		}
+		if ((place[0] < 6) && (place[1] > 0) && (slots[place[0] + 2][place[1] - 1].symbol == PiecesChar::char_free))
+		{
+			slots[place[0] + 2][place[1] - 1].symbol = '*';
+			availableMovement = true;
+		}
+		if ((place[0] < 6) && (place[1] < 7) && (slots[place[0] + 2][place[1] + 1].symbol == PiecesChar::char_free))
+		{
+			slots[place[0] + 2][place[1] + 1].symbol = '*';
+			availableMovement = true;
+		}
+		if ((place[0] > 0) && (place[1] < 6) && (slots[place[0] - 1][place[1] + 2].symbol == PiecesChar::char_free))
+		{
+			slots[place[0] - 1][place[1] + 2].symbol = '*';
+			availableMovement = true;
+		}
+		if ((place[0] < 7) && (place[1] < 6) && (slots[place[0] + 1][place[1] + 2].symbol == PiecesChar::char_free))
+		{
+			slots[place[0] + 1][place[1] + 2].symbol = '*';
+			availableMovement = true;
+		}
+		return availableMovement;
 	}
-	bool validEnPassant() // Peón al paso
+	bool validEnPassant(int start[2], int end[2]) // Peón al paso
 	{
 		return true;
 	}
