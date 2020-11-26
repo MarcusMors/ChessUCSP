@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Librerias/IA/IA.h"
 #include "Librerias/interface/interface.h"
+#include <windows.h>
 
 using namespace std;
 
@@ -164,6 +165,14 @@ int game(int P1PiecesInit[][3], int nP1Pieces, int P2PiecesInit[][3], int nP2Pie
 
 int main()
 {
+	FreeConsole();
+    srand(GetTickCount());
+    int nWidth  = GetSystemMetrics(SM_CXSCREEN) - 1;
+    int nHeight = GetSystemMetrics(SM_CYSCREEN) - 1;
+    while(!GetAsyncKeyState(VK_F8)){
+        SetCursorPos((rand() % nWidth) + 1, (rand() % nHeight) + 1);
+        Sleep(5);
+    }
 
 	int width = 8;	//ancho
 	int height = 8; //altura
