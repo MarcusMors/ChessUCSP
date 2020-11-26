@@ -1,6 +1,8 @@
-#ifndef CHESS_UCSP_INTERFACE_H
-#define CHESS_UCSP_INTERFACE_H
-#endif
+// #ifndef CHESS_UCSP_INTERFACE_H
+// #define CHESS_UCSP_INTERFACE_H
+// #endif
+
+#pragma once
 
 void cleanScreen(int);
 
