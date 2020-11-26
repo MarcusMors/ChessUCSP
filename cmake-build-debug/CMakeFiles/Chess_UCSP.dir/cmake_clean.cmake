@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Chess_UCSP.dir/Librerias/interface/interface.cpp.obj"
+  "CMakeFiles/Chess_UCSP.dir/Librerias/minMax/minMax.cpp.obj"
   "CMakeFiles/Chess_UCSP.dir/main.cpp.obj"
   "Chess_UCSP.exe"
   "Chess_UCSP.exe.manifest"

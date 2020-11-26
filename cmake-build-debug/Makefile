@@ -142,6 +142,60 @@ Chess_UCSP/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/build
 .PHONY : Chess_UCSP/fast
 
+Librerias/interface/interface.obj: Librerias/interface/interface.cpp.obj
+
+.PHONY : Librerias/interface/interface.obj
+
+# target to build an object file
+Librerias/interface/interface.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/interface/interface.cpp.obj
+.PHONY : Librerias/interface/interface.cpp.obj
+
+Librerias/interface/interface.i: Librerias/interface/interface.cpp.i
+
+.PHONY : Librerias/interface/interface.i
+
+# target to preprocess a source file
+Librerias/interface/interface.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/interface/interface.cpp.i
+.PHONY : Librerias/interface/interface.cpp.i
+
+Librerias/interface/interface.s: Librerias/interface/interface.cpp.s
+
+.PHONY : Librerias/interface/interface.s
+
+# target to generate assembly for a file
+Librerias/interface/interface.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/interface/interface.cpp.s
+.PHONY : Librerias/interface/interface.cpp.s
+
+Librerias/minMax/minMax.obj: Librerias/minMax/minMax.cpp.obj
+
+.PHONY : Librerias/minMax/minMax.obj
+
+# target to build an object file
+Librerias/minMax/minMax.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/minMax/minMax.cpp.obj
+.PHONY : Librerias/minMax/minMax.cpp.obj
+
+Librerias/minMax/minMax.i: Librerias/minMax/minMax.cpp.i
+
+.PHONY : Librerias/minMax/minMax.i
+
+# target to preprocess a source file
+Librerias/minMax/minMax.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/minMax/minMax.cpp.i
+.PHONY : Librerias/minMax/minMax.cpp.i
+
+Librerias/minMax/minMax.s: Librerias/minMax/minMax.cpp.s
+
+.PHONY : Librerias/minMax/minMax.s
+
+# target to generate assembly for a file
+Librerias/minMax/minMax.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Chess_UCSP.dir\build.make CMakeFiles/Chess_UCSP.dir/Librerias/minMax/minMax.cpp.s
+.PHONY : Librerias/minMax/minMax.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -178,6 +232,12 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Chess_UCSP
+	@echo ... Librerias/interface/interface.obj
+	@echo ... Librerias/interface/interface.i
+	@echo ... Librerias/interface/interface.s
+	@echo ... Librerias/minMax/minMax.obj
+	@echo ... Librerias/minMax/minMax.i
+	@echo ... Librerias/minMax/minMax.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
