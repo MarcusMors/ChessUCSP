@@ -1,0 +1,3 @@
+D:/Chess_UCSP/cmake-build-debug/CMakeFiles/Chess_UCSP.dir
+D:/Chess_UCSP/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Chess_UCSP/cmake-build-debug/CMakeFiles/rebuild_cache.dir
