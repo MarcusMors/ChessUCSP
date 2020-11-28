@@ -155,7 +155,7 @@ public:
 	}
 	void setAvailableJumps(int place[2]) // Salto de caballo
 	{
-		resetAvailableKnightArray();
+		resetAvailableJumps();
 		// o 2 o 1 o
 		// 3 o o o 0
 		// o o X o o
@@ -211,7 +211,7 @@ public:
 			availableKnightMovements[6] = false;
 		}
 	}
-	void resetAvailableKnightArray()
+	void resetAvailableJumps()
 	{
 		availableKnightMovements[0] = true;
 		availableKnightMovements[1] = true;
