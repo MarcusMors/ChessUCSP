@@ -18,45 +18,64 @@ bool reachable(int piece[2], int end[2], char symbol)
 
 int intelligence(
 	Piece slots[26][26], int width, int height,
-	int playerBearings[][2], int playerLength,
-	int playerPickableBearings[][2], int playerPickableLength,
+	int playerBearings[][3], int playerLength,
+	int playerPickableBearings[][3], int playerPickableLength,
 	int enemyBearings[][2], int enemyLength,
-	int enemyPickableBearings[][2], int enemyPickableLength,
-	int piece[2], int accumulated, int difficulty, int deep, bool A)
+	int enemyPickableBearings[][3], int enemyPickableLength,
+	int accumulated, int difficulty, int deep, bool A)
 {
 	if (A)
 	{
-		if (deep == difficulty || playerPickableBearings == 0)
+		if (deep == difficulty || playerPickableLength == 0)
 		{
 			return accumulated;
 		}
 		else if (playerPickableLength == 1)
 		{
-			return accumulated + slots[playerPickableBearings[0][0]][playerPickableBearings[0][0]].points;
+			return accumulated + slots[playerPickableBearings[0][0]][playerPickableBearings[0][1]].points;
 		}
 
-		int branches[length];
-		int auxPiece[2];
+		int branches[playerPickableLength];
+		int auxPiece[3];
 		int auxEnd[2];
 		int auxLength;
 
-		for (int i = 0; i < playerPickableBearingsLength; i++)
+		for (int i = 0; i < playerPickableLength; i++)
 		{
 			auxLength = 0;
-			int auxPlayerPickableBearings[length][2];
+			int auxPlayerPickableBearings[playerPickablelength][2];
 
 			//auxStart == Player Piece
 			auxPiece[0] = playerPickableBearings[i][0];
 			auxPiece[1] = playerPickableBearings[i][1];
-
-			for (int j = 0; j < enemyBearingsLength; j++)
+			auxPiece[2] = playerPickableBearings[i][2];
+			for (int j = 0; j < enemyPickableLength; j++)
 			{
 				if (j != i)
 				{
-					// Availables slots and Pieces
-					auxEnd[0] = slots[j][0];
-					auxEnd[1] = slots[j][1];
-
+					switch (char(auxPiece[2]))
+					{
+					case PiecesChar::charP1_king:
+						break;
+					case PiecesChar::charP1_queen:
+						break;
+					case PiecesChar::charP1_knight:
+						break;
+					case PiecesChar::charP1_rook:
+						break;
+					case PiecesChar::charP1_bishop:
+						break;
+					case PiecesChar::charP1_pawn:
+						break;
+					default:
+						break;
+					}
+					if ()
+					{
+						// Availables slots and Pieces
+						auxEnd[0] = slots[j][0];
+						auxEnd[1] = slots[j][1];
+					}
 					if (reachable(auxPiece, auxEnd, ' '))
 					{
 						auxPlayerPickableBearings[auxLength][2] = slots[j][2];

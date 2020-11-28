@@ -7,7 +7,7 @@
 #include <iostream>
 #include "../pieces/pieces.h"
 
-int availableKnightMovements[8];
+bool availableKnightJump[8] = {1, 1, 1, 1, 1, 1, 1, 1};
 
 using namespace std;
 class Gameboard
@@ -121,7 +121,7 @@ public:
 			for (; (j != jLimit); (j += jt))
 			{
 				if (slots[start[0]][j].symbol != PiecesChar::char_free)
-					return false;
+					return availableSlots;
 				availableSlots++;
 			}
 			return availableSlots;
@@ -145,7 +145,7 @@ public:
 			for (; (i != iLimit); (i += it))
 			{
 				if (slots[i][start[1]].symbol != PiecesChar::char_free)
-					return slots;
+					return availableSlots;
 				availableSlots++;
 			}
 			return availableSlots;
@@ -153,54 +153,74 @@ public:
 		else
 			return 0;
 	}
-	bool validJump(int start[2], int end[2]) // Salto de caballo
+	void setAvailableJumps(int place[2]) // Salto de caballo
 	{
-		bool upperLimit = (start[0] - end);
-		bool bottomLimit;
-		bool LeftLimit;
-		bool RightLimit;
-		bool availableMovement = false;
-		if ((place[0] > 1) && (place[1] > 0) && (slots[place[0] - 2][place[1] - 1].symbol == PiecesChar::char_free))
+		resetAvailableKnightArray();
+		// o 2 o 1 o
+		// 3 o o o 0
+		// o o X o o
+		// 4 o o o 7
+		// o 5 o 6 o
+		if (place[1] == 0)
 		{
-			slots[place[0] - 2][place[1] - 1].symbol = '*';
-			availableMovement = true;
+			availableKnightMovements[2] = false;
+			availableKnightMovements[3] = false;
+			availableKnightMovements[4] = false;
+			availableKnightMovements[5] = false;
 		}
-		if ((place[0] > 1) && (place[1] < 7) && (slots[place[0] - 2][place[1] + 1].symbol == PiecesChar::char_free))
+		else if (place[1] == 1)
 		{
-			slots[place[0] - 2][place[1] + 1].symbol = '*';
-			availableMovement = true;
+			availableKnightMovements[3] = false;
+			availableKnightMovements[4] = false;
 		}
-		if ((place[0] > 0) && (place[1] > 1) && (slots[place[0] - 1][place[1] - 2].symbol == PiecesChar::char_free))
+		else if (place[1] == width - 1)
 		{
-			slots[place[0] - 1][place[1] - 2].symbol = '*';
-			availableMovement = true;
+			availableKnightMovements[1] = false;
+			availableKnightMovements[0] = false;
+			availableKnightMovements[7] = false;
+			availableKnightMovements[6] = false;
 		}
-		if ((place[0] < 7) && (place[1] > 1) && (slots[place[0] + 1][place[1] - 2].symbol == PiecesChar::char_free))
+		else if (place[1] == width - 2)
 		{
-			slots[place[0] + 1][place[1] - 2].symbol = '*';
-			availableMovement = true;
+			availableKnightMovements[0] = false;
+			availableKnightMovements[7] = false;
 		}
-		if ((place[0] < 6) && (place[1] > 0) && (slots[place[0] + 2][place[1] - 1].symbol == PiecesChar::char_free))
+
+		if (place[0] == 0)
 		{
-			slots[place[0] + 2][place[1] - 1].symbol = '*';
-			availableMovement = true;
+			availableKnightMovements[0] = false;
+			availableKnightMovements[1] = false;
+			availableKnightMovements[2] = false;
+			availableKnightMovements[3] = false;
 		}
-		if ((place[0] < 6) && (place[1] < 7) && (slots[place[0] + 2][place[1] + 1].symbol == PiecesChar::char_free))
+		else if (place[0] == 1)
 		{
-			slots[place[0] + 2][place[1] + 1].symbol = '*';
-			availableMovement = true;
+			availableKnightMovements[1] = false;
+			availableKnightMovements[2] = false;
 		}
-		if ((place[0] > 0) && (place[1] < 6) && (slots[place[0] - 1][place[1] + 2].symbol == PiecesChar::char_free))
+		else if (place[0] == height - 1)
 		{
-			slots[place[0] - 1][place[1] + 2].symbol = '*';
-			availableMovement = true;
+			availableKnightMovements[4] = false;
+			availableKnightMovements[5] = false;
+			availableKnightMovements[6] = false;
+			availableKnightMovements[7] = false;
 		}
-		if ((place[0] < 7) && (place[1] < 6) && (slots[place[0] + 1][place[1] + 2].symbol == PiecesChar::char_free))
+		else if (place[0] == height - 2)
 		{
-			slots[place[0] + 1][place[1] + 2].symbol = '*';
-			availableMovement = true;
+			availableKnightMovements[5] = false;
+			availableKnightMovements[6] = false;
 		}
-		return availableMovement;
+	}
+	void resetAvailableKnightArray()
+	{
+		availableKnightMovements[0] = true;
+		availableKnightMovements[1] = true;
+		availableKnightMovements[2] = true;
+		availableKnightMovements[3] = true;
+		availableKnightMovements[4] = true;
+		availableKnightMovements[5] = true;
+		availableKnightMovements[6] = true;
+		availableKnightMovements[7] = true;
 	}
 	bool validEnPassant(int start[2], int end[2]) // Peón al paso
 	{
