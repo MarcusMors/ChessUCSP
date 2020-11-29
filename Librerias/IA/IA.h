@@ -6,8 +6,46 @@
 
 #include "../minMax/minMax.h"
 #include "../gameboard/gameboard.h"
-
 using namespace std;
+
+int **diagonalPP_ptr;
+int **diagonalPN_ptr;
+int **diagonalNN_ptr;
+int **diagonalNP_ptr;
+
+int **straightPP_ptr;
+int **straightPN_ptr;
+int **straightNN_ptr;
+int **straightNP_ptr;
+
+void setDiagonalPP(int length)
+{
+	diagonalPP_ptr = new int *[length];
+	for (int i = 0; i < length; i++)
+		diagonalPP_ptr[i] = new int[3];
+}
+void setDiagonalPN(int length)
+{
+	diagonalPN_ptr = new int *[length][3];
+	for (int i = 0; i < length; i++)
+		diagonalPN_ptr[i] = new int[3];
+}
+void setDiagonalNN(int length)
+{
+	diagonalNN_ptr = new int *[length][3];
+	for (int i = 0; i < length; i++)
+		diagonalNN_ptr[i] = new int[3];
+}
+void setDiagonalNP(int length)
+{
+	diagonalNP_ptr = new int *[length][3];
+	for (int i = 0; i < length; i++)
+		diagonalNP_ptr[i] = new int[3];
+}
+
+void resetDiagonals()
+{
+}
 
 bool reachable(int piece[2], int end[2], char symbol)
 {
@@ -37,13 +75,13 @@ int intelligence(
 
 		int branches[playerPickableLength];
 		int auxPiece[3];
-		int auxEnd[2];
+		int auxPieceEnd[2];
 		int auxLength;
 
 		for (int i = 0; i < playerPickableLength; i++)
 		{
 			auxLength = 0;
-			int auxPlayerPickableBearings[playerPickablelength][2];
+			int auxPlayerPickableBearings[playerPickableLength][2];
 
 			//auxStart == Player Piece
 			auxPiece[0] = playerPickableBearings[i][0];
@@ -58,25 +96,27 @@ int intelligence(
 					case PiecesChar::charP1_king:
 						break;
 					case PiecesChar::charP1_queen:
+
 						break;
 					case PiecesChar::charP1_knight:
 						break;
 					case PiecesChar::charP1_rook:
 						break;
 					case PiecesChar::charP1_bishop:
-						break;
+						gameboard.break;
 					case PiecesChar::charP1_pawn:
 						break;
 					default:
+						continue;
 						break;
 					}
 					if ()
 					{
 						// Availables slots and Pieces
-						auxEnd[0] = slots[j][0];
-						auxEnd[1] = slots[j][1];
+						auxPieceEnd[0] = slots[j][0];
+						auxPieceEnd[1] = slots[j][1];
 					}
-					if (reachable(auxPiece, auxEnd, ' '))
+					if (reachable(auxPiece, auxPieceEnd, ' '))
 					{
 						auxPlayerPickableBearings[auxLength][2] = slots[j][2];
 						auxLength++;

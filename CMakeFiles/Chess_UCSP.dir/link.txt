@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/Chess_UCSP.dir/main.cpp.o  -o Chess_UCSP 

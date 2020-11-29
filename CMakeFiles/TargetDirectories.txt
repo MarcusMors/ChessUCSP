@@ -1,0 +1,3 @@
+/mnt/c/Users/Marcus Mors/+Proyects/Games/Chess_UCSP/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/Marcus Mors/+Proyects/Games/Chess_UCSP/CMakeFiles/edit_cache.dir
+/mnt/c/Users/Marcus Mors/+Proyects/Games/Chess_UCSP/CMakeFiles/Chess_UCSP.dir
