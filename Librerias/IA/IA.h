@@ -11,7 +11,6 @@ int contador=0;
 bool availablepiece;
 bool availableeat;
 int maxmove[2]={0,0};
-int eval;
 char temp;
 int k, l;
 int save_movesm;
@@ -134,93 +133,140 @@ int minimax(char slots[26][26], int depth, bool player, int points) { //Player =
                     }
                     movesm = 0;
                     for (k = j + 1; k < 8; k++) {
-                        if ((slots[i][k] == PiecesChar::char_free) || (p2validpieces(slots[i][k]))) {
+                        if (slots[i][k] == PiecesChar::char_free) {
                             moves[movesm][0] = i;
                             moves[movesm][1] = k;
                             movesm++;
-                        } else
+                        } else if(p2validpieces(slots[i][k])){
+                            moves[movesm][0] = i;
+                            moves[movesm][1] = k;
+                            movesm++;
                             break;
+                        } else{
+                            break;
+                        }
                     }
                     //(+y) line
                     for (k = i - 1; -1 < k; k--) {
-                        if ((slots[k][j] == PiecesChar::char_free) || (p2validpieces(slots[k][j]))) {
+                        if (slots[k][j] == PiecesChar::char_free) {
                             moves[movesm][0] = k;
                             moves[movesm][1] = j;
                             movesm++;
-                        } else
+                        } else if (p2validpieces(slots[k][j])){
+                            moves[movesm][0] = k;
+                            moves[movesm][1] = j;
+                            movesm++;
                             break;
+                        } else {
+                            break;
+                        }
                     }
                     //(-x) line
                     for (k = j - 1; -1 < k; k--) {
-                        if ((slots[i][k] == PiecesChar::char_free) || (p2validpieces(slots[i][k]))) {
+                        if (slots[i][k] == PiecesChar::char_free)  {
                             moves[movesm][0] = i;
                             moves[movesm][1] = k;
                             movesm++;
-                        } else
+                        } else if(p2validpieces(slots[i][k])){
+                            moves[movesm][0] = i;
+                            moves[movesm][1] = k;
+                            movesm++;
+                        } else{
                             break;
+                        }
                     }
                     //(-y) line
                     for (k = i + 1; k < 8; k++) {
-                        if ((slots[k][j] == PiecesChar::char_free) || (p2validpieces(slots[k][j]))) {
+                        if (slots[k][j] == PiecesChar::char_free) {
                             moves[movesm][0] = k;
                             moves[movesm][1] = j;
                             movesm++;
-                        } else
+                        } else if (p2validpieces(slots[k][j])){
+                            moves[movesm][0] = k;
+                            moves[movesm][1] = j;
+                            movesm++;
                             break;
+                        } else {
+                            break;
+                        }
                     }
                     k = i - 1;
                     l = j + 1;
                     for (; (-1 < k) && (l < 8); (k--) && (l++))
                     {
-                        if ((slots[k][l] == PiecesChar::char_free) || (p2validpieces(slots[k][l])))
+                        if (slots[k][l] == PiecesChar::char_free)
                         {
                             moves[movesm][0] = k;
                             moves[movesm][1] = l;
                             movesm++;
                         }
-                        else
+                        else if(p2validpieces(slots[k][l])){
+                            moves[movesm][0] = k;
+                            moves[movesm][1] = l;
+                            movesm++;
                             break;
+                        }else{
+                            break;
+                        }
                     }
                     k = i - 1;
                     l = j - 1;
                     for (; (-1 < k) && (-1 < l); (k--) && (l--))
                     {
-                        if ((slots[k][l] == PiecesChar::char_free) || (p2validpieces(slots[k][l])))
+                        if (slots[k][l] == PiecesChar::char_free)
                         {
                             moves[movesm][0] = k;
                             moves[movesm][1] = l;
                             movesm++;
                         }
-                        else
+                        else if (p2validpieces(slots[k][l])){
+                            moves[movesm][0] = k;
+                            moves[movesm][1] = l;
+                            movesm++;
                             break;
+                        }else {
+                            break;
+                        }
                     }
                     //(-x;-y) diagonal
                     k = i + 1;
                     l = j - 1;
                     for (; (k < 8) && (-1 < l); (k++) && (l--))
                     {
-                        if ((slots[k][l] == PiecesChar::char_free) || (p2validpieces(slots[k][l])))
+                        if (slots[k][l] == PiecesChar::char_free)
                         {
                             moves[movesm][0] = k;
                             moves[movesm][1] = l;
                             movesm++;
                         }
-                        else
+                        else if (p2validpieces(slots[k][l])){
+                            moves[movesm][0] = k;
+                            moves[movesm][1] = l;
+                            movesm++;
                             break;
+                        }else{
+                            break;
+                        }
                     }
                     //(+x;-y) diagonal
                     k = i + 1;
                     l = j + 1;
                     for (; (k < 8) && (l < 8); (k++) && (l++))
                     {
-                        if ((slots[k][l] == PiecesChar::char_free) || (p2validpieces(slots[k][l])))
+                        if (slots[k][l] == PiecesChar::char_free)
                         {
                             moves[movesm][0] = k;
                             moves[movesm][1] = l;
                             movesm++;
                         }
-                        else
+                        else if (p2validpieces(slots[k][l])){
+                            moves[movesm][0] = k;
+                            moves[movesm][1] = l;
+                            movesm++;
                             break;
+                        }else{
+                            break;
+                        }
                     }
                     break;
                 case PiecesChar::charP2_rook: {
@@ -231,43 +277,65 @@ int minimax(char slots[26][26], int depth, bool player, int points) { //Player =
                         }
                     }
                     movesm = 0;
-                    availablepiece=true;
+                    availablepiece = true;
                     for (k = j + 1; k < 8; k++) {
-                        if ((slots[i][k] == PiecesChar::char_free) || (p2validpieces(slots[i][k]))) {
+                        if (slots[i][k] == PiecesChar::char_free) {
                             moves[movesm][0] = i;
                             moves[movesm][1] = k;
                             movesm++;
-                        } else
+                        } else if(p2validpieces(slots[i][k])){
+                            moves[movesm][0] = i;
+                            moves[movesm][1] = k;
+                            movesm++;
                             break;
+                        } else{
+                            break;
+                        }
                     }
                     //(+y) line
                     for (k = i - 1; -1 < k; k--) {
-                        if ((slots[k][j] == PiecesChar::char_free) || (p2validpieces(slots[k][j]))) {
+                        if (slots[k][j] == PiecesChar::char_free) {
                             moves[movesm][0] = k;
                             moves[movesm][1] = j;
                             movesm++;
-                        } else
+                        } else if (p2validpieces(slots[k][j])){
+                            moves[movesm][0] = k;
+                            moves[movesm][1] = j;
+                            movesm++;
                             break;
+                        } else {
+                            break;
+                        }
                     }
                     //(-x) line
                     for (k = j - 1; -1 < k; k--) {
-                        if ((slots[i][k] == PiecesChar::char_free) || (p2validpieces(slots[i][k]))) {
+                        if (slots[i][k] == PiecesChar::char_free)  {
                             moves[movesm][0] = i;
                             moves[movesm][1] = k;
                             movesm++;
-                        } else
+                        } else if(p2validpieces(slots[i][k])){
+                            moves[movesm][0] = i;
+                            moves[movesm][1] = k;
+                            movesm++;
+                        } else{
                             break;
+                        }
                     }
                     //(-y) line
                     for (k = i + 1; k < 8; k++) {
-                        if ((slots[k][j] == PiecesChar::char_free) || (p2validpieces(slots[k][j]))) {
+                        if (slots[k][j] == PiecesChar::char_free) {
                             moves[movesm][0] = k;
                             moves[movesm][1] = j;
                             movesm++;
-                        } else
+                        } else if (p2validpieces(slots[k][j])){
+                            moves[movesm][0] = k;
+                            moves[movesm][1] = j;
+                            movesm++;
                             break;
+                        } else {
+                            break;
+                        }
                     }
-
                     break;
                 }
                 case PiecesChar::charP2_knight: {
@@ -332,55 +400,79 @@ int minimax(char slots[26][26], int depth, bool player, int points) { //Player =
                     l = j + 1;
                     for (; (-1 < k) && (l < 8); (k--) && (l++))
                     {
-                        if ((slots[k][l] == PiecesChar::char_free) || (p2validpieces(slots[k][l])))
+                        if (slots[k][l] == PiecesChar::char_free)
                         {
                             moves[movesm][0] = k;
                             moves[movesm][1] = l;
                             movesm++;
                         }
-                        else
+                        else if(p2validpieces(slots[k][l])){
+                            moves[movesm][0] = k;
+                            moves[movesm][1] = l;
+                            movesm++;
                             break;
+                        }else{
+                            break;
+                        }
                     }
                     k = i - 1;
                     l = j - 1;
                     for (; (-1 < k) && (-1 < l); (k--) && (l--))
                     {
-                        if ((slots[k][l] == PiecesChar::char_free) || (p2validpieces(slots[k][l])))
+                        if (slots[k][l] == PiecesChar::char_free)
                         {
                             moves[movesm][0] = k;
                             moves[movesm][1] = l;
                             movesm++;
                         }
-                        else
+                        else if (p2validpieces(slots[k][l])){
+                            moves[movesm][0] = k;
+                            moves[movesm][1] = l;
+                            movesm++;
                             break;
+                        }else {
+                            break;
+                        }
                     }
                     //(-x;-y) diagonal
                     k = i + 1;
                     l = j - 1;
                     for (; (k < 8) && (-1 < l); (k++) && (l--))
                     {
-                        if ((slots[k][l] == PiecesChar::char_free) || (p2validpieces(slots[k][l])))
+                        if (slots[k][l] == PiecesChar::char_free)
                         {
                             moves[movesm][0] = k;
                             moves[movesm][1] = l;
                             movesm++;
                         }
-                        else
+                        else if (p2validpieces(slots[k][l])){
+                            moves[movesm][0] = k;
+                            moves[movesm][1] = l;
+                            movesm++;
                             break;
+                        }else{
+                            break;
+                        }
                     }
                     //(+x;-y) diagonal
                     k = i + 1;
                     l = j + 1;
                     for (; (k < 8) && (l < 8); (k++) && (l++))
                     {
-                        if ((slots[k][l] == PiecesChar::char_free) || (p2validpieces(slots[k][l])))
+                        if (slots[k][l] == PiecesChar::char_free)
                         {
                             moves[movesm][0] = k;
                             moves[movesm][1] = l;
                             movesm++;
                         }
-                        else
+                        else if (p2validpieces(slots[k][l])){
+                            moves[movesm][0] = k;
+                            moves[movesm][1] = l;
+                            movesm++;
                             break;
+                        }else{
+                            break;
+                        }
                     }
                     break;
                 case PiecesChar::charP2_pawn:{
@@ -398,7 +490,7 @@ int minimax(char slots[26][26], int depth, bool player, int points) { //Player =
                         cas = 1;
                     }
                     for (k = 1; k <= cas; k++) {
-                        if (cas==1) {
+                        if (k==1) {
                             if (p2validpieces(slots[i + 1][j + 1])) {
                                 moves[movesm][0] = i + 1;
                                 moves[movesm][1] = j + 1;
@@ -454,7 +546,7 @@ int minimax(char slots[26][26], int depth, bool player, int points) { //Player =
                             }
                         }
                         char slotscopy[26][26];
-                        points=moves[p][2];
+                        points+=moves[p][2];
                         contador++;
                         cout<<contador<<": Profundidad: "<<depth<<" Retornando points:" <<points<<" Player = "<<player<<" Pieza["<<i<<"]["<<j<<"] : "<<slots[i][j] <<endl;
                         for (int m = 0; m < movesm; ++m) {
@@ -483,7 +575,7 @@ int minimax(char slots[26][26], int depth, bool player, int points) { //Player =
                         cout<<"k before: "<<p<<endl;
                         cout<<"movesm before: "<<movesm<<endl;
                         cout<<"savemovesm before: "<<movesm<<endl;
-                        minimax(slotscopy, depth - 1, false,points);
+                        int eval =minimax(slotscopy, depth - 1, false,points);
                         cout<<"k after: "<<p<<endl;
                         cout<<"movesm after: "<<movesm<<endl;
                         cout<<"savemovesm after: "<<movesm<<endl;
@@ -538,81 +630,140 @@ int minimax(char slots[26][26], int depth, bool player, int points) { //Player =
                         movesm = 0;
                         availablepiece = true;
                         for (k = j + 1; k < 8; k++) {
-                            if ((slots[i][k] == PiecesChar::char_free) || (p1validpieces(slots[i][k]))) {
+                            if (slots[i][k] == PiecesChar::char_free) {
                                 moves[movesm][0] = i;
                                 moves[movesm][1] = k;
                                 movesm++;
-                            } else
+                            } else if(p1validpieces(slots[i][k])){
+                                moves[movesm][0] = i;
+                                moves[movesm][1] = k;
+                                movesm++;
                                 break;
+                            } else{
+                                break;
+                            }
                         }
                         //(+y) line
                         for (k = i - 1; -1 < k; k--) {
-                            if ((slots[k][j] == PiecesChar::char_free) || (p1validpieces(slots[k][j]))) {
+                            if (slots[k][j] == PiecesChar::char_free) {
                                 moves[movesm][0] = k;
                                 moves[movesm][1] = j;
                                 movesm++;
-                            } else
+                            } else if (p1validpieces(slots[k][j])){
+                                moves[movesm][0] = k;
+                                moves[movesm][1] = j;
+                                movesm++;
                                 break;
+                            } else {
+                                break;
+                            }
                         }
                         //(-x) line
                         for (k = j - 1; -1 < k; k--) {
-                            if ((slots[i][k] == PiecesChar::char_free) || (p1validpieces(slots[i][k]))) {
+                            if (slots[i][k] == PiecesChar::char_free)  {
                                 moves[movesm][0] = i;
                                 moves[movesm][1] = k;
                                 movesm++;
-                            } else
+                            } else if(p1validpieces(slots[i][k])){
+                                moves[movesm][0] = i;
+                                moves[movesm][1] = k;
+                                movesm++;
+                            } else{
                                 break;
+                            }
                         }
                         //(-y) line
                         for (k = i + 1; k < 8; k++) {
-                            if ((slots[k][j] == PiecesChar::char_free) || (p1validpieces(slots[k][j]))) {
+                            if (slots[k][j] == PiecesChar::char_free) {
                                 moves[movesm][0] = k;
                                 moves[movesm][1] = j;
                                 movesm++;
-                            } else
+                            } else if (p1validpieces(slots[k][j])){
+                                moves[movesm][0] = k;
+                                moves[movesm][1] = j;
+                                movesm++;
                                 break;
+                            } else {
+                                break;
+                            }
                         }
                         k = i - 1;
                         l = j + 1;
-                        for (; (-1 < k) && (l < 8); (k--) && (l++)) {
-                            if ((slots[k][l] == PiecesChar::char_free) || (p1validpieces(slots[k][l]))) {
+                        for (; (-1 < k) && (l < 8); (k--) && (l++))
+                        {
+                            if (slots[k][l] == PiecesChar::char_free)
+                            {
                                 moves[movesm][0] = k;
                                 moves[movesm][1] = l;
                                 movesm++;
-                            } else
+                            }
+                            else if(p1validpieces(slots[k][l])){
+                                moves[movesm][0] = k;
+                                moves[movesm][1] = l;
+                                movesm++;
                                 break;
+                            }else{
+                                break;
+                            }
                         }
                         k = i - 1;
                         l = j - 1;
-                        for (; (-1 < k) && (-1 < l); (k--) && (l--)) {
-                            if ((slots[k][l] == PiecesChar::char_free) || (p1validpieces(slots[k][l]))) {
+                        for (; (-1 < k) && (-1 < l); (k--) && (l--))
+                        {
+                            if (slots[k][l] == PiecesChar::char_free)
+                            {
                                 moves[movesm][0] = k;
                                 moves[movesm][1] = l;
                                 movesm++;
-                            } else
+                            }
+                            else if (p1validpieces(slots[k][l])){
+                                moves[movesm][0] = k;
+                                moves[movesm][1] = l;
+                                movesm++;
                                 break;
+                            }else {
+                                break;
+                            }
                         }
                         //(-x;-y) diagonal
                         k = i + 1;
                         l = j - 1;
-                        for (; (k < 8) && (-1 < l); (k++) && (l--)) {
-                            if ((slots[k][l] == PiecesChar::char_free) || (p1validpieces(slots[k][l]))) {
+                        for (; (k < 8) && (-1 < l); (k++) && (l--))
+                        {
+                            if (slots[k][l] == PiecesChar::char_free)
+                            {
                                 moves[movesm][0] = k;
                                 moves[movesm][1] = l;
                                 movesm++;
-                            } else
+                            }
+                            else if (p1validpieces(slots[k][l])){
+                                moves[movesm][0] = k;
+                                moves[movesm][1] = l;
+                                movesm++;
                                 break;
+                            }else{
+                                break;
+                            }
                         }
                         //(+x;-y) diagonal
                         k = i + 1;
                         l = j + 1;
-                        for (; (k < 8) && (l < 8); (k++) && (l++)) {
-                            if ((slots[k][l] == PiecesChar::char_free) || (p1validpieces(slots[k][l]))) {
+                        for (; (k < 8) && (l < 8); (k++) && (l++))
+                        {
+                            if (slots[k][l] == PiecesChar::char_free)
+                            {
                                 moves[movesm][0] = k;
                                 moves[movesm][1] = l;
                                 movesm++;
-                            } else
+                            }
+                            else if (p1validpieces(slots[k][l])){
+                                moves[movesm][0] = k;
+                                moves[movesm][1] = l;
+                                movesm++;
                                 break;
+                            }else{
+                                break;
+                            }
                         }
                         break;
                     case PiecesChar::charP1_rook: {
@@ -625,41 +776,63 @@ int minimax(char slots[26][26], int depth, bool player, int points) { //Player =
                         movesm = 0;
                         availablepiece = true;
                         for (k = j + 1; k < 8; k++) {
-                            if ((slots[i][k] == PiecesChar::char_free) || (p1validpieces(slots[i][k]))) {
+                            if (slots[i][k] == PiecesChar::char_free) {
                                 moves[movesm][0] = i;
                                 moves[movesm][1] = k;
                                 movesm++;
-                            } else
+                            } else if(p1validpieces(slots[i][k])){
+                                moves[movesm][0] = i;
+                                moves[movesm][1] = k;
+                                movesm++;
                                 break;
+                            } else{
+                                break;
+                            }
                         }
                         //(+y) line
                         for (k = i - 1; -1 < k; k--) {
-                            if ((slots[k][j] == PiecesChar::char_free) || (p1validpieces(slots[k][j]))) {
+                            if (slots[k][j] == PiecesChar::char_free) {
                                 moves[movesm][0] = k;
                                 moves[movesm][1] = j;
                                 movesm++;
-                            } else
+                            } else if (p1validpieces(slots[k][j])){
+                                moves[movesm][0] = k;
+                                moves[movesm][1] = j;
+                                movesm++;
                                 break;
+                            } else {
+                                break;
+                            }
                         }
                         //(-x) line
                         for (k = j - 1; -1 < k; k--) {
-                            if ((slots[i][k] == PiecesChar::char_free) || (p1validpieces(slots[i][k]))) {
+                            if (slots[i][k] == PiecesChar::char_free)  {
                                 moves[movesm][0] = i;
                                 moves[movesm][1] = k;
                                 movesm++;
-                            } else
+                            } else if(p1validpieces(slots[i][k])){
+                                moves[movesm][0] = i;
+                                moves[movesm][1] = k;
+                                movesm++;
+                            } else{
                                 break;
+                            }
                         }
                         //(-y) line
                         for (k = i + 1; k < 8; k++) {
-                            if ((slots[k][j] == PiecesChar::char_free) || (p1validpieces(slots[k][j]))) {
+                            if (slots[k][j] == PiecesChar::char_free) {
                                 moves[movesm][0] = k;
                                 moves[movesm][1] = j;
                                 movesm++;
-                            } else
+                            } else if (p1validpieces(slots[k][j])){
+                                moves[movesm][0] = k;
+                                moves[movesm][1] = j;
+                                movesm++;
                                 break;
+                            } else {
+                                break;
+                            }
                         }
-
                         break;
                     }
                     case PiecesChar::charP1_knight: {
@@ -730,45 +903,81 @@ int minimax(char slots[26][26], int depth, bool player, int points) { //Player =
                         availablepiece = true;
                         k = i - 1;
                         l = j + 1;
-                        for (; (-1 < k) && (l < 8); (k--) && (l++)) {
-                            if ((slots[k][l] == PiecesChar::char_free) || (p1validpieces(slots[k][l]))) {
+                        for (; (-1 < k) && (l < 8); (k--) && (l++))
+                        {
+                            if (slots[k][l] == PiecesChar::char_free)
+                            {
                                 moves[movesm][0] = k;
                                 moves[movesm][1] = l;
                                 movesm++;
-                            } else
+                            }
+                            else if(p1validpieces(slots[k][l])){
+                                moves[movesm][0] = k;
+                                moves[movesm][1] = l;
+                                movesm++;
                                 break;
+                            }else{
+                                break;
+                            }
                         }
                         k = i - 1;
                         l = j - 1;
-                        for (; (-1 < k) && (-1 < l); (k--) && (l--)) {
-                            if ((slots[k][l] == PiecesChar::char_free) || (p1validpieces(slots[k][l]))) {
+                        for (; (-1 < k) && (-1 < l); (k--) && (l--))
+                        {
+                            if (slots[k][l] == PiecesChar::char_free)
+                            {
                                 moves[movesm][0] = k;
                                 moves[movesm][1] = l;
                                 movesm++;
-                            } else
+                            }
+                            else if (p1validpieces(slots[k][l])){
+                                moves[movesm][0] = k;
+                                moves[movesm][1] = l;
+                                movesm++;
                                 break;
+                            }else {
+                                break;
+                            }
                         }
                         //(-x;-y) diagonal
                         k = i + 1;
                         l = j - 1;
-                        for (; (k < 8) && (-1 < l); (k++) && (l--)) {
-                            if ((slots[k][l] == PiecesChar::char_free) || (p1validpieces(slots[k][l]))) {
+                        for (; (k < 8) && (-1 < l); (k++) && (l--))
+                        {
+                            if (slots[k][l] == PiecesChar::char_free)
+                            {
                                 moves[movesm][0] = k;
                                 moves[movesm][1] = l;
                                 movesm++;
-                            } else
+                            }
+                            else if (p1validpieces(slots[k][l])){
+                                moves[movesm][0] = k;
+                                moves[movesm][1] = l;
+                                movesm++;
                                 break;
+                            }else{
+                                break;
+                            }
                         }
                         //(+x;-y) diagonal
                         k = i + 1;
                         l = j + 1;
-                        for (; (k < 8) && (l < 8); (k++) && (l++)) {
-                            if ((slots[k][l] == PiecesChar::char_free) || (p1validpieces(slots[k][l]))) {
+                        for (; (k < 8) && (l < 8); (k++) && (l++))
+                        {
+                            if (slots[k][l] == PiecesChar::char_free)
+                            {
                                 moves[movesm][0] = k;
                                 moves[movesm][1] = l;
                                 movesm++;
-                            } else
+                            }
+                            else if (p1validpieces(slots[k][l])){
+                                moves[movesm][0] = k;
+                                moves[movesm][1] = l;
+                                movesm++;
                                 break;
+                            }else{
+                                break;
+                            }
                         }
                         break;
                     case PiecesChar::charP1_pawn: {
@@ -786,7 +995,7 @@ int minimax(char slots[26][26], int depth, bool player, int points) { //Player =
                             cas = 1;
                         }
                         for (k = 1; k <= cas; k++) {
-                            if (cas==1){
+                            if (k==1){
                                 if(p1validpieces(slots[i-1][j+1])){
                                     moves[movesm][0] = i-1;
                                     moves[movesm][1] = j+1;
@@ -842,7 +1051,7 @@ int minimax(char slots[26][26], int depth, bool player, int points) { //Player =
                             }
                         }
                         char slotscopy[26][26];
-                        points=moves[p][2];
+                        points+=moves[p][2];
                         cout<<"Profundidad: "<<depth<<" Retornando points:" <<points<<" Player = "<<player<<" Pieza["<<i<<"]["<<j<<"] : "<<slots[i][j] <<endl;
                         for (int m = 0; m < movesm; ++m) {
                             for (int n = 0; n < 2; ++n) {
@@ -863,7 +1072,7 @@ int minimax(char slots[26][26], int depth, bool player, int points) { //Player =
                             }
                             cout<<endl;
                         }
-                        minimax(slotscopy, depth - 1, true, points);
+                        int eval=minimax(slotscopy, depth - 1, true, points);
                         cout<<"End minimax"<<endl;
                         minpt = min(eval, minpt);
                     }
