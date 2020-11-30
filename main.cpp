@@ -30,6 +30,10 @@ int game(int P1PiecesInit[][3], int nP1Pieces, int P2PiecesInit[][3], int nP2Pie
 	char symbol;
 	char endSlot;
 	bool isFree;
+	///IA
+	char slotes[26][26];
+
+	///
 	while (true)
 	{
 		// show gameboard
@@ -142,9 +146,22 @@ int game(int P1PiecesInit[][3], int nP1Pieces, int P2PiecesInit[][3], int nP2Pie
 			// make a plan
 			// make the first movement plan
 			// make the movement in the gameboard*/
+            for (int i = 0; i < 8; ++i) {
+                for (int j = 0; j < 8; ++j) {
+                    slotes[i][j]=gameboard.slots[i][j].symbol;
+                }
+            }
+            for (int i = 0; i < 8; ++i) {
+                for (int j = 0; j < 8; ++j) {
+                    cout<<slotes[i][j]<<" ";
+                }
+                cout<<endl;
+            }
+            cout << "\nMinimax : "<<minimax(slotes,3,false,0)<<endl;
 			turn = !turn;
 			movements++;
 		}
+
 	}
 	if (true)
 	{

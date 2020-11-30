@@ -28,7 +28,7 @@ public:
 		isFree = iIsFree;
 		if (isFree == false)
 		{
-			player = iPlayer; // P1 = TRUE
+			player = iPlayer; // P1 = TRUE-+
 		}
 		points = iPoints;
 	}
