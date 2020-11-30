@@ -157,7 +157,7 @@ int game(int P1PiecesInit[][3], int nP1Pieces, int P2PiecesInit[][3], int nP2Pie
                 }
                 cout<<endl;
             }
-            cout << "\nMinimax : "<<minimax(slotes,3,false,0)<<endl;
+            cout << "\nMinimax : "<<minimax(slotes,2,true,0)<<endl;
 			turn = !turn;
 			movements++;
 		}
