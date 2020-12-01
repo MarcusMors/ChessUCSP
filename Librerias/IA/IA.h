@@ -88,7 +88,7 @@ int p1validpieces(char piece){
 }
 int minimax(char slots[26][26], int depth, bool player, int points) { //Player = True
     if (depth == 0) {
-        cout<<"\nDepth =0 return points\n";
+        cout<<"\nDepth =0 return points: "<<points<<endl;
         return points;
     }
     if (player) {
@@ -546,7 +546,8 @@ int minimax(char slots[26][26], int depth, bool player, int points) { //Player =
                             }
                         }
                         char slotscopy[26][26];
-                        points+=moves[p][2];
+                        int pts;
+                        pts =points+moves[p][2];
                         contador++;
                         cout<<contador<<": Profundidad: "<<depth<<" Retornando points:" <<points<<" Player = "<<player<<" Pieza["<<i<<"]["<<j<<"] : "<<slots[i][j] <<endl;
                         for (int m = 0; m < movesm; ++m) {
@@ -575,7 +576,7 @@ int minimax(char slots[26][26], int depth, bool player, int points) { //Player =
                         cout<<"k before: "<<p<<endl;
                         cout<<"movesm before: "<<movesm<<endl;
                         cout<<"savemovesm before: "<<movesm<<endl;
-                        int eval =minimax(slotscopy, depth - 1, false,points);
+                        int eval =minimax(slotscopy, depth - 1, false,pts);
                         cout<<"k after: "<<p<<endl;
                         cout<<"movesm after: "<<movesm<<endl;
                         cout<<"savemovesm after: "<<movesm<<endl;
@@ -1031,30 +1032,31 @@ int minimax(char slots[26][26], int depth, bool player, int points) { //Player =
                                     moves[p][2] = 0;
                                     break;
                                 case 1://king
-                                    moves[p][2] = -10;
+                                    moves[p][2] = 10;
                                     break;
                                 case 2://queen
-                                    moves[p][2] = -9;
+                                    moves[p][2] = 9;
                                     break;
                                 case 3://rook
-                                    moves[p][2] = -5;
+                                    moves[p][2] = 5;
                                     break;
                                 case 4://knight
-                                    moves[p][2] = -3;
+                                    moves[p][2] = 3;
                                     break;
                                 case 5://bishop
-                                    moves[p][2] = -3;
+                                    moves[p][2] = 3;
                                     break;
                                 case 6://pawn
-                                    moves[p][2] = -1;
+                                    moves[p][2] = 1;
                                     break;
                             }
                         }
                         char slotscopy[26][26];
-                        points+=moves[p][2];
+                        int pts;
+                        pts =points-moves[p][2];
                         cout<<"Profundidad: "<<depth<<" Retornando points:" <<points<<" Player = "<<player<<" Pieza["<<i<<"]["<<j<<"] : "<<slots[i][j] <<endl;
                         for (int m = 0; m < movesm; ++m) {
-                            for (int n = 0; n < 2; ++n) {
+                            for (int n = 0; n < 3; ++n) {
                                 cout<<moves[m][n]<<" ";
                             }
                             cout<<endl;
@@ -1072,8 +1074,10 @@ int minimax(char slots[26][26], int depth, bool player, int points) { //Player =
                             }
                             cout<<endl;
                         }
-                        int eval=minimax(slotscopy, depth - 1, true, points);
-                        cout<<"End minimax"<<endl;
+                        cout<<"pts: "<<pts;
+                        int eval=minimax(slotscopy, depth - 1, true, pts);
+
+                        cout<<"End minimax, eval = "<<eval<<endl;
                         minpt = min(eval, minpt);
                     }
                     cout<<"End moves"<<" Pieza["<<i<<"]["<<j<<"] : "<<slots[i][j] <<endl;
